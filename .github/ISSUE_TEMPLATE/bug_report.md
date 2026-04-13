@@ -26,15 +26,31 @@ Steps to reproduce the behavior:
 
 Where are you running/using Password Pusher?
 
+<!-- These are checkboxes that can be clicked after issue creation. -->
+
 - [ ] pwpush.com
+- [ ] oss.pwpush.com
 - [ ] Docker Image
   - [ ] pwpush
-  - [ ] custom image
-- [ ] Heroku
+  - [ ] pwpush-public-gateway
+  - [ ] pwpush-worker
+  - [ ] Custom image
 - [ ] Digital Ocean
+  - [ ] App Platform
+  - [ ] Kubernetes Service
+- [ ] Heroku
 - [ ] Microsoft Azure
+  - [ ] App Service
+  - [ ] Container Instances (ACI)
+  - [ ] Container app (ACA)
+  - [ ] Kubernetes Service (AKS)
 - [ ] Google Cloud
+  - [ ] App Engine
+  - [ ] Cloud Run
+  - [ ] Kubernetes Engine
 - [ ] AWS
+  - [ ] Elastic Container Service (ECS)
+  - [ ] Kubernetes Service (AKS)
 - [ ] Source Code
 - [ ] Other (please specify)
 

@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/sv
+# https://translation.io/pglombardo/pwpush-oss/sv
 #
 ---
 sv:
@@ -114,11 +114,11 @@ sv:
       expired: har gått ut, vänligen begär en ny
       not_found: hittades inte
       not_locked: var inte låst
-      not_saved:
-        one: 'Ett fel hindrade denna %{resource} från att sparas:'
-        other: "%{count} fel hindrade denna %{resource} från att sparas:"
       in: måste vara i %{count}
       password_too_long: är för lång
+      not_saved:
+        one: '1 fel hindrade denna %{resource} från att sparas:'
+        other: "%{count} fel hindrade denna %{resource} från att sparas:"
     unavailable_session: |-
       Sessionen %{id} är inte längre tillgänglig i minnet.
 
@@ -215,6 +215,9 @@ sv:
       hour: Timme
       minute: Minut
       second: Sekund
+    relative:
+      future: i %{time}
+      past: "%{time} sedan"
   helpers:
     select:
       prompt: Välj
@@ -222,25 +225,19 @@ sv:
       create: Skapa %{model}
       update: Ändra %{model}
       submit: Spara %{model}
-  will_paginate:
-    previous_label: "&#8592; Föregående"
-    next_label: Nästa &#8594;
-    page_gap: "&hellip;"
-    container_aria_label: Paginering
-    page_aria_label: Sida %{page}
     page_entries_info:
-      single_page:
-        zero: Inga %{model} hittades
-        one: Visar 1 %{model}
-        other: Visar alla %{count} %{model}
-      single_page_html:
-        zero: Inga %{model} hittades
-        one: Visar <b>1</b> %{model}
-        other: Visar <b>alla&nbsp;%{count}</b> %{model}
-      multi_page: Visar %{model} %{from} - %{to} av totalt %{count}
-      multi_page_html: Visar %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> av totalt <b>%{count}</b>
-    previous_aria_label: Föregående sida
-    next_aria_label: Nästa sida
+      entry:
+        zero: poster
+        one: inträde
+        other: poster
+      one_page:
+        display_entries:
+          zero: Ingen %{entry_name} hittades
+          one: Visar <b>%{count}<b> %{entry_name}
+          other: Visar <b>alla %{count}</b> %{entry_name}
+      more_pages:
+        display_entries: Visar %{entry_name} <b>%{first} - %{last}</b> av <b>%{total}</b>
+          totalt
   flash:
     actions:
       create:
@@ -378,8 +375,19 @@ sv:
         update: Uppdatera
         we_need_your_current_password_to_confirm_your_changes: vi behöver ditt nuvarande
           lösenord för att bekräfta dina ändringar
+        cancel_my_account_confirm_description_html: Detta kommer permanent att radera
+          all data som är kopplad till ditt konto. Denna åtgärd kan inte ångras.<br/><br/>
+          För att verifiera, skriv din e-postadress för att bekräfta och ta bort ditt
+          konto.
+        cancel_my_account_description: Detta kommer att radera all data som är kopplad
+          till ditt konto permanent. Denna åtgärd kan inte ångras.
+        saving: Sparande...
       new:
         sign_up: Registrera dig
+        login_html: Eller %{link}
+        submitting: Skickar...
+        terms_html: Jag accepterar %{terms} och %{privacy}
+      preferred_language: Önskat språk
     unlocks:
       send_instructions: Inom några minuter kommer du att få ett e-postmeddelande
         med instruktioner om hur du kan låsa upp ditt konto.
@@ -402,6 +410,10 @@ sv:
     sessions:
       new:
         sign_in: Logga in
+        sign_up_html: Eller %{link}
+      already_signed_out: Du är nu utloggad.
+      signed_in: Loggade in.
+      signed_out: Loggade ut.
     shared:
       links:
         back: Tillbaka
@@ -412,6 +424,7 @@ sv:
         sign_in: Logga in
         sign_in_with_provider: Logga in med %{provider}
         sign_up: Registrera dig
+        redirecting: Omdirigerar...
       minimum_password_length:
         one: "(minst %{count} tecken)"
         other: "(minst %{count} tecken)"
@@ -454,159 +467,11 @@ sv:
         sunset_at: Solnedgång kl
         info: Info
     returns: Returnerar
-  i18n_tasks:
-    add_missing:
-      added:
-        one: Nyckel %{count} har lagts till
-        other: Lade till %{count}-nycklar
-    cmd:
-      args:
-        default_text: 'Standard: %{value}'
-        desc:
-          all_locales: Förvänta dig inte att nyckelmönster börjar med ett språk, utan
-            applicera dem på alla språk underförstått.
-          config: Åsidosätt konfigurationsplats
-          confirm: Bekräfta automatiskt
-          data_format: 'Dataformat: %{valid_text}.'
-          keep_order: Håll ordning på nycklarna
-          key_pattern: Filtrera efter nyckelmönster (t.ex. 'common.*')
-          key_pattern_to_rename: Fullständig nyckel (mönster) för att byta namn. Nödvändig
-          locale_to_translate_from: Språk att översätta från
-          locales_filter: 'Plats(er) att bearbeta. Special: bas'
-          missing_types: 'Filtrera efter typer: %{valid}'
-          new_key_name: Nytt namn, interpolerar originalnamnet som %{key}. Nödvändig
-          nostdin: Läs inte från stdin
-          out_format: 'Utdataformat: %{valid_text}'
-          pattern_router: 'Använd mönsterrouter: nycklar flyttade per config data.write'
-          strict: Undvik att dra slutsatser om dynamiska nyckelanvändningar som t("cats.#{cat}.name").
-            Har företräde framför konfigurationsinställningen om den är inställd.
-          translation_backend: Översättningsbackend (google eller deepl)
-          value: 'Värde. Interpolerar: %{value}, %{human_key}, %{key}, %{default},
-            %{value_or_human_key}, %{value_or_default_or_human_key}'
-      desc:
-        add_missing: lägg till saknade nycklar till lokaldata, valfritt matcha ett
-          mönster
-        check_consistent_interpolations: verifiera att alla översättningar använder
-          korrekta interpolationsvariabler
-        check_normalized: verifiera att all översättningsdata är normaliserad
-        config: visa i18n-tasks-konfiguration
-        data: visa lokaldata
-        data_merge: slå samman lokaldata med träd
-        data_remove: ta bort nycklar som finns i trädet från data
-        data_write: ersätt lokaldata med träd
-        eq_base: visa översättningar lika med basvärdet
-        find: visa var nycklar används i koden
-        gem_path: visa vägen till pärlan
-        health: är allting okej?
-        irb: starta REPL-session inom i18n-tasks sammanhang
-        missing: visa saknade översättningar, matcha eventuellt ett mönster
-        mv: byt namn på/sammanfoga nycklarna i lokaldata som matchar det givna mönstret
-        normalize: 'normalisera översättningsdata: sortera och flytta till rätt filer'
-        remove_unused: ta bort oanvända nycklar
-        rm: ta bort nycklarna i lokaldata som matchar det givna mönstret
-        translate_missing: översätt saknade nycklar med Google Translate eller DeepL
-          Pro, valfritt matcha ett mönster
-        tree_convert: konvertera träd mellan format
-        tree_filter: filtrera träd efter nyckelmönster
-        tree_merge: slå samman träd
-        tree_mv_key: byt namn/sammanfoga/ta bort nycklarna som matchar det givna mönstret
-        tree_set_value: ange värden för nycklar, valfritt matcha ett mönster
-        tree_subtract: träd A minus nycklarna i träd B
-        tree_translate: Google Översätt ett träd till root-lokaler
-        unused: visa oanvända översättningar
-      encourage:
-      - Bra jobbat!
-      - Bra gjort!
-      - Perfekt!
-      enum_list_opt:
-        invalid: "%{invalid} finns inte i: %{valid}."
-      enum_opt:
-        invalid: "%{invalid} är inte en av: %{valid}."
-      errors:
-        invalid_format: 'ogiltigt format: %{invalid}. giltigt: %{valid}.'
-        invalid_locale: 'ogiltig plats: %{invalid}'
-        invalid_missing_type:
-          one: 'ogiltig typ: %{invalid}. giltigt: %{valid}.'
-          other: 'okända typer: %{invalid}. giltigt: %{valid}.'
-        pass_forest: passera lokalskog
-    common:
-      continue_q: Fortsätta?
-      key: Nyckel
-      locale: Plats
-      n_more: "%{count} mer"
-      value: Värde
-    data_stats:
-      text: har %{key_count}-nycklar över %{locale_count}-lokaler. I genomsnitt är
-        värden %{value_chars_avg}-tecken långa, nycklar har %{key_segments_avg}-segment,
-        en lokal har %{per_locale_avg}-nycklar.
-      text_single_locale: har %{key_count} nycklar totalt. I genomsnitt är värdena
-        %{value_chars_avg}-tecken långa, nycklar har %{key_segments_avg}-segment.
-      title: Skog (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: Ställ in DeepL Pro API-nyckel via DEEPL_AUTH_KEY miljövariabel
-          eller translation.deepl_api_key i config/i18n-tasks.yml. Hämta nyckeln på
-          https://www.deepl.com/pro.
-        no_results: DeepL gav inga resultat.
-        specific_target_missing: Du måste tillhandahålla en specifik variant för det
-          givna målspråket, t.ex. en-us istället för en.
-    google_translate:
-      errors:
-        no_api_key: Ställ in Google API-nyckel via GOOGLE_TRANSLATE_API_KEY miljövariabel
-          eller translation.google_translate_api_key i config/i18n-tasks.yml. Hämta
-          nyckeln på https://code.google.com/apis/console.
-        no_results: Google Translate gav inga resultat. Se till att faktureringsinformationen
-          är inställd på https://code.google.com/apis/console.
-    health:
-      no_keys_detected: Inga nycklar upptäcktes. Kontrollera data.read i config/i18n-tasks.yml.
-    inconsistent_interpolations:
-      none: Inga inkonsekventa interpolationer hittades.
-    missing:
-      details_title: Värde i andra lokaler eller källa
-      none: Inga översättningar saknas.
-    remove_unused:
-      confirm:
-        one: "%{count}-översättning kommer att tas bort från %{locales}."
-        other: "%{count}-översättning kommer att tas bort från %{locales}."
-      noop: Inga oanvända nycklar att ta bort
-      removed: Tog bort %{count}-nycklar
-    translate_missing:
-      translated: Översatta %{count}-nycklar
-    unused:
-      none: Varje översättning används.
-    usages:
-      none: Inga nyckelanvändningar hittades.
-    yandex_translate:
-      errors:
-        no_api_key: Ställ in Yandex API-nyckel via YANDEX_API_KEY miljövariabel eller
-          translation.yandex_api_key i config/i18n-tasks.yml. Hämta nyckeln på https://tech.yandex.com/translate.
-        no_results: Yandex gav inga resultat.
-    openai_translate:
-      errors:
-        no_api_key: Ställ in OpenAI API-nyckel via OPENAI_API_KEY miljövariabel eller
-          translation.openai_api_key i config/i18n-tasks.yml. Hämta nyckeln på https://openai.com/.
-        no_results: OpenAI gav inga resultat.
-  routes:
-    users: användare
-    passwords: lösenord
-    files: filer
-    urls: webbadresser
-    sessions: sessioner
-    registrations: registreringar
-    unlocks: låser upp
-    feedbacks: återkopplingar
-    pages: sidor
-    new: ny
-    edit: redigera
-    update: uppdatering
-    destroy: förstöra
-    create: skapa
-    expired: utgånget
-    active: aktiva
-    audit: granska
-    access: tillgång
-    passphrase: lösenordsfras
-    preview: förhandsvisning
-  file_pushes:
-    new:
-      upload_limit: Du kan ladda upp upp till %{count} filer per push.
+    blank_allowed: tomt tillåtet
+  views:
+    pagination:
+      first: "&laquo; Första"
+      last: Sista &raquo;
+      previous: "&lsaquo; Föregående"
+      next: Nästa &rsaquo;
+      truncate: "&hellip;"

@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/ru
+# https://translation.io/pglombardo/pwpush-oss/ru
 #
 ---
 ru:
@@ -47,6 +47,7 @@ ru:
     deprecated: Устаревший
     deprecation_details: Сведения об устаревании
     returns: Возвращает
+    blank_allowed: пустое место разрешено
   date:
     day_names:
     - Воскресенье
@@ -156,10 +157,10 @@ ru:
       expired: истек, пожалуйста, запросите новый
       not_found: не найден
       not_locked: не заблокирован
-      not_saved:
-        one: '1 ошибка не позволила сохранить этот %{resource}:'
-        other: "%{count} ошибкок не позволили сохранить этот %{resource}:"
       password_too_long: слишком длинный
+      not_saved:
+        one: "%{resource}: сохранение не удалось из-за %{count} ошибки:"
+        other: "%{resource}: сохранение не удалось из-за %{count} ошибки:"
     template:
       body: 'Возникли проблемы со следующими полями:'
       header:
@@ -255,6 +256,9 @@ ru:
       hour: Часов
       minute: Минут
       second: Секунд
+    relative:
+      future: в %{time}
+      past: "%{time} назад"
   helpers:
     select:
       prompt: Пожалуйста, выберите
@@ -262,26 +266,19 @@ ru:
       create: Создать %{model}
       update: Сохранить %{model}
       submit: Сохранить %{model}
-  will_paginate:
-    previous_label: "← Предыдущая"
-    next_label: Следующая →
-    page_gap: "&hellip;"
-    container_aria_label: Пагинация
-    page_aria_label: Страница %{page}
     page_entries_info:
-      single_page:
-        zero: "%{model} не найдены"
-        one: Отображена 1 %{model}
-        other: Отображено %{count} %{model}
-      single_page_html:
-        zero: "%{model} не найдены"
-        one: Отображена <b>1</b> %{model}
-        other: Отображено <b>%{count}</b> %{model}
-      multi_page: Отображение %{model} %{from} - %{to} из %{count} всего
-      multi_page_html: Отображение %{model} <b>%{from} - %{to}</b> из <b>%{count}</b>
-        всего
-    previous_aria_label: Предыдущая страница
-    next_aria_label: Следующая страница
+      entry:
+        zero: записи
+        one: вход
+        other: записи
+      one_page:
+        display_entries:
+          zero: Не найдено %{entry_name}
+          one: Показано <b>%{count}</b> %{entry_name}
+          other: Показаны <b>все %{count}</b> %{entry_name}
+      more_pages:
+        display_entries: Показана %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>
+          из <b>%{total}</b>
   flash:
     actions:
       create:
@@ -291,145 +288,6 @@ ru:
       destroy:
         notice: "%{resource_name} был успешно удален."
         alert: "%{resource_name} не может быть удален."
-  i18n_tasks:
-    add_missing:
-      added:
-        one: Добавлен %{count} ключ
-        other: Добавлены %{count} ключей
-    cmd:
-      args:
-        default_text: 'По умолчанию: %{value}'
-        desc:
-          all_locales: Не ожидайте, что шаблоны ключей будут начинаться с локали,
-            вместо этого применяйте их ко всем локалям неявно.
-          config: Переопределить расположение конфигурации
-          confirm: Подтверждать автоматически
-          data_format: 'Формат данных: %{valid_text}.'
-          keep_order: Соблюдайте порядок расположения ключей
-          key_pattern: Фильтр по шаблону ключа (например, 'common.*')
-          key_pattern_to_rename: Полный ключ (шаблон) для переименования. Требуется
-          locale_to_translate_from: Локаль для перевода с
-          locales_filter: 'Локаль(и) для обработки. Специальный: базовый'
-          missing_types: 'Фильтр по типам: %{valid}'
-          new_key_name: Новое имя, интерполирует исходное имя как %{key}. Требуется
-          nostdin: Не считывать из stdin
-          out_format: 'Формат вывода: %{valid_text}'
-          pattern_router: 'Использовать шаблон маршрутизатора: ключи перемещаются
-            в соответствии с конфигурацией data.write'
-          strict: Избегайте вывода динамического использования ключей, например t("cats.#{cat}.name").
-            Имеет приоритет над настройкой конфигурации.
-          translation_backend: Backend перевода (google или deepl)
-          value: 'Значение. Интерполирует: %{value}, %{human_key}, %{key}, %{default},
-            %{value_or_human_key}, %{value_or_default_or_human_key}'
-      desc:
-        add_missing: добавлять недостающие ключи в данные локали, по желанию в соответствии
-          с шаблоном
-        check_consistent_interpolations: проверьте, что во всех переводах используются
-          правильные переменные интерполяции
-        check_normalized: проверить, что все данные перевода нормализованы
-        config: отобразить i18n-tasks конфигурацию
-        data: показать данные локали
-        data_merge: объединить данные локали с деревьями
-        data_remove: удалить из данных ключи, присутствующие в дереве
-        data_write: заменить данные локали деревом
-        eq_base: показать переводы, равные базовому значению
-        find: показать, где в коде используются ключи
-        gem_path: показать путь к драгоценному камню
-        health: все в порядке?
-        irb: запустить сеанс REPL в контексте i18n-tasks
-        missing: показывать отсутствующие переводы, опционально соответствовать шаблону
-        mv: переименовать/объединить ключи в данных локали, которые соответствуют
-          заданному шаблону
-        normalize: 'нормализация данных перевода: сортировка и перемещение в требуемые
-          файлы'
-        remove_unused: удалить неиспользуемые ключи
-        rm: удалить ключи в данных локали, которые соответствуют заданному шаблону
-        translate_missing: переведите отсутствующие ключи с помощью Google Translate
-          или DeepL Pro, по желанию сопоставляя с шаблоном
-        tree_convert: конвертировать дерево между форматами
-        tree_filter: фильтровать дерево по ключевому шаблону
-        tree_merge: объединить деревья
-        tree_mv_key: переименовать/объединить/удалить ключи, соответствующие заданному
-          шаблону
-        tree_set_value: устанавливать значения ключей, по желанию соответствовать
-          шаблону
-        tree_subtract: дерево A минус ключи в дереве B
-        tree_translate: Google Перевод дерева в корневые локали
-        unused: показать неиспользуемые переводы
-      encourage:
-      - Хорошая работа!
-      - Отличная работа!
-      - Идеально!
-      enum_list_opt:
-        invalid: "%{invalid} нет в: %{valid}."
-      enum_opt:
-        invalid: "%{invalid} не является одним из: %{valid}."
-      errors:
-        invalid_format: 'неверный формат: %{invalid}. верный: %{valid}.'
-        invalid_locale: 'неверная локаль: %{invalid}'
-        invalid_missing_type:
-          one: 'неверный тип: %{invalid}. верный: %{valid}.'
-          other: 'неизвестные типы: %{invalid}. верный: %{valid}.'
-        pass_forest: пройден лес локализации
-    common:
-      continue_q: Продолжить?
-      key: Ключ
-      locale: Локализация
-      n_more: "%{count} подробнее"
-      value: Значение
-    data_stats:
-      text: имеет %{key_count} ключей в %{locale_count} локалях. В среднем значения
-        имеют длину %{value_chars_avg} символов, ключи - %{key_segments_avg} сегментов,
-        локаль - %{per_locale_avg} ключей.
-      text_single_locale: имеет в общей сложности %{key_count} ключей. В среднем значения
-        имеют длину %{value_chars_avg} символов, ключи - %{key_segments_avg} сегментов.
-      title: Лес (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: Установите ключ API DeepL Pro через переменную окружения DEEPL_AUTH_KEY
-          или translation.deepl_api_key в config/i18n-tasks.yml. Получите ключ на
-          сайте https://www.deepl.com/pro.
-        no_results: DeepL не дал никаких результатов.
-        specific_target_missing: Вы должны указать конкретный вариант для данного
-          целевого языка, например, en-us вместо en.
-    google_translate:
-      errors:
-        no_api_key: Установите ключ Google API через переменную окружения GOOGLE_TRANSLATE_API_KEY
-          или translation.google_translate_api_key в config/i18n-tasks.yml. Получите
-          ключ по адресу https://code.google.com/apis/console.
-        no_results: Google Translate не дал никаких результатов. Убедитесь, что информация
-          о выставлении счетов установлена на https://code.google.com/apis/console.
-    health:
-      no_keys_detected: Ключи не обнаружены. Проверьте data.read в config/i18n-tasks.yml.
-    inconsistent_interpolations:
-      none: Никаких противоречивых интерполяций не обнаружено.
-    missing:
-      details_title: Значение в других локалях или источнике
-      none: Нет отсутствующих переводов.
-    remove_unused:
-      confirm:
-        one: "%{count} перевод будет удален из %{locales}"
-        other: "%{count} переводов будут удалены из %{locales}"
-      noop: Отсутствуют неиспользуемые ключи для удаления
-      removed: Удалены %{count} ключей
-    translate_missing:
-      translated: Переведены %{count} ключей
-    unused:
-      none: Все переводы используются.
-    usages:
-      none: Не найдены использования ключа.
-    yandex_translate:
-      errors:
-        no_api_key: Установите ключ API Яндекса через переменную окружения YANDEX_API_KEY
-          или translation.yandex_api_key в config/i18n-tasks.yml. Получите ключ по
-          адресу https://tech.yandex.com/translate.
-        no_results: Яндекс не дал никаких результатов.
-    openai_translate:
-      errors:
-        no_api_key: Установите ключ OpenAI API через переменную окружения OPENAI_API_KEY
-          или translation.openai_api_key в config/i18n-tasks.yml. Получить ключ можно
-          по адресу https://openai.com/.
-        no_results: OpenAI не дал никаких результатов.
   devise:
     confirmations:
       confirmed: Ваш адрес эл. почты успешно подтвержден.
@@ -533,8 +391,18 @@ ru:
         update: Обновить
         we_need_your_current_password_to_confirm_your_changes: введите текущий пароль
           для подтверждения изменений
+        cancel_my_account_confirm_description_html: Это приведет к окончательному
+          удалению всех данных, связанных с вашей учетной записью. Это действие нельзя
+          отменить.<br/><br/>Для проверки введите адрес электронной почты, чтобы подтвердить
+          и удалить свою учетную запись.
+        cancel_my_account_description: Это приведет к окончательному удалению всех
+          данных, связанных с вашей учетной записью. Это действие нельзя отменить.
+        saving: Экономия...
       new:
         sign_up: Зарегистрироваться
+        login_html: Или %{link}
+        submitting: Подача...
+        terms_html: Я принимаю %{terms} и %{privacy}
       signed_up: Добро пожаловать! Вы успешно зарегистрировались.  Пожалуйста, проверьте
         свою электронную почту на наличие ссылки для подтверждения.
       signed_up_but_inactive: Вы успешно зарегистрированы. Однако, вы не можете войти
@@ -553,7 +421,7 @@ ru:
       update_email: Обновить электронную почту
       currently_waiting: Ожидаем
       change_password: Изменить пароль
-      change_password_hint: Подсказка изменения пароля
+      change_password_hint: Оставьте пустым, если не хотите его менять.
       new_password: Новый пароль
       new_password_confirmation: Подтверждение нового пароля
       password: Пароль
@@ -565,9 +433,14 @@ ru:
       create_account: Создать учетную запись
       email: Электронная почта
       password_confirmation: Подтверждение пароля
+      preferred_language: Предпочитаемый язык
     sessions:
       new:
         sign_in: Войти
+        sign_up_html: Или %{link}
+      already_signed_out: Выход из системы уже выполнен.
+      signed_in: Вход в систему выполнен.
+      signed_out: Выход из системы выполнен.
     shared:
       links:
         back: Назад
@@ -577,6 +450,7 @@ ru:
         sign_in: Войти
         sign_in_with_provider: 'Войти с помощью: %{provider}'
         sign_up: Регистрация
+        redirecting: Перенаправление...
       minimum_password_length:
         one: "(минимум %{count} символ)"
         other: "(минимум %{count} символов)"
@@ -600,27 +474,10 @@ ru:
       didnt_confirmation: Не подтвердилось
       didnt_unlock: Не разблокировался
       email: Электронная почта
-  routes:
-    users: пользователи
-    passwords: пароли
-    files: файлы
-    urls: урлы
-    sessions: сессии
-    registrations: регистрации
-    unlocks: разблокировать
-    feedbacks: обратная связь
-    pages: страницы
-    new: новый
-    edit: редактировать
-    update: обновление
-    destroy: уничтожить
-    create: создать
-    expired: истек
-    active: активная
-    audit: аудит
-    access: доступ
-    passphrase: парольная фраза
-    preview: предварительный просмотр
-  file_pushes:
-    new:
-      upload_limit: За одно нажатие можно загрузить до %{count} файлов.
+  views:
+    pagination:
+      first: "&laquo; Первая"
+      last: Последняя &raquo;
+      previous: "&lsaquo; Предыдущая"
+      next: Следующая &rsaquo;
+      truncate: "&hellip;"

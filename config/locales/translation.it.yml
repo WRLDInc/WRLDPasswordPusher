@@ -2,55 +2,55 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/it
+# https://translation.io/pglombardo/pwpush-oss/it
 #
 ---
 it:
   date:
     day_names:
-    - domenica
-    - lunedì
-    - martedì
-    - mercoledì
-    - giovedì
-    - venerdì
-    - sabato
+    - Domenica
+    - Lunedì
+    - Martedì
+    - Mercoledì
+    - Giovedì
+    - Venerdì
+    - Sabato
     abbr_day_names:
-    - dom
-    - lun
-    - mar
-    - mer
-    - gio
-    - ven
-    - sab
+    - Dom
+    - Lun
+    - Mar
+    - Mer
+    - Gio
+    - Ven
+    - Sab
     month_names:
     -
-    - gennaio
-    - febbraio
-    - marzo
-    - aprile
-    - maggio
-    - giugno
-    - luglio
-    - agosto
-    - settembre
-    - ottobre
-    - novembre
-    - dicembre
+    - Gennaio
+    - Febbraio
+    - Marzo
+    - Aprile
+    - Maggio
+    - Giugno
+    - Luglio
+    - Agosto
+    - Settembre
+    - Ottobre
+    - Novembre
+    - Dicembre
     abbr_month_names:
     -
-    - gen
-    - feb
-    - mar
-    - apr
-    - mag
-    - giu
-    - lug
-    - ago
-    - set
-    - ott
-    - nov
-    - dic
+    - Gen
+    - Feb
+    - Mar
+    - Apr
+    - Mag
+    - Giu
+    - Lug
+    - Ago
+    - Set
+    - Ott
+    - Nov
+    - Dic
   time:
     am: am
     pm: pm
@@ -88,13 +88,13 @@ it:
       blank: non può essere lasciato in bianco
       present: deve essere lasciato in bianco
       too_long:
-        one: è troppo lungo (il massimo è 1 carattere)
+        one: è troppo lungo (il massimo è %{count} caratteri)
         other: è troppo lungo (il massimo è %{count} caratteri)
       too_short:
-        one: è troppo corto (il minimo è 1 carattere)
+        one: è troppo corto (il minimo è %{count} caratteri)
         other: è troppo corto (il minimo è %{count} caratteri)
       wrong_length:
-        one: è della lunghezza sbagliata (deve essere di 1 carattere)
+        one: è della lunghezza sbagliata (deve essere di %{count} caratteri)
         other: è della lunghezza sbagliata (deve essere di %{count} caratteri)
       not_a_number: non è un numero
       not_an_integer: non è un numero intero
@@ -114,11 +114,11 @@ it:
       expired: è scaduto, si prega di richiederne uno nuovo
       not_found: non trovato
       not_locked: non era bloccato
+      in: deve essere in %{count}
+      password_too_long: è troppo lungo
       not_saved:
         one: 'Non posso salvare questo %{resource}: 1 errore'
         other: 'Non posso salvare questo %{resource}: %{count} errori.'
-      in: deve essere in %{count}
-      password_too_long: è troppo lungo
     unavailable_session: |
       Session %{id} non è più disponibile in memoria.
 
@@ -135,7 +135,7 @@ it:
     template:
       body: 'Ricontrolla i seguenti campi:'
       header:
-        one: 'Non posso salvare questo %{model}: 1 errore'
+        one: "%{count} errori hanno impedito il salvataggio di questo %{model}."
         other: 'Non posso salvare questo %{model}: %{count} errori.'
   activerecord:
     errors:
@@ -152,7 +152,7 @@ it:
         confirmation_token: Token di conferma
         confirmed_at: Confermato il
         created_at: Creato il
-        current_password: Password corrente
+        current_password: Password Attuale
         current_sign_in_at: Accesso corrente il
         current_sign_in_ip: IP accesso corrente
         email: Email
@@ -179,40 +179,40 @@ it:
     distance_in_words:
       half_a_minute: mezzo minuto
       less_than_x_seconds:
-        one: meno di un secondo
+        one: meno di %{count} secondi
         other: meno di %{count} secondi
       x_seconds:
-        one: 1 secondo
+        one: "%{count} secondi"
         other: "%{count} secondi"
       less_than_x_minutes:
         one: meno di un minuto
         other: meno di %{count} minuti
       x_minutes:
-        one: 1 minuto
+        one: "%{count} minuti"
         other: "%{count} minuti"
       about_x_hours:
-        one: circa un'ora
+        one: circa %{count} ore
         other: circa %{count} ore
       x_days:
-        one: 1 giorno
+        one: "%{count} giorni"
         other: "%{count} giorni"
       about_x_months:
-        one: circa un mese
+        one: circa %{count} mesi
         other: circa %{count} mesi
       x_months:
-        one: 1 mese
+        one: "%{count} mesi"
         other: "%{count} mesi"
       about_x_years:
-        one: circa un anno
+        one: circa %{count} anni
         other: circa %{count} anni
       over_x_years:
-        one: oltre un anno
+        one: oltre %{count} anni
         other: oltre %{count} anni
       almost_x_years:
-        one: quasi 1 anno
+        one: quasi %{count} anni
         other: quasi %{count} anni
       x_years:
-        one: 1 anno
+        one: "%{count} anni"
         other: "%{count} anni"
     prompts:
       year: Anno
@@ -220,7 +220,10 @@ it:
       day: Giorno
       hour: Ora
       minute: Minuto
-      second: Secondi
+      second: Secondo
+    relative:
+      future: in %{time}
+      past: "%{time} fa"
   helpers:
     select:
       prompt: Seleziona...
@@ -228,26 +231,19 @@ it:
       create: Crea %{model}
       update: Aggiorna %{model}
       submit: Invia %{model}
-  will_paginate:
-    previous_label: "&#8592; Precedente"
-    next_label: Successivo &#8594;
-    page_gap: "&hellip;"
-    container_aria_label: Paginatura
-    page_aria_label: Pagina %{page}
     page_entries_info:
-      single_page:
-        zero: Nessun %{model} trovato
-        one: Visualizzazione 1 %{model}
-        other: Visualizzazione di tutti %{count} %{model}
-      single_page_html:
-        zero: Nessun %{model} trovato
-        one: Visualizzazione <b>1</b> %{model}
-        other: Visualizzazione di <b>tutti %{count}</b> %{model}
-      multi_page: Visualizzati %{model} %{from} - %{to} di %{count} in totale
-      multi_page_html: Visualizzati %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> di </b>%{count}</b>
-        in totale
-    previous_aria_label: Pagina precedente
-    next_aria_label: Pagina successiva
+      entry:
+        zero: inserimenti
+        one: iscrizione
+        other: inserimenti
+      one_page:
+        display_entries:
+          zero: Nessun %{entry_name} trovato
+          one: "<b>%{count}</b> %{entry_name}"
+          other: "<b>Tutti %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "%{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> di <b>%{total}</b>
+          totali"
   flash:
     actions:
       create:
@@ -259,17 +255,17 @@ it:
         alert: "%{resource_name} non può essere distrutto."
   devise:
     confirmations:
-      confirmed: Il tuo indirizzo email è stato correttamente confermato.
+      confirmed: Il tuo indirizzo email è stato confermato.
       send_instructions: Riceverai un messaggio con le istruzioni per confermare il
         tuo indirizzo email entro qualche minuto.
       send_paranoid_instructions: Se la tua email esiste nel nostro database, riceverai
         un messaggio con le istruzioni per confermare il tuo indirizzo email entro
         qualche minuto.
-      resend_title: Reinvia Istruzioni di Conferma
-      resend_header: Reinvia le Istruzioni di Conferma
+      resend_title: Invia nuovamente le istruzioni di conferma
+      resend_header: Invia nuovamente le istruzioni di conferma
       resend_button: Reinvia
       new:
-        resend_confirmation_instructions: Invia di nuovo le istruzioni per la conferma
+        resend_confirmation_instructions: Invia nuovamente le istruzioni per la conferma
     failure:
       already_authenticated: Hai già effettuato l'accesso.
       inactive: Il tuo account non è stato ancora attivato.
@@ -385,8 +381,19 @@ it:
         update: Aggiorna
         we_need_your_current_password_to_confirm_your_changes: abbiamo bisogno della
           tua password attuale per confermare i cambiamenti
+        cancel_my_account_confirm_description_html: Questo cancellerà definitivamente
+          tutti i dati associati al tuo account. Questa azione non può essere annullata.<br/><br/>
+          Per verificare, digita il tuo indirizzo email per confermare ed eliminare
+          il tuo account.
+        cancel_my_account_description: Questo cancellerà definitivamente tutti i dati
+          associati al tuo account. Questa azione non può essere annullata.
+        saving: Risparmio...
       new:
         sign_up: Registrati
+        login_html: Oppure %{link}
+        submitting: Invio in corso...
+        terms_html: Accetto %{terms} e %{privacy}
+      preferred_language: Lingua preferita
     unlocks:
       send_instructions: Riceverai un messaggio email con le istruzioni per sbloccare
         il tuo account entro qualche minuto.
@@ -404,12 +411,16 @@ it:
       login: Accedi
       sign_up: Registrazione
       forgot_your: Hai dimenticato la password?
-      didnt_confirmation: Non ha ricevuto istruzioni di conferma?
-      didnt_unlock: Non ha ricevuto istruzioni di sblocco?
+      didnt_confirmation: Non hai ricevuto istruzioni di conferma?
+      didnt_unlock: Non hai ricevuto istruzioni di sblocco?
       email: Email
     sessions:
       new:
         sign_in: Accedi
+        sign_up_html: Oppure %{link}
+      already_signed_out: Sei uscito correttamente.
+      signed_in: Accesso effettuato con successo.
+      signed_out: Sei uscito correttamente.
     shared:
       links:
         back: Indietro
@@ -421,6 +432,7 @@ it:
         sign_in: Accedi
         sign_in_with_provider: Accedi con %{provider}
         sign_up: Registrati
+        redirecting: Reindirizzamento in corso...
       minimum_password_length:
         one: "(minimo %{count} carattere)"
         other: "(minimo %{count} caratteri)"
@@ -437,10 +449,10 @@ it:
     method_not_found_html: Metodo %{method} non trovato per la risorsa %{resource}.
     goto_homepage_html: Prova ad andare su %{href}
     goto_homepage_href: "%{app_name} Homepage della documentazione dell'API"
-    required: obbligatorio
+    required: necessario
     optional: opzionale
     nil_allowed: nil consentito
-    param_name: Nome Param
+    param_name: Nome del parametro
     params: Parametri
     examples: Esempi
     metadata: Metadati
@@ -463,165 +475,11 @@ it:
         sunset_at: Tramonto alle
         info: Informazioni
     returns: ritorna
-  i18n_tasks:
-    add_missing:
-      added:
-        one: Aggiunta chiave %{count}
-        other: Aggiunte chiavi %{count}
-    cmd:
-      args:
-        default_text: 'Predefinito: %{value}'
-        desc:
-          all_locales: Non aspettarti che i modelli di chiavi inizino con una locale,
-            invece applicali in modo implicito a tutte le impostazioni locali.
-          config: Sostituisci posizione di configurazione
-          confirm: Conferma automaticamente
-          data_format: 'Formato dei dati: %{valid_text}.'
-          keep_order: Mantieni l'ordine delle chiavi
-          key_pattern: Filtra per modello di chiave (ad es. 'comune.*')
-          key_pattern_to_rename: Chiave completa (modello) da rinominare. Necessario
-          locale_to_translate_from: Locale da cui tradurre
-          locales_filter: 'Locale(i) da elaborare. Speciale: base'
-          missing_types: 'Filtra per tipologia: %{valid}'
-          new_key_name: Nuovo nome, interpola il nome originale come %{key}. Necessario
-          nostdin: Non leggere da stdin
-          out_format: 'Formato di uscita: %{valid_text}'
-          pattern_router: 'Usa pattern router: chiavi spostate per config data.write'
-          strict: Evita di dedurre utilizzi di chiavi dinamiche come t("cats.#{cat}.name").
-            Ha la precedenza sull'impostazione di configurazione, se impostata.
-          translation_backend: Backend di traduzione (google o deepl)
-          value: 'Valore. Interpola: %{value}, %{human_key}, %{key}, %{default}, %{value_or_human_key},
-            %{value_or_default_or_human_key}'
-      desc:
-        add_missing: aggiungere le chiavi mancanti ai dati locali, facoltativamente
-          abbinare un modello
-        check_consistent_interpolations: verificare che tutte le traduzioni utilizzino
-          variabili di interpolazione corrette
-        check_normalized: verificare che tutti i dati di traduzione siano normalizzati
-        config: visualizzare la configurazione di i18n-tasks
-        data: mostra i dati locali
-        data_merge: unire i dati locali con gli alberi
-        data_remove: rimuovere le chiavi presenti nell'albero dai dati
-        data_write: sostituire i dati locali con albero
-        eq_base: mostra traduzioni uguali al valore base
-        find: mostra dove vengono utilizzate le chiavi nel codice
-        gem_path: mostra il percorso della gemma
-        health: è tutto ok?
-        irb: avviare la sessione REPL nel contesto di i18n-tasks
-        missing: mostra le traduzioni mancanti, facoltativamente abbina un modello
-        mv: rinominare/unire le chiavi nei dati locali che corrispondono al modello
-          specificato
-        normalize: 'normalizzare i dati di traduzione: ordina e sposta nei file giusti'
-        remove_unused: rimuovere le chiavi inutilizzate
-        rm: rimuovere le chiavi nei dati delle impostazioni locali che corrispondono
-          al modello specificato
-        translate_missing: traduci le chiavi mancanti con Google Translate o DeepL
-          Pro, facoltativamente abbina un modello
-        tree_convert: convertire l'albero tra i formati
-        tree_filter: filtrare l'albero in base al modello di chiave
-        tree_merge: unire gli alberi
-        tree_mv_key: rinominare/unire/rimuovere le chiavi che corrispondono allo schema
-          dato
-        tree_set_value: imposta i valori delle chiavi, facoltativamente abbina un
-          modello
-        tree_subtract: albero A meno le chiavi nell'albero B
-        tree_translate: Google Translate un albero per radicare le localizzazioni
-        unused: mostra traduzioni inutilizzate
-      encourage:
-      - Buon lavoro!
-      - Ben fatto!
-      - Perfetto!
-      enum_list_opt:
-        invalid: "%{invalid} non è in: %{valid}."
-      enum_opt:
-        invalid: "%{invalid} non è uno di: %{valid}."
-      errors:
-        invalid_format: 'formato non valido: %{invalid}. valido: %{valid}.'
-        invalid_locale: 'locale non valido: %{invalid}'
-        invalid_missing_type:
-          one: 'tipo non valido: %{invalid}. valido: %{valid}.'
-          other: 'tipi sconosciuti: %{invalid}. valido: %{valid}.'
-        pass_forest: passa foresta locale
-    common:
-      continue_q: Continua?
-      key: Chiave
-      locale: Locale
-      n_more: "%{count} altro"
-      value: Valore
-    data_stats:
-      text: ha chiavi %{key_count} nelle versioni locali %{locale_count}. In media,
-        i valori sono lunghi %{value_chars_avg} caratteri, le chiavi hanno segmenti
-        %{key_segments_avg}, una locale ha chiavi %{per_locale_avg}.
-      text_single_locale: ha le chiavi %{key_count} in totale. In media, i valori
-        sono lunghi caratteri %{value_chars_avg}, le chiavi hanno segmenti %{key_segments_avg}.
-      title: Foresta (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: Imposta la chiave API DeepL Pro tramite la variabile di ambiente
-          DEEPL_AUTH_KEY o translation.deepl_api_key in config/i18n-tasks.yml. Ottieni
-          la chiave su https://www.deepl.com/pro.
-        no_results: DeepL non ha restituito risultati.
-        specific_target_missing: È necessario fornire una variante specifica per la
-          lingua di destinazione specificata, ad esempio en-us anziché en.
-    google_translate:
-      errors:
-        no_api_key: Imposta la chiave API di Google tramite la variabile di ambiente
-          GOOGLE_TRANSLATE_API_KEY o translation.google_translate_api_key in config/i18n-tasks.yml.
-          Ottieni la chiave su https://code.google.com/apis/console.
-        no_results: Google Translate non ha restituito risultati. Assicurati che i
-          dati di fatturazione siano impostati su https://code.google.com/apis/console.
-    health:
-      no_keys_detected: Nessuna chiave rilevata. Controlla data.read in config/i18n-tasks.yml.
-    inconsistent_interpolations:
-      none: Non sono state trovate interpolazioni inconsistenti.
-    missing:
-      details_title: Valore in altre località o fonte
-      none: Non mancano traduzioni.
-    remove_unused:
-      confirm:
-        one: La traduzione %{count} verrà rimossa da %{locales}.
-        other: La traduzione %{count} verrà rimossa da %{locales}.
-      noop: Nessuna chiave inutilizzata da rimuovere
-      removed: Rimosse le chiavi %{count}
-    translate_missing:
-      translated: Chiavi %{count} tradotte
-    unused:
-      none: Ogni traduzione è in uso.
-    usages:
-      none: Nessun utilizzo chiave trovato.
-    yandex_translate:
-      errors:
-        no_api_key: Imposta la chiave API Yandex tramite la variabile di ambiente
-          YANDEX_API_KEY o translation.yandex_api_key in config/i18n-tasks.yml. Ottieni
-          la chiave su https://tech.yandex.com/translate.
-        no_results: Yandex non ha restituito risultati.
-    openai_translate:
-      errors:
-        no_api_key: Imposta la chiave API OpenAI tramite la variabile di ambiente
-          OPENAI_API_KEY o translation.openai_api_key in config/i18n-tasks.yml. Ottieni
-          la chiave su https://openai.com/.
-        no_results: OpenAI non ha restituito risultati.
-  routes:
-    users: utenti
-    passwords: Le password
-    files: File
-    urls: URL
-    sessions: sessioni
-    registrations: registrazioni
-    unlocks: sblocca
-    feedbacks: feedback
-    pages: pagine
-    new: nuovo
-    edit: modificare
-    update: aggiornamento
-    destroy: distruggere
-    create: creare
-    expired: scaduto
-    active: attivo
-    audit: verifica
-    access: accesso
-    passphrase: frase d'accesso
-    preview: anteprima
-  file_pushes:
-    new:
-      upload_limit: Puoi caricare fino a %{count} file per push.
+    blank_allowed: vuoto consentito
+  views:
+    pagination:
+      first: "&laquo; Inizio"
+      last: Fine &raquo;
+      previous: "&lsaquo; Prec."
+      next: Succ. &rsaquo;
+      truncate: "&hellip;"

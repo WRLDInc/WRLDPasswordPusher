@@ -17,49 +17,48 @@ module ApplicationHelper
     names.include?(params[:controller])
   end
 
-  # Used to construct the fully qualified secret URL for a push.
-  # raw == This is done without the preliminary step (Click here to proceed).
-  def raw_secret_url(password)
-    push_locale = params['push_locale'] || I18n.locale
-
-    if Settings.override_base_url
-      raw_url = I18n.with_locale(push_locale) do
-        case password
-        when Password
-          Settings.override_base_url + password_path(password)
-        when Url
-          Settings.override_base_url + url_path(password)
-        when FilePush
-          Settings.override_base_url + file_push_path(password)
-        else
-          raise "Unknown push type: #{password.class}"
-        end
-      end
+  # Constructs a fully qualified secret URL for a push.
+  #
+  # @param [Push] push - The push to generate a URL for
+  # @param [Boolean] with_retrieval_step - Whether to include the retrieval step in the URL
+  # @return [String] - The fully qualified URL
+  def secret_url(push, with_retrieval_step: true, locale: nil)
+    raw_url = if push.retrieval_step && with_retrieval_step
+      Settings.override_base_url ? Settings.override_base_url + preliminary_push_path(push) : preliminary_push_url(push)
     else
-      raw_url = I18n.with_locale(push_locale) do
-        case password
-        when Password
-          password_url(password)
-        when Url
-          url_url(password)
-        when FilePush
-          file_push_url(password)
-        else
-          raise "Unknown push type: #{password.class}"
-        end
-      end
-
-      # Support forced https links with FORCE_SSL env var
-      raw_url.gsub(/http/i, 'https') if ENV.key?('FORCE_SSL') && !request.ssl?
+      Settings.override_base_url ? Settings.override_base_url + push_path(push) : push_url(push)
     end
 
+    # Delete any existing ?locale= query parameter
+    raw_url = raw_url.split("?").first
+
+    # Append the locale query parameter
+    if params["push_locale"].present? && Settings.enabled_language_codes.include?(params["push_locale"])
+      raw_url += "?locale=#{params["push_locale"]}"
+    elsif locale.present? && Settings.enabled_language_codes.include?(locale)
+      raw_url += "?locale=#{locale}"
+    end
+
+    # Support forced https links with FORCE_SSL env var
+    raw_url.gsub!(/http/i, "https") if ENV.key?("FORCE_SSL") && !request.ssl?
     raw_url
   end
 
-  # Constructs a fully qualified secret URL for a push.
-  def secret_url(password)
-    url = raw_secret_url(password)
-    url += '/r' if password.retrieval_step
-    url
+  # qr_code
+  #
+  # Generates a QR code for the given URL
+  #
+  # @param [String] url - The URL to generate the QR code for
+  # @return [String] - The SVG QR code
+  def qr_code(url)
+    svg = RQRCode::QRCode.new(url).as_svg(
+      offset: 0,
+      color: :currentColor,
+      shape_rendering: "crispEdges",
+      module_size: 6,
+      standalone: true
+    )
+    # Strip XML declaration so the SVG is valid when embedded in HTML.
+    svg.sub(/\A<\?xml[^>]*\?>\s*/, "").html_safe
   end
 end

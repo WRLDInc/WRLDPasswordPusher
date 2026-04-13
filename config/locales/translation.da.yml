@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/da
+# https://translation.io/pglombardo/pwpush-oss/da
 #
 ---
 da:
@@ -168,11 +168,11 @@ da:
       expired: er udløbet, anmod venligst om en ny
       not_found: ikke fundet
       not_locked: var ikke låst
+      in: skal være i %{count}
+      password_too_long: er for lang
       not_saved:
         one: 'En fejl medførte, at denne %{resource} ikke kunne gemmes:'
         other: "%{count} fejl medførte, at denne %{resource} ikke kunne gemmes:"
-      in: skal være i %{count}
-      password_too_long: er for lang
     unavailable_session: "Session %{id} er ikke længere tilgængelig i hukommelsen.\nHvis
       du benytter en multi-proces server (som Unicorn eller Puma). \nDenne forespørgsels
       \ gemmes ikke %{id} i hukommelsen. Overvej at ændre antallet af processer /
@@ -272,6 +272,9 @@ da:
       hour: Time
       minute: Minut
       second: Sekund
+    relative:
+      future: i %{time}
+      past: "%{time} siden"
   helpers:
     select:
       prompt: Vælg...
@@ -279,26 +282,19 @@ da:
       create: Opret %{model}
       update: Opdater %{model}
       submit: Gem %{model}
-  will_paginate:
-    previous_label: "← forrige"
-    next_label: næste →
-    page_gap: "&hellip;"
-    container_aria_label: Sideopdel
-    page_aria_label: Side %{page}
     page_entries_info:
-      single_page:
-        zero: Ingen %{model} fundet
-        one: Viser 1 %{model}
-        other: Viser alle %{count} %{model}
-      single_page_html:
-        zero: Ingen %{model} fundet
-        one: Viser <b>1</b> %{model}
-        other: Viser <b>all&nbsp;%{count}</b> %{model}
-      multi_page: Viser %{model} %{from} - %{to} af ialt %{count}
-      multi_page_html: Viser %{model} <b>%{from} - %{to}</b> af <b>%{count}</b> i
-        alt
-    previous_aria_label: Forrige side
-    next_aria_label: Næste side
+      entry:
+        zero: poster
+        one: indgang
+        other: poster
+      one_page:
+        display_entries:
+          zero: Ingen %{entry_name} fundet
+          one: Viser <b>%{count}</b> %{entry_name}
+          other: Viser <b>alle %{count}</b> %{entry_name}
+      more_pages:
+        display_entries: Viser %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> af
+          <b>%{total}</b>
   flash:
     actions:
       create:
@@ -437,8 +433,19 @@ da:
         update: Opdater
         we_need_your_current_password_to_confirm_your_changes: vi skal bruge din nuværende
           adgangskode for at bekræfte ændringerne.
+        cancel_my_account_confirm_description_html: Dette vil permanent slette alle
+          data, der er knyttet til din konto. Denne handling kan ikke fortrydes.<br/><br/>
+          For at bekræfte skal du indtaste din e-mailadresse for at bekræfte og slette
+          din konto.
+        cancel_my_account_description: Dette vil permanent slette alle data, der er
+          knyttet til din konto. Denne handling kan ikke fortrydes.
+        saving: Gemmer...
       new:
         sign_up: Opret konto
+        login_html: Eller %{link}
+        submitting: Indsender...
+        terms_html: Jeg accepterer %{terms} og %{privacy}
+      preferred_language: foretrukne sprog
     unlocks:
       send_instructions: Du vil i løbet af få minutter modtage en mail med instruktioner
         om, hvordan du låser din konto op.
@@ -464,6 +471,10 @@ da:
     sessions:
       new:
         sign_in: Log ind
+        sign_up_html: Eller %{link}
+      already_signed_out: Logget ud
+      signed_in: Logget ind.
+      signed_out: Logget ud.
     shared:
       links:
         back: Tilbage
@@ -473,6 +484,7 @@ da:
         sign_in: Log ind
         sign_in_with_provider: Log ind med %{provider}
         sign_up: Opret konto
+        redirecting: Omdirigerer...
       minimum_password_length:
         one: "(Mindst %{count} tegn)"
         other: "(Mindst %{count} tegn)"
@@ -515,158 +527,11 @@ da:
         sunset_at: Solnedgang kl
         info: Info
     returns: Vender tilbage
-  i18n_tasks:
-    add_missing:
-      added:
-        one: Tilføjet %{count} nøgle
-        other: Tilføjet %{count} nøgler
-    cmd:
-      args:
-        default_text: 'Standard: %{value}'
-        desc:
-          all_locales: Forvent ikke, at nøglemønstre starter med en lokalitet, men
-            anvend dem i stedet for alle lokaliteter implicit.
-          config: Tilsidesæt konfigurationsplacering
-          confirm: Bekræft automatisk
-          data_format: 'Dataformat: %{valid_text}.'
-          keep_order: Hold rækkefølgen af nøglerne
-          key_pattern: Filtrer efter nøglemønster (f.eks. 'common.*')
-          key_pattern_to_rename: Fuld nøgle (mønster) for at omdøbe. Påkrævet
-          locale_to_translate_from: Lokalitet at oversætte fra
-          locales_filter: 'Lokalitet(er), der skal behandles. Speciel: base'
-          missing_types: 'Filtrer efter typer: %{valid}'
-          new_key_name: Nyt navn, interpolerer det oprindelige navn som %{key}. Påkrævet
-          nostdin: Læs ikke fra stdin
-          out_format: 'Outputformat: %{valid_text}'
-          pattern_router: 'Brug mønsterrouter: nøgler flyttet pr. config data.write'
-          strict: Undgå at udlede dynamiske nøgleanvendelser såsom t("cats.#{cat}.name").
-            Har forrang over konfigurationsindstillingen, hvis den er indstillet.
-          translation_backend: Oversættelsesbackend (google eller deepl)
-          value: 'Værdi. Interpolerer: %{value}, %{human_key}, %{key}, %{default},
-            %{value_or_human_key}, %{value_or_default_or_human_key}'
-      desc:
-        add_missing: tilføje manglende nøgler til lokalitetsdata, match eventuelt
-          et mønster
-        check_consistent_interpolations: verificere, at alle oversættelser bruger
-          korrekte interpolationsvariable
-        check_normalized: verificere, at alle oversættelsesdata er normaliserede
-        config: vise i18n-opgaver konfiguration
-        data: vise lokalitetsdata
-        data_merge: flet lokalitetsdata med træer
-        data_remove: fjern nøgler i træet fra data
-        data_write: erstatte lokalitetsdata med træ
-        eq_base: vis oversættelser lig med basisværdi
-        find: vise, hvor nøgler bruges i koden
-        gem_path: vise vej til ædelstenen
-        health: er alt ok?
-        irb: start REPL session inden for i18n-opgaver kontekst
-        missing: vis manglende oversættelser, match eventuelt et mønster
-        mv: omdøb/flet nøglerne i lokalitetsdata, der matcher det givne mønster
-        normalize: 'normaliser oversættelsesdata: sorter og flyt til de rigtige filer'
-        remove_unused: fjerne ubrugte nøgler
-        rm: fjern nøglerne i lokalitetsdata, der matcher det givne mønster
-        translate_missing: oversæt manglende nøgler med Google Translate eller DeepL
-          Pro, match eventuelt et mønster
-        tree_convert: konverter træ mellem formater
-        tree_filter: filtrer træ efter nøglemønster
-        tree_merge: slå træer sammen
-        tree_mv_key: omdøb/flet/fjern tasterne, der matcher det givne mønster
-        tree_set_value: indstille værdier for nøgler, match eventuelt et mønster
-        tree_subtract: træ A minus nøglerne i træ B
-        tree_translate: Google Oversæt et træ til rodlokaliteter
-        unused: vis ubrugte oversættelser
-      encourage:
-      - Godt arbejde!
-      - Godt klaret!
-      - Perfekt!
-      enum_list_opt:
-        invalid: "%{invalid} er ikke i: %{valid}."
-      enum_opt:
-        invalid: "%{invalid} er ikke en af: %{valid}."
-      errors:
-        invalid_format: 'ugyldigt format: %{invalid}. gyldig: %{valid}.'
-        invalid_locale: 'ugyldig lokalitet: %{invalid}'
-        invalid_missing_type:
-          one: 'ugyldig type: %{invalid}. gyldig: %{valid}.'
-          other: 'ukendte typer: %{invalid}. gyldig: %{valid}.'
-        pass_forest: passere lokalskov
-    common:
-      continue_q: Blive ved?
-      key: Nøgle
-      locale: Lokalitet
-      n_more: "%{count} mere"
-      value: Værdi
-    data_stats:
-      text: har %{key_count}-nøgler på tværs af %{locale_count}-lokaliteter. I gennemsnit
-        er værdier %{value_chars_avg}-tegn lange, nøgler har %{key_segments_avg}-segmenter,
-        en lokalitet har %{per_locale_avg}-nøgler.
-      text_single_locale: har %{key_count} nøgler i alt. I gennemsnit er værdier %{value_chars_avg}-tegn
-        lange, taster har %{key_segments_avg}-segmenter.
-      title: Skov (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: Opsæt DeepL Pro API-nøgle via DEEPL_AUTH_KEY miljøvariabel eller
-          translation.deepl_api_key i config/i18n-tasks.yml. Få nøglen på https://www.deepl.com/pro.
-        no_results: DeepL gav ingen resultater.
-        specific_target_missing: Du skal levere en specifik variant til det givne
-          målsprog f.eks. en-us i stedet for en.
-    google_translate:
-      errors:
-        no_api_key: Indstil Google API-nøgle via GOOGLE_TRANSLATE_API_KEY miljøvariabel
-          eller translation.google_translate_api_key i config/i18n-tasks.yml. Få nøglen
-          på https://code.google.com/apis/console.
-        no_results: Google Oversæt gav ingen resultater. Sørg for, at faktureringsoplysningerne
-          er angivet på https://code.google.com/apis/console.
-    health:
-      no_keys_detected: Ingen nøgler fundet. Tjek data.read i config/i18n-tasks.yml.
-    inconsistent_interpolations:
-      none: Ingen inkonsistente interpolationer fundet.
-    missing:
-      details_title: Værdi i andre lokaliteter eller kilde
-      none: Der mangler ingen oversættelser.
-    remove_unused:
-      confirm:
-        one: "%{count}-oversættelse vil blive fjernet fra %{locales}."
-        other: "%{count}-oversættelse vil blive fjernet fra %{locales}."
-      noop: Ingen ubrugte nøgler at fjerne
-      removed: Fjernede %{count} nøgler
-    translate_missing:
-      translated: Oversatte %{count} nøgler
-    unused:
-      none: Hver oversættelse er i brug.
-    usages:
-      none: Ingen nøgleanvendelser fundet.
-    yandex_translate:
-      errors:
-        no_api_key: Indstil Yandex API-nøgle via YANDEX_API_KEY miljøvariabel eller
-          translation.yandex_api_key i config/i18n-tasks.yml. Få nøglen på https://tech.yandex.com/translate.
-        no_results: Yandex gav ingen resultater.
-    openai_translate:
-      errors:
-        no_api_key: Indstil OpenAI API-nøgle via OPENAI_API_KEY miljøvariabel eller
-          translation.openai_api_key i config/i18n-tasks.yml. Hent nøglen på https://openai.com/.
-        no_results: OpenAI gav ingen resultater.
-  routes:
-    users: brugere
-    passwords: adgangskoder
-    files: filer
-    urls: webadresser
-    sessions: sessioner
-    registrations: registreringer
-    unlocks: låser op
-    feedbacks: tilbagemeldinger
-    pages: sider
-    new: ny
-    edit: redigere
-    update: opdatering
-    destroy: ødelægge
-    create: skab
-    expired: udløbet
-    active: aktiv
-    audit: revidere
-    access: adgang
-    passphrase: adgangssætning
-    preview: forhåndsvisning
-  file_pushes:
-    new:
-      upload_limit: Du kan uploade op til %{count} filer pr. push.
+    blank_allowed: blank tilladt
+  views:
+    pagination:
+      first: "&laquo; Første"
+      last: Sidste &raquo;
+      previous: "&lsaquo; Forrige"
+      next: Næste &rsaquo;
+      truncate: "&hellip;"

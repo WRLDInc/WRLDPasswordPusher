@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/sr
+# https://translation.io/pglombardo/pwpush-oss/sr
 #
 ---
 sr:
@@ -114,11 +114,11 @@ sr:
       expired: je istekao, molim zatražite novi
       not_found: nije pronađeno
       not_locked: nije zaključan
+      in: мора бити у %{count}
+      password_too_long: је предугачак
       not_saved:
         one: '1 greška sprečava snimanje %{resource}:'
         other: "%{count} grešaka sprečavaju snimanje %{resource}:"
-      in: мора бити у %{count}
-      password_too_long: је предугачак
     unavailable_session: Сесија %{id} више није доступна у меморији. Ако се случајно
       покренете на вишепроцесном серверу (као што је Уницорн или Пума), процес који
       је погодио овај захтев не чува %{id} у меморији. Размислите о претварању броја
@@ -213,6 +213,9 @@ sr:
       hour: Сат
       minute: Минут
       second: Секунд
+    relative:
+      future: у %{time}
+      past: Пре %{time}
   helpers:
     select:
       prompt: Изаберите
@@ -220,26 +223,19 @@ sr:
       create: Направи %{model}
       update: Измени %{model}
       submit: Сачувај %{model}
-  will_paginate:
-    previous_label: "← Претходно"
-    next_label: Следеће →
-    page_gap: "…"
-    container_aria_label: Пагинација
-    page_aria_label: Страница %{page}
     page_entries_info:
-      single_page:
-        zero: Није пронађен %{model}.
-        one: Приказује се 1 %{model}
-        other: Приказ свих %{count} %{model}
-      single_page_html:
-        zero: Није пронађен %{model}.
-        one: Приказује се <b>1</b> %{model}
-        other: Приказ <b>свих %{count}</b> %{model}
-      multi_page: Приказивање %{model} %{from} - %{to} од %{count} укупно
-      multi_page_html: Приказивање %{model} <b>%{from} - %{to}</b> од <b>%{count}</b>
-        укупно
-    previous_aria_label: Претходна страница
-    next_aria_label: Следећа страна
+      entry:
+        zero: уносе
+        one: улазак
+        other: уносе
+      one_page:
+        display_entries:
+          zero: Није пронађен %{entry_name}.
+          one: Приказује се <b>1</b> %{entry_name}
+          other: Приказ <b>свих %{count}</b> %{entry_name}
+      more_pages:
+        display_entries: Приказивање %{entry_name} <b>%{first} - %{last}</b> од <b>%{total}</b>
+          укупно
   flash:
     actions:
       create:
@@ -372,8 +368,19 @@ sr:
         update: ажурирање
         we_need_your_current_password_to_confirm_your_changes: потребна нам је ваша
           тренутна лозинка да потврдимо ваше промене
+        cancel_my_account_confirm_description_html: Ово ће трајно избрисати све податке
+          повезане са вашим налогом. Ова радња се не може опозвати.<br/><br/> Да бисте
+          потврдили, унесите своју адресу е-поште да бисте потврдили и избрисали свој
+          налог.
+        cancel_my_account_description: Ово ће трајно избрисати све податке повезане
+          са вашим налогом. Ова радња се не може опозвати.
+        saving: Чување...
       new:
         sign_up: Пријави се
+        login_html: Или %{link}
+        submitting: Слање...
+        terms_html: Прихватам %{terms} и %{privacy}
+      preferred_language: Језик којем дајете предност
     unlocks:
       send_instructions: U roku od nekoliko minuta ćete primiti ePoruku sa uputstvom
         za otključavanje Vašeg naloga.
@@ -396,6 +403,10 @@ sr:
     sessions:
       new:
         sign_in: Пријавите се
+        sign_up_html: Или %{link}
+      already_signed_out: Uspešno ste se odjavili.
+      signed_in: Uspešno ste se prijavili.
+      signed_out: Uspešno ste se odjavili.
     shared:
       links:
         back: Назад
@@ -405,6 +416,7 @@ sr:
         sign_in: Пријавите се
         sign_in_with_provider: Пријавите се помоћу %{provider}
         sign_up: Пријави се
+        redirecting: Преусмеравање...
       minimum_password_length:
         one: "(минимум знакова %{count})"
         other: "(минимално %{count} знакова)"
@@ -447,166 +459,11 @@ sr:
         sunset_at: Залазак сунца у
         info: Инфо
     returns: Повратак
-  i18n_tasks:
-    add_missing:
-      added:
-        one: Додат %{count} кључ
-        other: Додати %{count} кључеви
-    cmd:
-      args:
-        default_text: 'Подразумевано: %{value}'
-        desc:
-          all_locales: Не очекујте да ће кључни обрасци почети са локализацијом, већ
-            их имплицитно примените на све локалитете.
-          config: Замени локацију конфигурације
-          confirm: Потврди аутоматски
-          data_format: 'Формат података: %{valid_text}.'
-          keep_order: Држите редослед кључева
-          key_pattern: Филтрирајте према обрасцу кључа (нпр. 'уобичајено*')
-          key_pattern_to_rename: Пун кључ (шаблон) за преименовање. Потребан
-          locale_to_translate_from: Локал за превођење
-          locales_filter: 'Локал(и) за обраду. Специјално: база'
-          missing_types: 'Филтрирај по типовима: %{valid}'
-          new_key_name: Ново име, интерполира оригинално име као %{key}. Потребан
-          nostdin: Не читајте са стдин
-          out_format: 'Излазни формат: %{valid_text}'
-          pattern_router: 'Користите рутер шаблона: кључеви се померају по конфигурационим
-            подацима.врите'
-          strict: Избегавајте закључивање динамичких кључева као што је т("цатс.#{цат}.наме").
-            Има предност над поставком конфигурације ако је подешена.
-          translation_backend: Позадина превода (гоогле или деепл)
-          value: 'Валуе. Интерполирају: %{value}, %{human_key}, %{key}, %{default},
-            %{value_or_human_key}, %{value_or_default_or_human_key}'
-      desc:
-        add_missing: додајте кључеве који недостају у податке о локалном стандарду,
-          опционо одговарају шаблону
-        check_consistent_interpolations: проверите да ли сви преводи користе исправне
-          интерполационе променљиве
-        check_normalized: проверите да ли су сви подаци о преводу нормализовани
-        config: прикажи конфигурацију и18н задатака
-        data: прикажи податке о локалитету
-        data_merge: споји податке о локалитету са дрвећем
-        data_remove: уклоните кључеве присутне у стаблу из података
-        data_write: замени податке о локалу са стаблом
-        eq_base: прикажи преводе једнаке основној вредности
-        find: показати где се кључеви користе у коду
-        gem_path: покажи пут до драгуља
-        health: да ли је све у реду?
-        irb: започните РЕПЛ сесију унутар контекста и18н задатака
-        missing: прикажи преводе који недостају, опционо одговара шаблону
-        mv: преименуј/обједини кључеве у подацима о локализацији који одговарају датом
-          шаблону
-        normalize: 'нормализујте податке о преводу: сортирајте и пређите на праве
-          датотеке'
-        remove_unused: уклоните неискоришћене кључеве
-        rm: уклоните кључеве у подацима о локалном стандарду који одговарају датом
-          шаблону
-        translate_missing: преведите недостајуће кључеве помоћу Гоогле Транслате или
-          ДеепЛ Про, опционо одговара шаблону
-        tree_convert: претворити стабло између формата
-        tree_filter: дрво филтера по кључном обрасцу
-        tree_merge: спојити дрвеће
-        tree_mv_key: преименуј/споји/уклони кључеве који одговарају датом шаблону
-        tree_set_value: поставите вредности кључева, опционо одговарају шаблону
-        tree_subtract: дрво А минус кључеви у стаблу Б
-        tree_translate: Гугл преводилац стабла у корен локализације
-        unused: прикажи некоришћене преводе
-      encourage:
-      - Добар посао!
-      - Добро урађено!
-      - Савршен!
-      enum_list_opt:
-        invalid: "%{invalid} није у: %{valid}."
-      enum_opt:
-        invalid: "%{invalid} није једно од: %{valid}."
-      errors:
-        invalid_format: 'неважећи формат: %{invalid}. важи: %{valid}.'
-        invalid_locale: 'неважећи локалитет: %{invalid}'
-        invalid_missing_type:
-          one: 'неважећи тип: %{invalid}. важи: %{valid}.'
-          other: 'непознати типови: %{invalid}. важи: %{valid}.'
-        pass_forest: пролаз локал шума
-    common:
-      continue_q: Настави?
-      key: Кључ
-      locale: Лоцале
-      n_more: "%{count} више"
-      value: Валуе
-    data_stats:
-      text: има %{key_count} кључеве у %{locale_count} локализацијама. У просеку,
-        вредности су дугачке %{value_chars_avg} знакова, кључеви имају %{key_segments_avg}
-        сегменте, локална стандардна верзија има кључеве %{per_locale_avg}.
-      text_single_locale: укупно има кључеве %{key_count}. У просеку, вредности су
-        дугачке %{value_chars_avg} знакова, кључеви имају сегменте %{key_segments_avg}.
-      title: шума (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: Подесите ДеепЛ Про АПИ кључ преко ДЕЕПЛ_АУТХ_КЕИ променљиве окружења
-          или транслатион.деепл_апи_кеи у цонфиг/и18н-таскс.имл. Набавите кључ на
-          хттпс://ввв.деепл.цом/про.
-        no_results: ДеепЛ није дао резултате.
-        specific_target_missing: Морате навести одређену варијанту за дати циљни језик,
-          нпр. ен-ус уместо ен.
-    google_translate:
-      errors:
-        no_api_key: Подесите Гоогле АПИ кључ преко ГООГЛЕ_ТРАНСЛАТЕ_АПИ_КЕИ променљиве
-          окружења или транслатион.гоогле_транслате_апи_кеи у цонфиг/и18н-таскс.имл.
-          Преузмите кључ на хттпс://цоде.гоогле.цом/апис/цонсоле.
-        no_results: Гоогле преводилац није дао резултате. Проверите да ли су информације
-          за обрачун подешене на хттпс://цоде.гоогле.цом/апис/цонсоле.
-    health:
-      no_keys_detected: Није откривен ниједан кључ. Проверите податке.прочитајте у
-        цонфиг/и18н-таскс.имл.
-    inconsistent_interpolations:
-      none: Нису пронађене недоследне интерполације.
-    missing:
-      details_title: Вредност на другим локацијама или извору
-      none: Не недостаје ниједан превод.
-    remove_unused:
-      confirm:
-        one: "%{count} превод ће бити уклоњен из %{locales}."
-        other: "%{count} превод ће бити уклоњен из %{locales}."
-      noop: Нема неискоришћених кључева за уклањање
-      removed: Уклоњени %{count} кључеви
-    translate_missing:
-      translated: Преведени %{count} кључеви
-    unused:
-      none: Сваки превод је у употреби.
-    usages:
-      none: Нису пронађене кључне употребе.
-    yandex_translate:
-      errors:
-        no_api_key: Подесите Иандек АПИ кључ преко ИАНДЕКС_АПИ_КЕИ променљиве окружења
-          или транслатион.иандек_апи_кеи у цонфиг/и18н-таскс.имл. Преузмите кључ на
-          хттпс://тецх.иандек.цом/транслате.
-        no_results: Иандек није дао резултате.
-    openai_translate:
-      errors:
-        no_api_key: Подесите ОпенАИ АПИ кључ преко ОПЕНАИ_АПИ_КЕИ променљиве окружења
-          или транслатион.опенаи_апи_кеи у цонфиг/и18н-таскс.имл. Набавите кључ на
-          хттпс://опенаи.цом/.
-        no_results: ОпенАИ није дао резултате.
-  routes:
-    users: корисника
-    passwords: лозинке
-    files: фајлови
-    urls: урлс
-    sessions: сесије
-    registrations: регистрације
-    unlocks: откључава
-    feedbacks: повратне информације
-    pages: странице
-    new: Нова
-    edit: Уредити
-    update: ажурирање
-    destroy: уништити
-    create: Креирај
-    expired: истекао
-    active: активан
-    audit: ревизија
-    access: приступ
-    passphrase: приступна фраза
-    preview: превиев
-  file_pushes:
-    new:
-      upload_limit: Можете да отпремите до %{count} датотека по притиску.
+    blank_allowed: празно дозвољено
+  views:
+    pagination:
+      first: "\" Први"
+      last: Последњи »
+      previous: "‹ Прев"
+      next: Следећи >
+      truncate: "…"

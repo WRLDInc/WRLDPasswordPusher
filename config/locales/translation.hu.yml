@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/hu
+# https://translation.io/pglombardo/pwpush-oss/hu
 #
 ---
 hu:
@@ -114,11 +114,11 @@ hu:
       expired: lejárt, kérjen újat
       not_found: nem található
       not_locked: nincs zárolva
+      in: kell lennie %{count}
+      password_too_long: túl hosszú
       not_saved:
         one: '1 hiba miatt %{resource} mentése nem lehetséges:'
         other: "%{count} hiba miatt %{resource} mentése nem lehetséges:"
-      in: kell lennie %{count}
-      password_too_long: túl hosszú
     unavailable_session: Az %{id} munkamenet már nem érhető el a memóriában. Ha történetesen
       többfolyamatos szerveren fut (mint például az Unicorn vagy a Puma), a kérés
       lekérése nem tárolja az %{id} értéket a memóriában. Fontolja meg a folyamatok/munkavállalók
@@ -214,6 +214,9 @@ hu:
       hour: óra
       minute: perc
       second: másodperc
+    relative:
+      future: a %{time}
+      past: "%{time} ezelőtt"
   helpers:
     select:
       prompt: Válasszon
@@ -221,25 +224,19 @@ hu:
       create: "%{model} létrehozása"
       update: "%{model} módosítása"
       submit: "%{model} mentése"
-  will_paginate:
-    previous_label: "← Előző"
-    next_label: Következő &#8594;
-    page_gap: "&hellip;"
-    container_aria_label: Lapozás
-    page_aria_label: "%{page}. oldal"
     page_entries_info:
-      single_page:
-        zero: Nem található %{model}
-        one: 1 %{model} megjelenítése
-        other: Összes (%{count}) %{model} megjelenítése
-      single_page_html:
-        zero: Nem található %{model}
-        one: "<b>1</b> %{model} megjelenítése"
-        other: Az <b>összes (%{count})</b> %{model} megjelenítése
-      multi_page: "%{model} %{from} - %{to} / %{count} megjelenítése"
-      multi_page_html: "%{model} <b>%{from} - %{to}</b> / <b>%{count}</b> megjelenítése"
-    previous_aria_label: Előző oldal
-    next_aria_label: Következő oldal
+      entry:
+        zero: bejegyzés
+        one: belépés
+        other: bejegyzés
+      one_page:
+        display_entries:
+          zero: Nem található %{entry_name}
+          one: "<b>1</b> megjelenítése %{entry_name}"
+          other: "<b>Az összes %{count}</b> %{entry_name} megjelenítése"
+      more_pages:
+        display_entries: "%{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> megjelenítve
+          (összesen <b>%{total}</b>)"
   flash:
     actions:
       create:
@@ -374,8 +371,18 @@ hu:
         update: Módosítás
         we_need_your_current_password_to_confirm_your_changes: a változtatás végrehajtásához
           szükséges a jelenlegi jelszó
+        cancel_my_account_confirm_description_html: Ezzel véglegesen törli a fiókjához
+          kapcsolódó összes adatot. Ez a művelet nem vonható vissza.<br/><br/> Az
+          ellenőrzéshez írja be e-mail címét a megerősítéshez és a fiók törléséhez.
+        cancel_my_account_description: Ezzel véglegesen törli a fiókjához kapcsolódó
+          összes adatot. Ez a művelet nem vonható vissza.
+        saving: Megtakarítás...
       new:
         sign_up: Regisztráció
+        login_html: Vagy %{link}
+        submitting: Beküldés...
+        terms_html: Elfogadom az %{terms} és %{privacy}
+      preferred_language: Preferált nyelv
     unlocks:
       send_instructions: Néhány percen belül kapni fog egy utasításokat tartalmazó
         e-mailt a fiók zárolásának feloldásához.
@@ -398,6 +405,10 @@ hu:
     sessions:
       new:
         sign_in: Belépés
+        sign_up_html: Vagy %{link}
+      already_signed_out: A kijelentkezés már megtörtént.
+      signed_in: Sikeres bejelentkezés.
+      signed_out: A kijelentkezés sikeres.
     shared:
       links:
         back: Vissza
@@ -407,6 +418,7 @@ hu:
         sign_in: Belépés
         sign_in_with_provider: "%{provider} belépés"
         sign_up: Regisztráció
+        redirecting: Átirányítás...
       minimum_password_length:
         one: "(minimum %{count} karakter)"
         other: "(minimum %{count} karakter)"
@@ -450,170 +462,11 @@ hu:
         sunset_at: Naplemente órakor
         info: Info
     returns: Visszatér
-  i18n_tasks:
-    add_missing:
-      added:
-        one: "%{count} kulcs hozzáadva"
-        other: "%{count} kulcsok hozzáadva"
-    cmd:
-      args:
-        default_text: 'Alapértelmezés: %{value}'
-        desc:
-          all_locales: Ne várja el, hogy a kulcsminták egy területi beállítással kezdődjenek,
-            hanem implicit módon alkalmazza őket minden területi beállításra.
-          config: Konfigurációs hely felülírása
-          confirm: Automatikus megerősítés
-          data_format: 'Adatformátum: %{valid_text}.'
-          keep_order: Tartsa be a kulcsok sorrendjét
-          key_pattern: Szűrés kulcsminta alapján (pl. „gyakori.*”)
-          key_pattern_to_rename: Teljes kulcs (minta) az átnevezéshez. Kívánt
-          locale_to_translate_from: Fordítási nyelv
-          locales_filter: 'Feldolgozandó terület(ek). Különleges: alap'
-          missing_types: 'Szűrés típusok szerint: %{valid}'
-          new_key_name: Új név, az eredeti nevet %{key}-ként interpolálja. Kívánt
-          nostdin: Ne olvasson stdin-ből
-          out_format: 'Kimeneti formátum: %{valid_text}'
-          pattern_router: 'Használja a mintaútválasztót: a kulcsok konfigurációnként
-            mozgatva data.write'
-          strict: Kerülje a dinamikus kulcshasználatok kikövetkeztetését, például
-            a t("cats.#{cat}.name"). Ha be van állítva, elsőbbséget élvez a konfigurációs
-            beállításokkal szemben.
-          translation_backend: Fordítási háttér (google vagy deepl)
-          value: 'Érték. Interpolációk: %{value}, %{human_key}, %{key}, %{default},
-            %{value_or_human_key}, %{value_or_default_or_human_key}'
-      desc:
-        add_missing: adjon hozzá hiányzó kulcsokat a területi beállításokhoz, és opcionálisan
-          egyezzen meg egy mintát
-        check_consistent_interpolations: ellenőrizze, hogy minden fordítás helyes
-          interpolációs változókat használ-e
-        check_normalized: ellenőrizze, hogy az összes fordítási adat normalizálva
-          van-e
-        config: i18n-tasks konfiguráció megjelenítése
-        data: területi adatok megjelenítése
-        data_merge: egyesítse a területi adatokat a fákkal
-        data_remove: távolítsa el a fában lévő kulcsokat az adatokból
-        data_write: cserélje ki a területi adatokat fára
-        eq_base: az alapértékkel megegyező fordítások megjelenítése
-        find: megmutatja, hogy a kódban hol használnak billentyűket
-        gem_path: mutasd meg a drágakőhöz vezető utat
-        health: minden rendben?
-        irb: REPL munkamenet indítása i18n-tasks környezetben
-        missing: a hiányzó fordítások megjelenítése, opcionálisan egy minta egyezése
-        mv: nevezze át/egyesítse át a kulcsokat a területi beállításokban, amelyek
-          megfelelnek az adott mintának
-        normalize: 'a fordítási adatok normalizálása: rendezze és mozgassa a megfelelő
-          fájlokat'
-        remove_unused: távolítsa el a nem használt kulcsokat
-        rm: távolítsa el az adott mintának megfelelő kulcsokat a területi beállításokból
-        translate_missing: fordítsa le a hiányzó kulcsokat a Google Fordítóval vagy
-          a DeepL Pro-val, opcionálisan egyeztesse meg a mintát
-        tree_convert: konvertálja a fát a formátumok között
-        tree_filter: szűrő fa kulcsminta szerint
-        tree_merge: fákat egyesíteni
-        tree_mv_key: az adott mintának megfelelő kulcsok átnevezése/egyesítése/eltávolítása
-        tree_set_value: állítsa be a billentyűk értékeit, és opcionálisan illeszkedjen
-          egy mintához
-        tree_subtract: A fa mínusz a B fa kulcsai
-        tree_translate: A Google lefordít egy fát a gyökérterületekre
-        unused: fel nem használt fordítások megjelenítése
-      encourage:
-      - Szép munka!
-      - Szép munka!
-      - Tökéletes!
-      enum_list_opt:
-        invalid: 'Az %{invalid} nincs itt: %{valid}.'
-      enum_opt:
-        invalid: 'Az %{invalid} nem a következők egyike: %{valid}.'
-      errors:
-        invalid_format: 'érvénytelen formátum: %{invalid}. érvényes: %{valid}.'
-        invalid_locale: 'érvénytelen területi beállítás: %{invalid}'
-        invalid_missing_type:
-          one: 'érvénytelen típus: %{invalid}. érvényes: %{valid}.'
-          other: 'ismeretlen típusok: %{invalid}. érvényes: %{valid}.'
-        pass_forest: haladjon át a helyi erdőben
-    common:
-      continue_q: Folytatni?
-      key: Kulcs
-      locale: Nyelv
-      n_more: "%{count} még"
-      value: Érték
-    data_stats:
-      text: "%{key_count} kulcsokkal rendelkezik az %{locale_count} nyelveken. Átlagosan
-        az értékek %{value_chars_avg} karakter hosszúak, a billentyűknek %{key_segments_avg}
-        szegmensek, a területi beállításoknak pedig %{per_locale_avg} kulcsok vannak."
-      text_single_locale: összesen %{key_count} kulcsokkal rendelkezik. Az értékek
-        átlagosan %{value_chars_avg} karakter hosszúak, a billentyűk %{key_segments_avg}
-        szegmensekkel rendelkeznek.
-      title: Erdő (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: Állítsa be a DeepL Pro API-kulcsot a DEEPL_AUTH_KEY környezeti
-          változóval vagy a translation.deepl_api_key-vel a config/i18n-tasks.yml
-          fájlban. Szerezze meg a kulcsot a https://www.deepl.com/pro címen.
-        no_results: A DeepL nem adott eredményt.
-        specific_target_missing: Meg kell adnia egy konkrét változatot az adott célnyelvhez,
-          pl. en-us helyett en.
-    google_translate:
-      errors:
-        no_api_key: Állítsa be a Google API-kulcsot a GOOGLE_TRANSLATE_API_KEY környezeti
-          változóval vagy a translation.google_translate_api_key-vel a config/i18n-tasks.yml
-          fájlban. Szerezze meg a kulcsot a https://code.google.com/apis/console címen.
-        no_results: A Google Fordító nem adott eredményt. Győződjön meg arról, hogy
-          a számlázási információk be vannak állítva a https://code.google.com/apis/console
-          oldalon.
-    health:
-      no_keys_detected: Nincsenek kulcsok. Ellenőrizze a data.read fájlt a config/i18n-tasks.yml
-        fájlban.
-    inconsistent_interpolations:
-      none: Nem található inkonzisztens interpoláció.
-    missing:
-      details_title: Érték más nyelveken vagy forrásokban
-      none: Egyetlen fordítás sem hiányzik.
-    remove_unused:
-      confirm:
-        one: Az %{count} fordítás el lesz távolítva az %{locales}-ből.
-        other: Az %{count} fordítás el lesz távolítva az %{locales}-ből.
-      noop: Nincsenek eltávolítható, nem használt kulcsok
-      removed: "%{count} kulcsok eltávolítva"
-    translate_missing:
-      translated: "%{count} kulcsok lefordítása"
-    unused:
-      none: Minden fordítás használatban van.
-    usages:
-      none: Nem találhatók kulcsfelhasználások.
-    yandex_translate:
-      errors:
-        no_api_key: Állítsa be a Yandex API-kulcsot a YANDEX_API_KEY környezeti változóval
-          vagy a translation.yandex_api_key-vel a config/i18n-tasks.yml fájlban. Szerezze
-          meg a kulcsot a https://tech.yandex.com/translate címen.
-        no_results: A Yandex nem adott eredményt.
-    openai_translate:
-      errors:
-        no_api_key: Állítsa be az OpenAI API-kulcsot az OPENAI_API_KEY környezeti
-          változóval vagy a translation.openai_api_key-vel a config/i18n-tasks.yml
-          fájlban. Szerezze meg a kulcsot a https://openai.com/ oldalon.
-        no_results: Az OpenAI nem adott eredményt.
-  routes:
-    users: felhasználókat
-    passwords: jelszavakat
-    files: fájlokat
-    urls: URL-ek
-    sessions: üléseken
-    registrations: regisztrációk
-    unlocks: kinyit
-    feedbacks: visszajelzéseket
-    pages: oldalakat
-    new: új
-    edit: szerkeszteni
-    update: frissítés
-    destroy: elpusztítani
-    create: teremt
-    expired: lejárt
-    active: aktív
-    audit: könyvvizsgálat
-    access: hozzáférés
-    passphrase: jelmondat
-    preview: előnézet
-  file_pushes:
-    new:
-      upload_limit: Leküldésenként legfeljebb %{count} fájlt tölthet fel.
+    blank_allowed: üres megengedett
+  views:
+    pagination:
+      first: "&laquo; Első"
+      last: Utolsó &raquo;
+      previous: "&lsaquo; Előző"
+      next: Következő &rsaquo;
+      truncate: "&hellip;"

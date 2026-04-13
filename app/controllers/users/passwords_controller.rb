@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
-  layout 'login'
+  layout "login"
 
   # GET /resource/password/new
   # def new
@@ -33,4 +33,12 @@ class Users::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
+
+  protected
+
+  def sign_in_after_reset_password?
+    return false unless Devise.sign_in_after_reset_password
+
+    !resource.otp_required_for_login?
+  end
 end

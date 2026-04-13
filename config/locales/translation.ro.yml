@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/ro
+# https://translation.io/pglombardo/pwpush-oss/ro
 #
 ---
 ro:
@@ -46,6 +46,7 @@ ro:
     returns: Returnează
     deprecated: Depreciat
     deprecation_details: Detalii privind deprecierea
+    blank_allowed: gol permis
   date:
     day_names:
     - duminică
@@ -155,10 +156,10 @@ ro:
       expired: a expirat, vă rugăm să solicitaţi unul nou
       not_found: nu există
       not_locked: nu este blocat
+      password_too_long: este prea lungă
       not_saved:
         one: '1 eroare nu a permis %{resource} să fie salvat:'
         other: "%{count} erori nu au permis %{resource} să fie salvat:"
-      password_too_long: este prea lungă
     template:
       body: 'Încearcă să corectezi urmatoarele câmpuri:'
       header:
@@ -258,6 +259,9 @@ ro:
       hour: ora
       minute: minutul
       second: secunda
+    relative:
+      future: în %{time}
+      past: "%{time} acum"
   helpers:
     select:
       prompt: Alegeți
@@ -265,26 +269,19 @@ ro:
       create: Creare %{model}
       update: Modificare %{model}
       submit: Salvare %{model}
-  will_paginate:
-    previous_label: "← anterior"
-    previous_aria_label: Pagina precedentă
-    next_label: următor →
-    next_aria_label: Pagina următoare
-    page_gap: "&hellip;"
-    container_aria_label: Paginare
-    page_aria_label: Pagina %{page}
     page_entries_info:
-      single_page:
-        zero: Nu s-a găsit %{model}
-        one: Afișare 1 %{model}
-        other: Afișarea tuturor %{count} %{model}
-      single_page_html:
-        zero: Nu s-a găsit %{model}
-        one: Afișare <b>1</b> %{model}
-        other: Afișarea <b>tuturor %{count}</b> %{model}
-      multi_page: Afișarea %{model} %{from} - %{to} din %{count} în total
-      multi_page_html: Afișarea %{model} [ <b>%{from}] - [%{to}</b> ] din <b>%{count}</b>
-        în total
+      entry:
+        zero: intrări
+        one: intrare
+        other: intrări
+      one_page:
+        display_entries:
+          zero: Nu s-a găsit %{entry_name}
+          one: Afișare <b>1</b> %{entry_name}
+          other: Afișarea <b>tuturor %{count}</b> %{entry_name}
+      more_pages:
+        display_entries: Afișarea %{entry_name} [ <b>%{first}] - [%{last}</b> ] din
+          <b>%{total}</b> în total
   flash:
     actions:
       create:
@@ -294,144 +291,6 @@ ro:
       destroy:
         notice: "%{resource_name} a fost distrus cu succes."
         alert: "%{resource_name} nu a putut fi distrus."
-  i18n_tasks:
-    add_missing:
-      added:
-        one: A fost adăugată tasta %{count}
-        other: Au fost adăugate tastele %{count}
-    cmd:
-      args:
-        default_text: 'Implicit: %{value}'
-        desc:
-          all_locales: Nu vă așteptați ca modelele de chei să înceapă cu o limbă locală,
-            ci aplicați-le în mod implicit tuturor limbilor locale.
-          config: Suprascrieți locația de configurare
-          confirm: Confirmați automat
-          data_format: 'Formatul datelor: %{valid_text}.'
-          keep_order: Păstrați ordinea cheilor
-          key_pattern: Filtrare după un model de cheie (de exemplu, "common.*")
-          key_pattern_to_rename: Cheia completă (model) de redenumit. Necesar
-          locale_to_translate_from: Locația din care se traduce
-          locales_filter: 'Localitatea (localitățile) de procesat. Special: base'
-          missing_types: 'Filtrați după tipuri: %{valid}'
-          new_key_name: Nume nou, interpolând numele original ca %{key}. Necesar
-          nostdin: Nu citiți din stdin
-          out_format: 'Format de ieșire: %{valid_text}'
-          pattern_router: 'Utilizați modelul routerului: chei mutate pe config data.write'
-          strict: Evitați să deduceți utilizarea dinamică a cheilor, cum ar fi t("cats.#{cat}.name").
-            Are prioritate față de setarea de configurare, dacă este stabilită.
-          translation_backend: Traducere backend (google sau deepl)
-          value: 'Valoare. Interpolează: %{value}, %{human_key}, %{key}, %{default},
-            %{value_or_human_key}, %{value_or_default_or_human_key}'
-      desc:
-        add_missing: adaugă cheile lipsă la datele locale, opțional se potrivesc cu
-          un model
-        check_consistent_interpolations: să verifice dacă toate traducerile utilizează
-          variabilele de interpolare corecte
-        check_normalized: să verifice dacă toate datele de traducere sunt normalizate
-        config: afișarea configurației i18n-tasks
-        data: arată datele locale
-        data_merge: fuzionează datele locale cu arbori
-        data_remove: eliminarea din date a cheilor prezente în arbore
-        data_write: înlocuiți datele locale cu un arbore
-        eq_base: arată traduceri egale cu valoarea de bază
-        find: arată unde sunt folosite cheile în cod
-        gem_path: arată calea către gemă
-        health: este totul în regulă?
-        irb: începe sesiunea REPL în contextul i18n-tasks
-        missing: afișează traducerile lipsă, opțional se potrivesc cu un model
-        mv: redenumește/împreună cheile din datele locale care corespund modelului
-          dat
-        normalize: 'normalizați datele de traducere: sortați și mutați-le în fișierele
-          corecte'
-        remove_unused: eliminarea cheilor neutilizate
-        rm: elimină cheile din datele locale care se potrivesc cu modelul dat
-        translate_missing: traduceți cheile lipsă cu Google Translate sau DeepL Pro,
-          opțional, potriviți un model
-        tree_convert: convertiți arborele între formate
-        tree_filter: filtrarea arborelui în funcție de modelul de cheie
-        tree_merge: îmbinarea arborilor
-        tree_mv_key: redenumește/fuzionează/elimină cheile care corespund modelului
-          dat
-        tree_set_value: setează valorile cheilor, opțional se potrivesc cu un model
-        tree_subtract: arborele A minus cheile din arborele B
-        tree_translate: Google Translate a tree to root locales
-        unused: arată traducerile nefolosite
-      encourage:
-      - Bună treabă!
-      - Foarte bine!
-      - Perfect!
-      enum_list_opt:
-        invalid: "%{invalid} nu se află: %{valid}."
-      enum_opt:
-        invalid: "%{invalid} nu este unul dintre: %{valid}."
-      errors:
-        invalid_format: 'format invalid: %{invalid}. valid: %{valid}.'
-        invalid_locale: 'locale invalidă: %{invalid}'
-        invalid_missing_type:
-          one: 'tip invalid: %{invalid}. valid: %{valid}.'
-          other: 'tipuri necunoscute: %{invalid}. valabil: %{valid}.'
-        pass_forest: treceți pădurea locală
-    common:
-      continue_q: Continuă?
-      key: Cheie
-      locale: Locale
-      n_more: "%{count} mai mult"
-      value: Valoare
-    data_stats:
-      text: are %{key_count} chei în %{locale_count} localități. În medie, valorile
-        au o lungime de %{value_chars_avg} caractere, cheile au %{key_segments_avg}
-        segmente, iar o localitate are %{per_locale_avg} chei.
-      text_single_locale: are în total %{key_count} taste. În medie, valorile au o
-        lungime de %{value_chars_avg} caractere, iar cheile au %{key_segments_avg}
-        segmente.
-      title: Pădure (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: Configurați DeepL Pro API key prin intermediul variabilei de mediu
-          DEEPL_AUTH_KEY sau translation.deepl_api_key în config/i18n-tasks.yml. Obțineți
-          cheia la https://www.deepl.com/pro.
-        no_results: DeepL nu a dat niciun rezultat.
-        specific_target_missing: Trebuie să furnizați o variantă specifică pentru
-          limba țintă dată, de exemplu en-us în loc de en.
-    google_translate:
-      errors:
-        no_api_key: Setați cheia API Google prin intermediul variabilei de mediu GOOGLE_TRANSLATE_API_KEY
-          sau translation.google_translate_api_key în config/i18n-tasks.yml. Obțineți
-          cheia la https://code.google.com/apis/console.
-        no_results: Google Translate nu a dat niciun rezultat. Asigurați-vă că informațiile
-          de facturare sunt setate la https://code.google.com/apis/console.
-    health:
-      no_keys_detected: Nu a fost detectată nicio cheie. Verificați data.read în config/i18n-tasks.yml.
-    inconsistent_interpolations:
-      none: Nu s-au găsit interpolări inconsecvente.
-    missing:
-      details_title: Valoare în alte localități sau sursă
-      none: Nu lipsește nicio traducere.
-    remove_unused:
-      confirm:
-        one: traducerea %{count} va fi eliminată din %{locales}.
-        other: traducerea %{count} va fi eliminată din %{locales}.
-      noop: Fără chei nefolosite care trebuie scoase
-      removed: A eliminat tastele %{count}
-    translate_missing:
-      translated: Tastele %{count} traduse
-    unused:
-      none: Toate traducerile sunt în uz.
-    usages:
-      none: Nu s-au găsit utilizări cheie.
-    yandex_translate:
-      errors:
-        no_api_key: Setați cheia API Yandex prin intermediul variabilei de mediu YANDEX_API_KEY
-          sau translation.yandex_api_key în config/i18n-tasks.yml. Obțineți cheia
-          la https://tech.yandex.com/translate.
-        no_results: Yandex nu a dat niciun rezultat.
-    openai_translate:
-      errors:
-        no_api_key: Setați cheia API OpenAI prin intermediul variabilei de mediu OPENAI_API_KEY
-          sau translation.openai_api_key în config/i18n-tasks.yml. Obțineți cheia
-          la https://openai.com/.
-        no_results: OpenAI nu a dat niciun rezultat.
   devise:
     confirmations:
       confirmed: Contul dvs. a fost confirmat cu succes.
@@ -530,8 +389,18 @@ ro:
         update: Actualizați
         we_need_your_current_password_to_confirm_your_changes: avem nevoie de parola
           curentă pentru a confirma schimbările
+        cancel_my_account_confirm_description_html: Aceasta va șterge definitiv toate
+          datele asociate contului dvs. Această acțiune nu poate fi anulată.<br/><br/>Pentru
+          a verifica, introduceți adresa dvs. de e-mail pentru a confirma și a vă
+          șterge contul.
+        cancel_my_account_description: Aceasta va șterge definitiv toate datele asociate
+          contului dvs. Această acțiune nu poate fi anulată.
+        saving: Salvarea...
       new:
         sign_up: Înregistrare
+        login_html: Sau %{link}
+        submitting: Trimiterea...
+        terms_html: Accept %{terms} & %{privacy}
       signed_up: Bine ai venit! V-aţi înscris cu succes.
       signed_up_but_inactive: V-aţi înscris cu succes. Cu toate acestea, nu am putut
         să vă autentificăm, deoarece contul dvs. nu este încă activată.
@@ -563,9 +432,14 @@ ro:
       verification: Verificare
       verification_text: Introduceți parola actuală pentru a valida modificările de
         mai sus.
+      preferred_language: Limba preferată
     sessions:
       new:
         sign_in: Autentificare
+        sign_up_html: Sau %{link}
+      already_signed_out: Deautentificarea s-a efectuat cu success.
+      signed_in: Autentificat cu succes.
+      signed_out: Deautentificarea s-a efectuat cu success.
     shared:
       links:
         back: Înapoi
@@ -575,6 +449,7 @@ ro:
         sign_in: Autentificare
         sign_in_with_provider: Autentificat cu %{provider}
         sign_up: Înregistrare
+        redirecting: Redirecționarea...
       minimum_password_length:
         one: "(minim %{count} caracter)"
         other: "(minim %{count} caractere)"
@@ -598,27 +473,10 @@ ro:
       login: Autentificare
       remember_me: Amintește-ți de mine
       sign_up: Înscrieți-vă
-  routes:
-    users: utilizatori
-    passwords: parole
-    files: fișiere
-    urls: urls
-    sessions: sesiuni
-    registrations: înregistrări
-    unlocks: deblochează
-    feedbacks: feedback-uri
-    pages: pagini
-    new: nou
-    edit: editează
-    update: actualizare
-    destroy: distruge
-    create: creați
-    expired: a expirat
-    active: activ
-    audit: audit
-    access: acces
-    passphrase: fraza de acces
-    preview: previzualizare
-  file_pushes:
-    new:
-      upload_limit: Puteți încărca până la %{count} fișiere per push.
+  views:
+    pagination:
+      first: "\" Prima"
+      last: Ultima "
+      previous: "' Anterior"
+      next: Următorul '
+      truncate: "&hellip;"

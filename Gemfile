@@ -1,122 +1,122 @@
 # frozen_string_literal: true
 
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-ruby ENV['CUSTOM_RUBY_VERSION'] || '>=3.1.4'
+ruby ENV["CUSTOM_RUBY_VERSION"] || ">=3.4.3"
 
-gem 'rails', '~> 7.1.3'
+gem "rails", "~> 8.1.1"
+gem "propshaft"
+gem "importmap-rails"
+gem "turbo-rails"
+gem "stimulus-rails"
+gem "jbuilder"
+gem "tzinfo-data", platforms: %i[windows jruby]
+gem "solid_cache"
+gem "solid_queue"
+gem "solid_cable"
+gem "bootsnap", require: false
+gem "kamal", require: false
+gem "thruster", require: false
+gem "sass-embedded"
+gem "cssbundling-rails"
+gem "jsbundling-rails"
 
 group :development do
-  gem 'listen'
+  gem "listen"
 
   # Visual Studio Additions
-  gem 'rubocop'
-  gem 'rubocop-performance'
-  gem 'rubocop-rails'
-  gem 'ruby-debug-ide'
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  # gem install debase -v '0.2.9' -- --with-cflags=-Wno-error=incompatible-function-pointer-types
+  # https://blog.arkency.com/how-to-get-burned-by-16-years-old-hack-in-2024/
+  gem "debase"
+  gem "ruby-debug-ide"
+  gem "pry-rails"
+  gem "web-console"
 
-  gem 'pry-rails'
+  # A fully configurable and extendable Git hook manager
+  gem "overcommit", require: false
 
-  # Access an interactive console on exception pages or by
-  # calling 'console' anywhere in the code.
-  gem 'web-console', '>= 4.2.0'
+  gem "mailbin"
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.37.1', '< 4.0'
-  gem 'minitest'
-  gem 'minitest-rails', '>= 6.1.0'
-  gem 'minitest-reporters'
-  gem 'selenium-webdriver'
-  gem 'webdrivers', '~> 5.3', require: false
+  gem "capybara", ">= 3.37.1", "< 4.0"
+  gem "minitest"
+  gem "minitest-rails", ">= 6.1.0"
+  gem "minitest-reporters"
+  gem "selenium-webdriver", ">= 4.20.1"
 end
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'debase', '>= 0.2.5.beta2', platforms: %i[mri mingw x64_mingw]
-  gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
+
+  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  gem "brakeman", require: false
+
+  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  gem "rubocop-rails-omakase", require: false
+
+  gem "i18n-tasks", "~> 1.1.2", require: false
+  gem "erb_lint", "~> 0.9.0", require: false
+  gem "standard", ">= 1.35.1"
 end
 
-gem 'rack-attack'
-gem 'rack-cors'
+gem "rack-cors"
+gem "high_voltage"
+gem "kramdown", require: false
+gem "lockbox"
 
-# OSX: ../src/utils.h:33:10: fatal error: 'climits' file not found
-# From:
-# # 1. Install v8 ourselves
-# $ brew install v8-315
-# # 2. Install libv8 using the v8 binary we just installed
-# $ gem install libv8 -v '3.16.14.19' -- --with-system-v8
-# # 3. Install therubyracer using the v8 binary we just installed
-# $ gem install therubyracer -- --with-v8-dir=/usr/local/opt/v8@315
-# # 4. Install the remaining dependencies
-# $ bundle install
-# gem 'therubyracer'
-#
-gem 'high_voltage'
-gem 'kramdown', require: false
-gem 'lockbox'
-
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.4', require: false
-
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 6.0', '>= 6.0.0'
-gem 'terser', '~> 1.2'
+gem "terser", "~> 1.2"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'bootstrap', '5.2.3'
-gem 'json', '~> 2.7' # Legacy carry-over
-gem 'will_paginate', '~> 4.0.0'
-gem 'will_paginate-bootstrap-style'
-
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem 'turbo-rails'
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem 'stimulus-rails'
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem 'jbuilder'
+gem "bootstrap"
+gem "json", "~> 2.19" # Legacy carry-over
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'apipie-rails'
-gem 'config'
-gem 'devise', '>= 4.9.0'
-gem 'foreman'
-gem 'lograge'
-gem 'mail_form', '>= 1.9.0'
-gem 'oj'
-gem 'puma'
-gem 'rollbar'
-gem 'simple_token_authentication'
+# https://github.com/Apipie/apipie-rails/pull/964
+gem "apipie-rails", github: "Apipie/apipie-rails", branch: "copilot/fix-router-deprecation-warning"
 
-gem 'devise-i18n'
-gem 'i18n-tasks', '~> 1.0.13' # , group: :development
-gem 'rails-i18n', '~> 7.0.8'
-gem 'route_translator', '>= 13.0.0'
-gem 'translation'
+gem "config"
+gem "devise", "~> 5.0"
+gem "foreman"
+gem "lograge"
+gem "mail_form", ">= 1.9.0"
+gem "oj"
+gem "puma"
+gem "kaminari", "~> 1.2"
+gem "invisible_captcha", "~> 2.3"
+
+gem "devise-i18n"
+gem "rails-i18n", "~> 8.1.0"
+gem "translation"
+gem "local_time"
 
 # For File Uploads
-gem 'aws-sdk-s3', require: false
-gem 'azure-storage-blob', '~> 2.0', require: false
-gem 'google-cloud-storage', '~> 1.48', require: false
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem "aws-sdk-s3", require: false
+gem "azure-blob", "~> 0.8.0", require: false
+gem "google-cloud-storage", "~> 1.59", require: false
 
 # Database backends
-gem 'mysql2'
-gem 'pg'
-gem 'sqlite3', force_ruby_platform: true
+gem "mysql2"
+gem "pg"
+gem "sqlite3", force_ruby_platform: true
 
-group :production do
-  gem 'rack-throttle', '0.7.0'
-  gem 'rack-timeout'
+group :production, :development do
+  gem "rack-attack"
 end
 
-gem 'version', git: 'https://github.com/pglombardo/version.git', branch: 'master'
+gem "rollbar"
+gem "version", git: "https://github.com/pglombardo/version.git", branch: "master"
+gem "madmin"
+gem "rotp", "~> 6.2"
+gem "rqrcode", "~> 3.2"
+gem "turnout2024", require: "turnout"
+gem "mission_control-jobs", "~> 1.1.0"
+gem "overmind", "~> 2.5", group: :development
 
-gem 'derailed_benchmarks', group: :development
-gem 'stackprof', group: :development
+gem "dotenv", "~> 3.2"

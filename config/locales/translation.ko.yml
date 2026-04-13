@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/ko
+# https://translation.io/pglombardo/pwpush-oss/ko
 #
 ---
 ko:
@@ -114,10 +114,10 @@ ko:
       expired: 이(가) 만료되었습니다 새로 요청해 주세요.
       not_found: 찾을 수 없습니다.
       not_locked: 은(는) 잠기지 않았습니다.
+      password_too_long: 너무 길어
       not_saved:
         one: '이 %{resource}이(가) 저장되지 않는 오류 1개:'
         other: "%{count} 오류로 인해 이 %{resource}이(가) 저장되지 않았습니다."
-      password_too_long: 너무 길어
     unavailable_session: '세션 %{id}은(는) 더 이상 메모리에서 사용할 수 없습니다. 다중 프로세스 서버(예: Unicorn
       또는 Puma)에서 실행하는 경우 이 요청 적중은 메모리에 %{id}을 저장하지 않습니다. 프로세스/워커 수를 1로 바꾸거나 개발 중인
       다른 서버를 사용하는 것을 고려하십시오.'
@@ -210,6 +210,9 @@ ko:
       hour: 시
       minute: 분
       second: 초
+    relative:
+      future: "%{time}에서"
+      past: "%{time} 전"
   helpers:
     select:
       prompt: 선택해주세요
@@ -217,25 +220,19 @@ ko:
       create: 등록
       update: 수정
       submit: 제출
-  will_paginate:
-    previous_label: "← 이전"
-    next_label: 다음 →
-    page_gap: "…"
-    container_aria_label: 쪽수 매기기
-    page_aria_label: 페이지 %{page}
     page_entries_info:
-      single_page:
-        zero: "%{model}을(를) 찾을 수 없습니다."
-        one: 1 표시 %{model}
-        other: 모두 표시 %{count} %{model}
-      single_page_html:
-        zero: "%{model}을(를) 찾을 수 없습니다."
-        one: "<b>1</b> 표시 %{model}"
-        other: "<b>모두 표시 %{count}</b> %{model}"
-      multi_page: 총 %{count}의 %{model} %{from} - %{to} 표시
-      multi_page_html: 총 %{count}의 <b>[</b> %{model}] <b>%{from} - %{to}</b> 표시
-    previous_aria_label: 이전 페이지
-    next_aria_label: 다음 페이지
+      entry:
+        zero: 항목
+        one: 기입
+        other: 항목
+      one_page:
+        display_entries:
+          zero: "%{entry_name}을(를) 찾을 수 없습니다."
+          one: "<b>1</b> 표시 %{entry_name}"
+          other: "<b>모두 표시 %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "<b>%{total}</b>중의 %{entry_name}를(을) 표시하고 있습니다 <b>%{first}
+          - %{last}</b>"
   flash:
     actions:
       create:
@@ -352,8 +349,17 @@ ko:
         update: 변경
         we_need_your_current_password_to_confirm_your_changes: 변경 사항을 반영하려면 현재 비밀번호를
           입력하세요
+        cancel_my_account_confirm_description_html: 이렇게 하면 귀하의 계정과 관련된 모든 데이터가 영구적으로
+          지워집니다. 이 작업은 취소할 수 없습니다.<br/><br/> 확인하려면 이메일 주소를 입력하여 계정을 확인하고 삭제하세요.
+        cancel_my_account_description: 이렇게 하면 귀하의 계정과 관련된 모든 데이터가 영구적으로 지워집니다. 이 작업은
+          취소할 수 없습니다.
+        saving: 절약...
       new:
         sign_up: 회원 가입
+        login_html: 또는 %{link}
+        submitting: 제출 중...
+        terms_html: "%{terms} 및 %{privacy}을 수락합니다."
+      preferred_language: 선호하는 언어
     unlocks:
       send_instructions: 잠시 후 이메일로 계정 잠금 해제 안내를 받아보실 수 있습니다.
       send_paranoid_instructions: 계정이 존재한다면 메일로 계정 잠금 해제 안내를 받을 수 있습니다.
@@ -374,6 +380,10 @@ ko:
     sessions:
       new:
         sign_in: 로그인
+        sign_up_html: 또는 %{link}
+      already_signed_out: 성공적으로 로그아웃 되었습니다.
+      signed_in: 성공적으로 로그인 되었습니다.
+      signed_out: 성공적으로 로그아웃 되었습니다.
     shared:
       links:
         back: 돌아가기
@@ -383,6 +393,7 @@ ko:
         sign_in: 로그인
         sign_in_with_provider: "%{provider}(으)로 로그인"
         sign_up: 회원 가입
+        redirecting: 리디렉션 중...
       minimum_password_length:
         one: "(최소 %{count}자)"
         other: "(최소 %{count}자)"
@@ -425,150 +436,11 @@ ko:
         sunset_at: 일몰 시간
         info: 정보
     returns: 보고
-  i18n_tasks:
-    add_missing:
-      added:
-        one: "%{count} 키 추가"
-        other: "%{count} 키 추가"
-    cmd:
-      args:
-        default_text: '기본값: %{value}'
-        desc:
-          all_locales: 키 패턴이 로케일로 시작될 것으로 기대하지 말고 암시적으로 모든 로케일에 적용하십시오.
-          config: 구성 위치 재정의
-          confirm: 자동으로 확인
-          data_format: '데이터 형식: %{valid_text}.'
-          keep_order: 키 순서 유지
-          key_pattern: '키 패턴으로 필터링(예: ''common.*'')'
-          key_pattern_to_rename: 이름을 바꿀 전체 키(패턴)입니다. 필수의
-          locale_to_translate_from: 번역할 로케일
-          locales_filter: '처리할 로캘입니다. 특수: 베이스'
-          missing_types: '유형별 필터링: %{valid}'
-          new_key_name: 새 이름, 원래 이름을 %{key}으로 보간합니다. 필수의
-          nostdin: stdin에서 읽지 않음
-          out_format: '출력 형식: %{valid_text}'
-          pattern_router: '패턴 라우터 사용: 구성 data.write당 이동된 키'
-          strict: t("cats.#{cat}.name")와 같은 동적 키 사용을 유추하지 마십시오. 설정된 경우 구성 설정보다 우선합니다.
-          translation_backend: 번역 백엔드(google 또는 deepl)
-          value: '값. 보간: %{value}, %{human_key}, %{key}, %{default}, %{value_or_human_key},
-            %{value_or_default_or_human_key}'
-      desc:
-        add_missing: 로케일 데이터에 누락된 키 추가, 선택적으로 패턴 일치
-        check_consistent_interpolations: 모든 번역이 올바른 보간 변수를 사용하는지 확인
-        check_normalized: 모든 번역 데이터가 정규화되었는지 확인
-        config: i18n-tasks 구성 표시
-        data: 로케일 데이터 표시
-        data_merge: 로케일 데이터를 트리와 병합
-        data_remove: 데이터에서 트리에 있는 키 제거
-        data_write: 로케일 데이터를 트리로 바꾸기
-        eq_base: 기본 값과 동일한 번역 표시
-        find: 코드에서 키가 사용되는 위치 표시
-        gem_path: gem 경로 표시
-        health: 다 괜찮아?
-        irb: i18n-tasks 컨텍스트 내에서 REPL 세션 시작
-        missing: 누락된 번역 표시, 선택적으로 패턴 일치
-        mv: 주어진 패턴과 일치하는 로케일 데이터의 키 이름 바꾸기/병합
-        normalize: '번역 데이터 정규화: 올바른 파일 정렬 및 이동'
-        remove_unused: 사용하지 않는 키 제거
-        rm: 주어진 패턴과 일치하는 로케일 데이터의 키를 제거합니다.
-        translate_missing: Google 번역 또는 DeepL Pro로 누락된 키 번역, 선택적으로 패턴 일치
-        tree_convert: 형식 간 트리 변환
-        tree_filter: 키 패턴으로 트리 필터링
-        tree_merge: 나무 병합
-        tree_mv_key: 주어진 패턴과 일치하는 키의 이름 바꾸기/병합/제거
-        tree_set_value: 키 값 설정, 선택적으로 패턴 일치
-        tree_subtract: 트리 A에서 트리 B의 키를 뺀 값
-        tree_translate: Google은 트리를 루트 로케일로 번역합니다.
-        unused: 사용하지 않는 번역 표시
-      encourage:
-      - 잘했어요!
-      - 잘하셨어요!
-      - 완벽한!
-      enum_list_opt:
-        invalid: "%{invalid}이 다음 위치에 없음: %{valid}."
-      enum_opt:
-        invalid: "%{invalid}은 %{valid} 중 하나가 아닙니다."
-      errors:
-        invalid_format: '잘못된 형식: %{invalid}. 유효: %{valid}.'
-        invalid_locale: '잘못된 로케일: %{invalid}'
-        invalid_missing_type:
-          one: '잘못된 유형: %{invalid}. 유효: %{valid}.'
-          other: '알 수 없는 유형: %{invalid}. 유효: %{valid}.'
-        pass_forest: 패스 로케일 포레스트
-    common:
-      continue_q: 계속하다?
-      key: 열쇠
-      locale: 장소
-      n_more: "%{count}개 더"
-      value: 값
-    data_stats:
-      text: "%{locale_count} 로케일에서 %{key_count} 키를 가집니다. 평균적으로 값은 %{value_chars_avg}자
-        길이이고 키에는 %{key_segments_avg} 세그먼트가 있으며 로케일에는 %{per_locale_avg} 키가 있습니다."
-      text_single_locale: 총 %{key_count} 키가 있습니다. 평균적으로 값은 %{value_chars_avg}자 길이이고
-        키에는 %{key_segments_avg} 세그먼트가 있습니다.
-      title: 숲(%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: DEEPL_AUTH_KEY 환경 변수 또는 config/i18n-tasks.yml의 translation.deepl_api_key를
-          통해 DeepL Pro API 키를 설정합니다. https://www.deepl.com/pro에서 키를 받으세요.
-        no_results: DeepL은 결과를 반환하지 않았습니다.
-        specific_target_missing: '주어진 대상 언어에 대한 특정 변형(예: en 대신 en-us)을 제공해야 합니다.'
-    google_translate:
-      errors:
-        no_api_key: GOOGLE_TRANSLATE_API_KEY 환경 변수 또는 config/i18n-tasks.yml의 translation.google_translate_api_key를
-          통해 Google API 키를 설정합니다. https://code.google.com/apis/console에서 키를 가져옵니다.
-        no_results: Google 번역에서 반환된 결과가 없습니다. 결제 정보가 https://code.google.com/apis/console에
-          설정되어 있는지 확인하세요.
-    health:
-      no_keys_detected: 감지된 키가 없습니다. config/i18n-tasks.yml에서 data.read를 확인하십시오.
-    inconsistent_interpolations:
-      none: 일치하지 않는 보간이 없습니다.
-    missing:
-      details_title: 다른 로케일 또는 소스의 값
-      none: 누락된 번역이 없습니다.
-    remove_unused:
-      confirm:
-        one: "%{count} 번역이 %{locales}에서 제거됩니다."
-        other: "%{count} 번역이 %{locales}에서 제거됩니다."
-      noop: 제거할 미사용 키 없음
-      removed: 제거된 %{count} 키
-    translate_missing:
-      translated: 번역된 %{count} 키
-    unused:
-      none: 모든 번역이 사용 중입니다.
-    usages:
-      none: 주요 용도를 찾을 수 없습니다.
-    yandex_translate:
-      errors:
-        no_api_key: YANDEX_API_KEY 환경 변수 또는 config/i18n-tasks.yml의 translation.yandex_api_key를
-          통해 Yandex API 키를 설정합니다. https://tech.yandex.com/translate에서 키를 받으세요.
-        no_results: Yandex는 결과를 반환하지 않았습니다.
-    openai_translate:
-      errors:
-        no_api_key: OPENAI_API_KEY 환경 변수 또는 config/i18n-tasks.yml의 Translation.openai_api_key를
-          통해 OpenAI API 키를 설정하세요. https://openai.com/에서 키를 받으세요.
-        no_results: OpenAI가 결과를 반환하지 않았습니다.
-  routes:
-    users: 사용자
-    passwords: 암호
-    files: 파일
-    urls: URL
-    sessions: 세션
-    registrations: 등록
-    unlocks: 잠금을 해제하다
-    feedbacks: 피드백
-    pages: 페이지
-    new: 새로운
-    edit: 편집하다
-    update: 업데이트
-    destroy: 파괴하다
-    create: 만들다
-    expired: 만료
-    active: 활동적인
-    audit: 심사
-    access: 입장
-    passphrase: 암호
-    preview: 시사
-  file_pushes:
-    new:
-      upload_limit: 푸시당 최대 %{count}개의 파일을 업로드할 수 있습니다.
+    blank_allowed: 공백 허용
+  views:
+    pagination:
+      first: "&laquo; 처음"
+      last: 마지막 &raquo;
+      previous: "&lsaquo; 이전"
+      next: 다음 &rsaquo;
+      truncate: "&hellip;"

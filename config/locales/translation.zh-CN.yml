@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/zh-CN
+# https://translation.io/pglombardo/pwpush-oss/zh-CN
 #
 ---
 zh-CN:
@@ -114,10 +114,10 @@ zh-CN:
       expired: 邮件确认已过期，请重新注册。
       not_found: 找不到
       not_locked: 未被锁定
+      password_too_long: 太长
       not_saved:
         one: 发生 1 个错误，导致%{resource}保存失败：
         other: 发生 %{count} 个错误，导致%{resource}保存失败：
-      password_too_long: 太长
     unavailable_session: 会话 %{id} 在内存中不再可用。如果您碰巧在多进程服务器（如 Unicorn 或 Puma）上运行，则此请求命中的进程不会将
       %{id} 存储在内存中。考虑将进程/worker进程的数量变成一 (1) 个或在开发中使用不同的服务器。
     unacceptable_request: Accept 标头中应包含受支持的版本号。
@@ -209,6 +209,9 @@ zh-CN:
       hour: 时
       minute: 分
       second: 秒
+    relative:
+      future: 在 %{time} 中
+      past: "%{time}前"
   helpers:
     select:
       prompt: 请选择
@@ -216,25 +219,18 @@ zh-CN:
       create: 新增%{model}
       update: 更新%{model}
       submit: 储存%{model}
-  will_paginate:
-    previous_label: 上一页
-    next_label: 下一页
-    page_gap: "…"
-    container_aria_label: 分页
-    page_aria_label: 第 %{page} 页
     page_entries_info:
-      single_page:
-        zero: 暂无%{model}记录
-        one: 正显示1条%{model}记录
-        other: 正显示所有共%{count}条%{model}记录
-      single_page_html:
-        zero: 暂无%{model}记录
-        one: 正显示<b>1</b>条%{model}记录
-        other: 正显示所有共<b>%{count}</b>条%{model}记录
-      multi_page: 正显示%{model}的第%{from}至第%{to}条记录(共%{count}条记录)
-      multi_page_html: 正显示%{model}的第<b>%{from}</b>至第<b>%{to}</b>条记录(共<b>%{count}</b>条记录)
-    previous_aria_label: 上一页
-    next_aria_label: 下一页
+      entry:
+        zero: 条目
+        one: 入口
+        other: 条目
+      one_page:
+        display_entries:
+          zero: 未找到 %{entry_name}
+          one: 显示<b>1</b> %{entry_name}
+          other: 显示<b>全部 %{count}</b> %{entry_name}
+      more_pages:
+        display_entries: '显示 %{entry_name} <b>%{first} - %{last}</b>  共<b>%{total}</b> '
   flash:
     actions:
       create:
@@ -347,8 +343,15 @@ zh-CN:
         unhappy: 不喜欢
         update: 更新
         we_need_your_current_password_to_confirm_your_changes: 我们需要您的当前密码以确认更改
+        cancel_my_account_confirm_description_html: 这将永久删除与您的帐户相关的所有数据。此操作无法撤消。<br/><br/>为了验证，请输入您的电子邮件地址来确认并删除您的帐户。
+        cancel_my_account_description: 这将永久删除与您的帐户相关的所有数据。此操作无法撤消。
+        saving: 保存...
       new:
         sign_up: 注册
+        login_html: 或 %{link}
+        submitting: 正在提交...
+        terms_html: 我接受 %{terms} & %{privacy}
+      preferred_language: 首选语言
     unlocks:
       send_instructions: 几分钟后，您将收到一封解锁帐户的邮件。
       send_paranoid_instructions: 如果您的邮箱存在于我们的数据库中，您将收到一封解锁帐户的邮件。
@@ -369,6 +372,10 @@ zh-CN:
     sessions:
       new:
         sign_in: 登录
+        sign_up_html: 或 %{link}
+      already_signed_out: 您已登出。
+      signed_in: 登录成功。
+      signed_out: 登出成功。
     shared:
       links:
         back: 返回
@@ -378,6 +385,7 @@ zh-CN:
         sign_in: 登录
         sign_in_with_provider: 通过 %{provider} 登录
         sign_up: 注册
+        redirecting: 正在重定向...
       minimum_password_length:
         one: "（最少 %{count} 个字符）"
         other: "（最少 %{count} 个字符）"
@@ -420,148 +428,11 @@ zh-CN:
         sunset_at: 日落时间
         info: 信息
     returns: 退货
-  i18n_tasks:
-    add_missing:
-      added:
-        one: 添加了 %{count} 键
-        other: 添加了 %{count} 键
-    cmd:
-      args:
-        default_text: 默认值：%{value}
-        desc:
-          all_locales: 不要期望键模式以语言环境开头，而是隐式地将它们应用于所有语言环境。
-          config: 覆盖配置位置
-          confirm: 自动确认
-          data_format: 数据格式：%{valid_text}。
-          keep_order: 保持键的顺序
-          key_pattern: 按键模式过滤（例如'common.*'）
-          key_pattern_to_rename: 要重命名的完整键（模式）。必需的
-          locale_to_translate_from: 要翻译的语言环境
-          locales_filter: 要处理的语言环境。特殊：基地
-          missing_types: 按类型过滤：%{valid}
-          new_key_name: 新名称，将原始名称插入为 %{key}。必需的
-          nostdin: 不要从标准输入读取
-          out_format: 输出格式：%{valid_text}
-          pattern_router: 使用模式路由器：根据配置 data.write 移动的键
-          strict: 避免推断动态密钥用法，例如 t("cats.#{cat}.name")。如果设置，则优先于配置设置。
-          translation_backend: 翻译后端（google 或 deepl）
-          value: 价值。插值：%{value}、%{human_key}、%{key}、%{default}、%{value_or_human_key}、%{value_or_default_or_human_key}
-      desc:
-        add_missing: 将缺失的键添加到区域设置数据，可选择匹配模式
-        check_consistent_interpolations: 验证所有翻译都使用正确的插值变量
-        check_normalized: 验证所有翻译数据是否已规范化
-        config: 显示 i18n-tasks 配置
-        data: 显示语言环境数据
-        data_merge: 将语言环境数据与树合并
-        data_remove: 从数据中删除树中存在的键
-        data_write: 用树替换语言环境数据
-        eq_base: 显示等于基值的翻译
-        find: 显示代码中使用键的位置
-        gem_path: 显示宝石的路径
-        health: 一切都顺利吗？
-        irb: 在 i18n-tasks 上下文中启动 REPL 会话
-        missing: 显示缺失的翻译，可选择匹配模式
-        mv: 重命名/合并与给定模式匹配的语言环境数据中的键
-        normalize: 标准化翻译数据：排序并移动到正确的文件
-        remove_unused: 删除未使用的密钥
-        rm: 删除语言环境数据中与给定模式匹配的键
-        translate_missing: 使用 Google Translate 或 DeepL Pro 翻译缺失的键，可选择匹配模式
-        tree_convert: 在格式之间转换树
-        tree_filter: 按键模式过滤树
-        tree_merge: 合并树
-        tree_mv_key: 重命名/合并/删除匹配给定模式的键
-        tree_set_value: 设置键的值，可选地匹配模式
-        tree_subtract: 树 A 减去树 B 中的键
-        tree_translate: Google 将树翻译成根语言环境
-        unused: 显示未使用的翻译
-      encourage:
-      - 好工作！
-      - 做得好！
-      - 完美的！
-      enum_list_opt:
-        invalid: "%{invalid} 不在：%{valid} 中。"
-      enum_opt:
-        invalid: "%{invalid} 不是以下之一：%{valid}。"
-      errors:
-        invalid_format: 无效格式：%{invalid}。有效：%{valid}。
-        invalid_locale: 无效的语言环境：%{invalid}
-        invalid_missing_type:
-          one: 无效类型：%{invalid}。有效：%{valid}。
-          other: 未知类型：%{invalid}。有效：%{valid}。
-        pass_forest: 通过语言环境森林
-    common:
-      continue_q: 继续？
-      key: 钥匙
-      locale: 语言环境
-      n_more: "%{count} 更多"
-      value: 价值
-    data_stats:
-      text: 在 %{locale_count} 语言环境中具有 %{key_count} 键。平均而言，值的长度为 %{value_chars_avg}
-        个字符，键具有 %{key_segments_avg} 段，语言环境具有 %{per_locale_avg} 键。
-      text_single_locale: 总共有 %{key_count} 个键。平均而言，值的长度为 %{value_chars_avg} 个字符，键的长度为
-        %{key_segments_avg} 段。
-      title: 森林 (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: 通过 DEEPL_AUTH_KEY 环境变量或 config/i18n-tasks.yml 中的 translation.deepl_api_key
-          设置 DeepL Pro API 密钥。在 https://www.deepl.com/pro 获取密钥。
-        no_results: DeepL 没有返回任何结果。
-        specific_target_missing: 您必须为给定的目标语言提供特定的变体，例如 en-us 而不是 en。
-    google_translate:
-      errors:
-        no_api_key: 通过 GOOGLE_TRANSLATE_API_KEY 环境变量或 config/i18n-tasks.yml 中的 translation.google_translate_api_key
-          设置 Google API 密钥。从 https://code.google.com/apis/console 获取密钥。
-        no_results: 谷歌翻译没有返回任何结果。确保在 https://code.google.com/apis/console 设置了账单信息。
-    health:
-      no_keys_detected: 未检测到任何键。检查 config/i18n-tasks.yml 中的 data.read。
-    inconsistent_interpolations:
-      none: 未发现不一致的插值。
-    missing:
-      details_title: 其他地区或来源的价值
-      none: 没有翻译丢失。
-    remove_unused:
-      confirm:
-        one: "%{count} 翻译将从 %{locales} 中删除。"
-        other: "%{count} 翻译将从 %{locales} 中删除。"
-      noop: 没有未使用的密钥可以删除
-      removed: 删除了 %{count} 键
-    translate_missing:
-      translated: 翻译的 %{count} 键
-    unused:
-      none: 每个翻译都在使用。
-    usages:
-      none: 未找到关键用法。
-    yandex_translate:
-      errors:
-        no_api_key: 通过 YANDEX_API_KEY 环境变量或 config/i18n-tasks.yml 中的 translation.yandex_api_key
-          设置 Yandex API 密钥。在 https://tech.yandex.com/translate 获取密钥。
-        no_results: Yandex 没有返回任何结果。
-    openai_translate:
-      errors:
-        no_api_key: 通过 OPENAI_API_KEY 环境变量或 config/i18n-tasks.yml 中的 Translation.openai_api_key
-          设置 OpenAI API 密钥。从 https://openai.com/ 获取密钥。
-        no_results: OpenAI 未返回任何结果。
-  routes:
-    users: 用户
-    passwords: 密码
-    files: 文件
-    urls: 网址
-    sessions: 会议
-    registrations: 注册
-    unlocks: 解锁
-    feedbacks: 反馈
-    pages: 页数
-    new: 新的
-    edit: 编辑
-    update: 更新
-    destroy: 破坏
-    create: 创造
-    expired: 已到期
-    active: 积极的
-    audit: 审计
-    access: 使用权
-    passphrase: 密码短语
-    preview: 预习
-  file_pushes:
-    new:
-      upload_limit: 每次推送最多可以上传 %{count} 个文件。
+    blank_allowed: 允许空白
+  views:
+    pagination:
+      first: "&laquo; 第一页"
+      last: 最后一页 &raquo;
+      previous: "&lsaquo; 上一页"
+      next: 下一页 &rsaquo;
+      truncate: "&hellip;"

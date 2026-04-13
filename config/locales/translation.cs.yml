@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/cs
+# https://translation.io/pglombardo/pwpush-oss/cs
 #
 ---
 cs:
@@ -114,11 +114,11 @@ cs:
       expired: vypršelo, požádejte o nové
       not_found: nenalezen
       not_locked: nebyl uzamčen
-      not_saved:
-        one: '1 chyba zabránila %{resource} v uložení:'
-        other: 'Počet chyb: %{count}. Nelze uložit %{resource}:'
       in: musí být v %{count}
       password_too_long: je to moc dlouhé
+      not_saved:
+        one: "%{resource} nebyl uložen kvůli chybě:"
+        other: "%{resource} nebyl uložen kvůli %{count} chybám:"
     unavailable_session: |-
       Relace %{id} již není v paměti dostupná.
 
@@ -214,6 +214,9 @@ cs:
       hour: Hodina
       minute: Minuta
       second: Sekunda
+    relative:
+      future: v %{time}
+      past: "%{time} před"
   helpers:
     select:
       prompt: Prosím vyberte si
@@ -221,26 +224,19 @@ cs:
       create: Vytvořit %{model}
       update: Aktualizovat %{model}
       submit: Uložit %{model}
-  will_paginate:
-    previous_label: "&#8592; Předchozí"
-    next_label: Další &#8594;
-    page_gap: "&hellip;"
-    container_aria_label: Stránkování
-    page_aria_label: Strana %{page}
     page_entries_info:
-      single_page:
-        zero: Žádný %{model} nenalezen
-        one: Zobrazuji 1 %{model}
-        other: Zobrazuji všech %{count} %{model}
-      single_page_html:
-        zero: Žádný %{model} nenalezen
-        one: Zobrazuji <b>1</b> %{model}
-        other: Zobrazuji <b>všech&nbsp;%{count}</b> %{model}
-      multi_page: Zobrazuji %{model} %{from} - %{to} z %{count} celkem
-      multi_page_html: Zobrazuji %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> z <b>%{count}</b>
-        celkem
-    previous_aria_label: Předchozí stránka
-    next_aria_label: Další strana
+      entry:
+        zero: záznamy
+        one: vstup
+        other: záznamy
+      one_page:
+        display_entries:
+          zero: Žádná položka nenalezena
+          one: Zobrazuji <b>%{count}</b> %{entry_name}
+          other: Zobrazuji <b>%{count}</b> %{entry_name}
+      more_pages:
+        display_entries: Zobrazuji %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>
+          z <b>%{total} celkových</b>
   flash:
     actions:
       create:
@@ -373,8 +369,18 @@ cs:
         update: Aktualizovat
         we_need_your_current_password_to_confirm_your_changes: Vaše současné heslo
           je nutné pro potvrzení změn.
+        cancel_my_account_confirm_description_html: Tím trvale vymažete všechna data
+          spojená s vaším účtem. Tuto akci nelze vrátit zpět.<br/><br/> Pro ověření
+          zadejte svou e-mailovou adresu pro potvrzení a smazání účtu.
+        cancel_my_account_description: Tím trvale vymažete všechna data spojená s
+          vaším účtem. Tuto akci nelze vrátit zpět.
+        saving: Ukládání...
       new:
         sign_up: Zaregistrovat se
+        login_html: Nebo %{link}
+        submitting: Odesílání...
+        terms_html: Přijímám %{terms} & %{privacy}
+      preferred_language: preferovaný jazyk
     unlocks:
       send_instructions: Za několik minut obdržíte e-mail s instrukcemi, jak odemknout
         svůj účet.
@@ -397,6 +403,10 @@ cs:
     sessions:
       new:
         sign_in: Přihlásit se
+        sign_up_html: Nebo %{link}
+      already_signed_out: Odhlášen(a).
+      signed_in: Přihlášen(a).
+      signed_out: Odhlášen(a).
     shared:
       links:
         back: Zpět
@@ -406,6 +416,7 @@ cs:
         sign_in: Přihlásit se
         sign_in_with_provider: Přihlásit se přes %{provider}
         sign_up: Zaregistrovat se
+        redirecting: Přesměrování...
       minimum_password_length:
         one: "(minimálně %{count} znak)"
         other: "(minimálně %{count} znaků)"
@@ -448,164 +459,11 @@ cs:
         sunset_at: Západ slunce v
         info: Info
     returns: Návraty
-  i18n_tasks:
-    add_missing:
-      added:
-        one: Přidán klíč %{count}
-        other: Přidány klíče %{count}
-    cmd:
-      args:
-        default_text: 'Výchozí: %{value}'
-        desc:
-          all_locales: Neočekávejte, že klíčové vzory budou začínat národním prostředím,
-            místo toho je implicitně aplikujte na všechna národní prostředí.
-          config: Přepsat umístění konfigurace
-          confirm: Potvrďte automaticky
-          data_format: 'Formát dat: %{valid_text}.'
-          keep_order: Dodržujte pořadí klíčů
-          key_pattern: Filtrujte podle klíčového vzoru (např. 'common.*')
-          key_pattern_to_rename: Úplný klíč (vzor) k přejmenování. Požadované
-          locale_to_translate_from: Národní prostředí, ze kterého se má překládat
-          locales_filter: 'Lokality ke zpracování. Speciální: základna'
-          missing_types: 'Filtrovat podle typů: %{valid}'
-          new_key_name: Nový název, interpoluje původní název jako %{key}. Požadované
-          nostdin: Nečtěte ze stdin
-          out_format: 'Výstupní formát: %{valid_text}'
-          pattern_router: 'Použít směrovač vzoru: klíče přesunuty podle konfigurace
-            data.write'
-          strict: Vyvarujte se odvozování použití dynamického klíče, jako je t("cats.#{cat}.name").
-            Má přednost před konfiguračním nastavením, pokud je nastaveno.
-          translation_backend: Překlad backend (google nebo deepl)
-          value: 'Hodnota. Interpolace: %{value}, %{human_key}, %{key}, %{default},
-            %{value_or_human_key}, %{value_or_default_or_human_key}'
-      desc:
-        add_missing: přidat chybějící klíče k datům národního prostředí, volitelně
-          odpovídat vzoru
-        check_consistent_interpolations: ověřte, že všechny překlady používají správné
-          interpolační proměnné
-        check_normalized: ověřte, zda jsou všechna data překladu normalizována
-        config: zobrazit konfiguraci i18n-tasks
-        data: zobrazit data o místním nastavení
-        data_merge: sloučit data národního prostředí se stromy
-        data_remove: odstranit klíče přítomné ve stromu z dat
-        data_write: nahradit data národního prostředí stromem
-        eq_base: zobrazit překlady rovné základní hodnotě
-        find: ukázat, kde se v kódu používají klíče
-        gem_path: ukázat cestu ke drahokamu
-        health: je všechno v pořádku?
-        irb: spusťte relaci REPL v kontextu i18n-tasks
-        missing: zobrazit chybějící překlady, volitelně odpovídat vzoru
-        mv: přejmenovat/sloučit klíče v datech národního prostředí, které odpovídají
-          danému vzoru
-        normalize: 'normalizovat data překladu: třídit a přesouvat do správných souborů'
-        remove_unused: vyjměte nepoužívané klíče
-        rm: odstraňte klíče v datech národního prostředí, které odpovídají danému
-          vzoru
-        translate_missing: přeložte chybějící klíče pomocí Překladače Google nebo
-          DeepL Pro, případně porovnejte vzor
-        tree_convert: převést strom mezi formáty
-        tree_filter: filtrovat strom podle klíčového vzoru
-        tree_merge: sloučit stromy
-        tree_mv_key: přejmenovat/sloučit/odebrat klíče odpovídající danému vzoru
-        tree_set_value: nastavit hodnoty klíčů, volitelně odpovídat vzoru
-        tree_subtract: strom A mínus klíče ve stromu B
-        tree_translate: Google Translate strom do kořenových národních prostředí
-        unused: zobrazit nepoužité překlady
-      encourage:
-      - Dobrá práce!
-      - Výborně!
-      - Perfektní!
-      enum_list_opt:
-        invalid: "%{invalid} není v: %{valid}."
-      enum_opt:
-        invalid: "%{invalid} není jedno z: %{valid}."
-      errors:
-        invalid_format: 'neplatný formát: %{invalid}. platný: %{valid}.'
-        invalid_locale: 'neplatné národní prostředí: %{invalid}'
-        invalid_missing_type:
-          one: 'neplatný typ: %{invalid}. platný: %{valid}.'
-          other: 'neznámé typy: %{invalid}. platný: %{valid}.'
-        pass_forest: projít místní les
-    common:
-      continue_q: Pokračovat?
-      key: Klíč
-      locale: Locale
-      n_more: "%{count} více"
-      value: Hodnota
-    data_stats:
-      text: má klíče %{key_count} napříč národními prostředími %{locale_count}. V
-        průměru jsou hodnoty dlouhé znaky %{value_chars_avg}, klíče mají segmenty
-        %{key_segments_avg}, národní prostředí má klíče %{per_locale_avg}.
-      text_single_locale: má celkem klíče %{key_count}. V průměru jsou hodnoty dlouhé
-        znaky %{value_chars_avg}, klíče mají segmenty %{key_segments_avg}.
-      title: Les (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: Nastavte klíč API DeepL Pro pomocí proměnné prostředí DEEPL_AUTH_KEY
-          nebo klíče translation.deepl_api_key v souboru config/i18n-tasks.yml. Získejte
-          klíč na https://www.deepl.com/pro.
-        no_results: DeepL nevrátil žádné výsledky.
-        specific_target_missing: Musíte zadat konkrétní variantu pro daný cílový jazyk,
-          např. en-us místo en.
-    google_translate:
-      errors:
-        no_api_key: Nastavte klíč Google API pomocí proměnné prostředí GOOGLE_TRANSLATE_API_KEY
-          nebo translation.google_translate_api_key v souboru config/i18n-tasks.yml.
-          Získejte klíč na https://code.google.com/apis/console.
-        no_results: Překladač Google nevrátil žádné výsledky. Zkontrolujte, zda jsou
-          na https://code.google.com/apis/console nastaveny fakturační údaje.
-    health:
-      no_keys_detected: Nebyly zjištěny žádné klíče. Zkontrolujte data.read v config/i18n-tasks.yml.
-    inconsistent_interpolations:
-      none: Nebyly nalezeny žádné nekonzistentní interpolace.
-    missing:
-      details_title: Hodnota v jiných lokalitách nebo zdrojích
-      none: Nechybí žádné překlady.
-    remove_unused:
-      confirm:
-        one: Překlad %{count} bude odstraněn z %{locales}.
-        other: Překlad %{count} bude odstraněn z %{locales}.
-      noop: Žádné nepoužité klíče k odstranění
-      removed: Odebrány klíče %{count}
-    translate_missing:
-      translated: Přeložené klíče %{count}
-    unused:
-      none: Každý překlad se používá.
-    usages:
-      none: Nebyla nalezena žádná klíčová použití.
-    yandex_translate:
-      errors:
-        no_api_key: Nastavte klíč Yandex API pomocí proměnné prostředí YANDEX_API_KEY
-          nebo translation.yandex_api_key v config/i18n-tasks.yml. Získejte klíč na
-          https://tech.yandex.com/translate.
-        no_results: Yandex nevrátil žádné výsledky.
-    openai_translate:
-      errors:
-        no_api_key: Nastavte klíč OpenAI API pomocí proměnné prostředí OPENAI_API_KEY
-          nebo translation.openai_api_key v config/i18n-tasks.yml. Získejte klíč na
-          https://openai.com/.
-        no_results: OpenAI nevrátilo žádné výsledky.
-  routes:
-    users: uživatelů
-    passwords: hesla
-    files: soubory
-    urls: adresy URL
-    sessions: sezení
-    registrations: registrace
-    unlocks: odemkne
-    feedbacks: zpětné vazby
-    pages: stránky
-    new: Nový
-    edit: Upravit
-    update: Aktualizace
-    destroy: zničit
-    create: vytvořit
-    expired: platnost vypršela
-    active: aktivní
-    audit: audit
-    access: přístup
-    passphrase: přístupová fráze
-    preview: náhled
-  file_pushes:
-    new:
-      upload_limit: Na jedno push můžete nahrát až %{count} souborů.
+    blank_allowed: prázdné místo povoleno
+  views:
+    pagination:
+      first: "&laquo; První"
+      last: Poslední &raquo;
+      previous: "&lsaquo; Předchozí"
+      next: Další &rsaquo;
+      truncate: "&hellip;"

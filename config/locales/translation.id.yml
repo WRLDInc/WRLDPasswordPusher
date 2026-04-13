@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/id
+# https://translation.io/pglombardo/pwpush-oss/id
 #
 ---
 id:
@@ -46,6 +46,7 @@ id:
     returns: Pengembalian
     deprecated: Ditinggalkan
     deprecation_details: Rincian penghentian penggunaan
+    blank_allowed: kosong diperbolehkan
   date:
     day_names:
     - Minggu
@@ -155,10 +156,10 @@ id:
       expired: telah kadaluarsa, tolong pesan lagi
       not_found: tidak ditemukan
       not_locked: tidak dikunci
+      password_too_long: terlalu panjang
       not_saved:
         one: 'kesalahan 1 melarang %{resource} ini untuk disimpan:'
         other: 'kesalahan %{count} melarang %{resource} ini untuk disimpan:'
-      password_too_long: terlalu panjang
     template:
       body: 'Ada masalah dengan field berikut:'
       header:
@@ -259,6 +260,9 @@ id:
       hour: Jam
       minute: Menit
       second: Detik
+    relative:
+      future: dalam %{time}
+      past: "%{time} yang lalu"
   helpers:
     select:
       prompt: Silakan pilih
@@ -266,26 +270,19 @@ id:
       create: Buat %{model}
       update: Perbarui %{model}
       submit: Simpan %{model}
-  will_paginate:
-    previous_label: "← Sebelumnya"
-    previous_aria_label: Halaman sebelumnya
-    next_label: Berikutnya →
-    next_aria_label: Halaman berikutnya
-    page_gap: "..."
-    container_aria_label: Penomoran halaman
-    page_aria_label: Halaman %{page}
     page_entries_info:
-      single_page:
-        zero: Tidak ditemukan %{model}
-        one: Menampilkan 1 %{model}
-        other: Menampilkan semua %{count} %{model}
-      single_page_html:
-        zero: Tidak ditemukan %{model}
-        one: Menampilkan <b>1</b> %{model}
-        other: Menampilkan <b>semua %{count}</b> %{model}
-      multi_page: Menampilkan %{model} %{from} - %{to} dari %{count} secara total
-      multi_page_html: Menampilkan %{model} <b>%{from} - [%{to}</b> ] dari <b>[%{count}</b>
-        ] secara total
+      entry:
+        zero: entri
+        one: entri
+        other: entri
+      one_page:
+        display_entries:
+          zero: Tidak ditemukan %{entry_name}
+          one: Menampilkan <b>1</b> %{entry_name}
+          other: Menampilkan <b>semua %{count}</b> %{entry_name}
+      more_pages:
+        display_entries: Ditampilkan %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>
+          dari total <b>%{total}</b>
   flash:
     actions:
       create:
@@ -295,145 +292,6 @@ id:
       destroy:
         notice: "%{resource_name} berhasil dihancurkan."
         alert: "%{resource_name} tidak dapat dihancurkan."
-  i18n_tasks:
-    add_missing:
-      added:
-        one: Menambahkan tombol %{count}
-        other: Menambahkan tombol %{count}
-    cmd:
-      args:
-        default_text: 'Default: %{value}'
-        desc:
-          all_locales: Jangan berharap pola kunci dimulai dengan sebuah lokasi, namun
-            terapkan pola-pola tersebut ke semua lokasi secara implisit.
-          config: Mengesampingkan lokasi konfigurasi
-          confirm: Konfirmasi secara otomatis
-          data_format: 'Format data: %{valid_text}.'
-          keep_order: Pertahankan urutan tombol
-          key_pattern: Filter berdasarkan pola kunci (misalnya 'common.*')
-          key_pattern_to_rename: Tombol penuh (pola) untuk mengganti nama. Wajib diisi
-          locale_to_translate_from: Lokasi untuk menerjemahkan dari
-          locales_filter: 'Lokasi yang akan diproses. Khusus: dasar'
-          missing_types: 'Saring berdasarkan jenis: %{valid}'
-          new_key_name: Nama baru, menginterpolasi nama asli sebagai %{key}. Wajib
-            diisi
-          nostdin: Jangan membaca dari stdin
-          out_format: 'Format keluaran: %{valid_text}'
-          pattern_router: 'Gunakan router pola: kunci dipindahkan per konfigurasi
-            data.write'
-          strict: Hindari menyimpulkan penggunaan kunci dinamis seperti t("cats.#{cat}.name").
-            Lebih diutamakan daripada pengaturan konfigurasi jika ditetapkan.
-          translation_backend: Backend terjemahan (google atau deepl)
-          value: 'Nilai. Interpolasi: %{value}, %{human_key}, %{key}, %{default},
-            %{value_or_human_key}, %{value_or_default_or_human_key}'
-      desc:
-        add_missing: menambahkan kunci yang hilang ke data lokal, secara opsional
-          mencocokkan pola
-        check_consistent_interpolations: memverifikasi bahwa semua terjemahan menggunakan
-          variabel interpolasi yang benar
-        check_normalized: memverifikasi bahwa semua data terjemahan telah dinormalisasi
-        config: menampilkan konfigurasi i18n-tugas
-        data: menampilkan data lokal
-        data_merge: menggabungkan data lokal dengan pohon
-        data_remove: menghapus kunci yang ada dalam pohon dari data
-        data_write: mengganti data lokal dengan pohon
-        eq_base: menampilkan terjemahan yang sama dengan nilai dasar
-        find: menunjukkan di mana kunci digunakan dalam kode
-        gem_path: tunjukkan jalan menuju permata
-        health: semuanya baik-baik saja?
-        irb: memulai sesi REPL dalam konteks i18n-tugas
-        missing: menampilkan terjemahan yang hilang, secara opsional mencocokkan pola
-        mv: mengganti nama/gabungan kunci dalam data lokal yang sesuai dengan pola
-          yang diberikan
-        normalize: 'menormalkan data terjemahan: mengurutkan dan memindahkan ke file
-          yang tepat'
-        remove_unused: menghapus kunci yang tidak digunakan
-        rm: menghapus kunci dalam data lokal yang cocok dengan pola yang diberikan
-        translate_missing: menerjemahkan kunci yang hilang dengan Google Translate
-          atau DeepL Pro, secara opsional mencocokkan pola
-        tree_convert: mengonversi pohon antar format
-        tree_filter: pohon filter berdasarkan pola kunci
-        tree_merge: menggabungkan pohon
-        tree_mv_key: mengganti nama / menggabungkan / menghapus kunci yang cocok dengan
-          pola yang diberikan
-        tree_set_value: mengatur nilai kunci, secara opsional mencocokkan pola
-        tree_subtract: pohon A dikurangi kunci di pohon B
-        tree_translate: Google Menerjemahkan pohon ke lokasi akar
-        unused: menampilkan terjemahan yang tidak digunakan
-      encourage:
-      - Kerja bagus!
-      - Bagus sekali!
-      - Sempurna!
-      enum_list_opt:
-        invalid: "%{invalid} tidak masuk: %{valid}."
-      enum_opt:
-        invalid: "%{invalid} bukan salah satunya: %{valid}."
-      errors:
-        invalid_format: 'format tidak valid: %{invalid}. valid: %{valid}.'
-        invalid_locale: 'lokasi tidak valid: %{invalid}'
-        invalid_missing_type:
-          one: 'tipe tidak valid: %{invalid}. valid: %{valid}.'
-          other: 'jenis yang tidak diketahui: %{invalid}. valid: %{valid}.'
-        pass_forest: melewati hutan setempat
-    common:
-      continue_q: Lanjutkan?
-      key: Kunci
-      locale: Lokal
-      n_more: "%{count} selengkapnya"
-      value: Nilai
-    data_stats:
-      text: memiliki kunci %{key_count} di seluruh %{locale_count} lokal. Rata-rata,
-        nilai memiliki panjang %{value_chars_avg} karakter, kunci memiliki segmen
-        %{key_segments_avg}, lokal memiliki %{per_locale_avg} kunci.
-      text_single_locale: memiliki total kunci %{key_count}. Rata-rata, nilai memiliki
-        panjang %{value_chars_avg} karakter, kunci memiliki segmen %{key_segments_avg}.
-      title: Hutan (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: Siapkan DeepL Pro API key melalui variabel lingkungan DEEPL_AUTH_KEY
-          atau translation.deepl_api_key di config/i18n-tasks.yml. Dapatkan kuncinya
-          di https://www.deepl.com/pro.
-        no_results: DeepL tidak memberikan hasil.
-        specific_target_missing: Anda harus menyediakan varian khusus untuk bahasa
-          target yang diberikan, misalnya en-us, bukan en.
-    google_translate:
-      errors:
-        no_api_key: Tetapkan kunci API Google melalui variabel lingkungan GOOGLE_TRANSLATE_API_KEY
-          atau translation.google_translate_api_key di config/i18n-tasks.yml. Dapatkan
-          kuncinya di https://code.google.com/apis/console.
-        no_results: Google Translate tidak memberikan hasil. Pastikan informasi penagihan
-          diatur di https://code.google.com/apis/console.
-    health:
-      no_keys_detected: Tidak ada kunci yang terdeteksi. Periksa data.read di config/i18n-tasks.yml.
-    inconsistent_interpolations:
-      none: Tidak ditemukan interpolasi yang tidak konsisten.
-    missing:
-      details_title: Nilai di lokasi atau sumber lain
-      none: Tidak ada terjemahan yang hilang.
-    remove_unused:
-      confirm:
-        one: terjemahan %{count} akan dihapus dari %{locales}.
-        other: terjemahan %{count} akan dihapus dari %{locales}.
-      noop: Tidak ada tombol yang tidak digunakan untuk dihapus
-      removed: Tombol %{count} yang dihapus
-    translate_missing:
-      translated: Tombol %{count} yang diterjemahkan
-    unused:
-      none: Setiap terjemahan sedang digunakan.
-    usages:
-      none: Tidak ditemukan penggunaan kunci.
-    yandex_translate:
-      errors:
-        no_api_key: Tetapkan kunci API Yandex melalui variabel lingkungan YANDEX_API_KEY
-          atau translation.yandex_api_key di config/i18n-tasks.yml. Dapatkan kuncinya
-          di https://tech.yandex.com/translate.
-        no_results: Yandex tidak memberikan hasil.
-    openai_translate:
-      errors:
-        no_api_key: Tetapkan kunci API OpenAI melalui variabel lingkungan OPENAI_API_KEY
-          atau translation.openai_api_key di config/i18n-tasks.yml. Dapatkan kuncinya
-          di https://openai.com/.
-        no_results: OpenAI tidak memberikan hasil.
   devise:
     confirmations:
       confirmed: Akun anda telah berhasil dikonfirmasi. Anda telah sign in.
@@ -531,8 +389,18 @@ id:
         update: Update
         we_need_your_current_password_to_confirm_your_changes: Mohon masukkan password
           Anda saat ini untuk menyimpan perubahan
+        cancel_my_account_confirm_description_html: Tindakan ini akan menghapus semua
+          data yang terkait dengan akun Anda secara permanen. Tindakan ini tidak dapat
+          dibatalkan.<br/><br/>Untuk memverifikasi, ketik alamat email Anda untuk
+          mengonfirmasi dan menghapus akun Anda.
+        cancel_my_account_description: Tindakan ini akan menghapus semua data yang
+          terkait dengan akun Anda secara permanen. Tindakan ini tidak dapat dibatalkan.
+        saving: Menyimpan...
       new:
         sign_up: Mendaftar
+        login_html: Atau %{link}
+        submitting: Mengirimkan...
+        terms_html: Saya menerima %{terms} & %{privacy}
       signed_up: Proses pendaftaran berhasil. Apabila diaktifkan, konfirmasi telah
         dikirimkan ke e-mail anda.
       signed_up_but_inactive: Pendaftaran berhasil. Akan tetapi, Anda belum dapat
@@ -564,9 +432,14 @@ id:
       verification: Verifikasi
       verification_text: Masukkan kata sandi Anda saat ini untuk memvalidasi perubahan
         di atas.
+      preferred_language: Bahasa Pilihan
     sessions:
       new:
         sign_in: Masuk
+        sign_up_html: Atau %{link}
+      already_signed_out: Proses sign out berhasil.
+      signed_in: Proses sign in berhasil.
+      signed_out: Proses sign out berhasil.
     shared:
       links:
         back: Kembali
@@ -578,6 +451,7 @@ id:
         sign_in: Masuk
         sign_in_with_provider: Masuk dengan akun %{provider}
         sign_up: Mendaftar
+        redirecting: Mengalihkan...
       minimum_password_length:
         one: "(%{count} karakter minimum)"
         other: "(%{count} karakter minimum)"
@@ -600,27 +474,10 @@ id:
       login: Masuk
       remember_me: Ingatlah Aku
       sign_up: Daftar
-  routes:
-    users: pengguna
-    passwords: kata sandi
-    files: file
-    urls: url
-    sessions: sesi
-    registrations: pendaftaran
-    unlocks: membuka kunci
-    feedbacks: umpan balik
-    pages: halaman
-    new: baru
-    edit: sunting
-    update: pembaruan
-    destroy: menghancurkan
-    create: membuat
-    expired: kadaluarsa
-    active: aktif
-    audit: audit
-    access: akses
-    passphrase: kata sandi
-    preview: pratinjau
-  file_pushes:
-    new:
-      upload_limit: Anda dapat mengunggah hingga %{count} file per push.
+  views:
+    pagination:
+      first: "&laquo; Awal"
+      last: Akhir &raquo;
+      previous: "&lsaquo; Sebelumnya"
+      next: Berikutnya &rsaquo;
+      truncate: "&hellip;"

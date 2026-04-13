@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/lv
+# https://translation.io/pglombardo/pwpush-oss/lv
 #
 ---
 lv:
@@ -115,10 +115,10 @@ lv:
       expired: derīguma termiņš beidzies, lūdzu, piesakieties jaunam
       not_found: nav atrasts
       not_locked: netika nobloķēts
+      password_too_long: ir pārāk garš
       not_saved:
         one: "%{resource} netika saglabāts %{count} kļūdas dēļ:"
         other: "%{resource} netika saglabāts %{count} kļūdu dēļ:"
-      password_too_long: ir pārāk garš
     unavailable_session: 'Sesija %{id} vairs nav pieejama atmiņā. Ja izmantojat vairāku
       procesu serveri (piemēram, Unicorn vai Puma), šis pieprasījuma trāpījums nesaglabājas
       %{id} atmiņā. Apsveriet iespēju palielināt procesu/strādņu skaitu uz vienu (1)
@@ -215,6 +215,9 @@ lv:
       hour: stunda
       minute: minūte
       second: sekunde
+    relative:
+      future: "%{time}"
+      past: "%{time} pirms"
   helpers:
     select:
       prompt: Lūdzu, izvēlieties
@@ -222,25 +225,19 @@ lv:
       create: Izveidot %{model}
       update: Atjaunināt %{model}
       submit: Saglabāt %{model}
-  will_paginate:
-    previous_label: "&#8592; Iepriekšējais\n"
-    next_label: Nākamais &#8594;
-    page_gap: "&hellip;\n"
-    container_aria_label: Lapdale
-    page_aria_label: Lapa %{page}
     page_entries_info:
-      single_page:
-        zero: "%{model} nav atrasts"
-        one: Tiek attēlots %{model}
-        other: Tiek attēloti visi %{count} %{model}
-      single_page_html:
-        zero: "%{model} nav atrasts"
-        one: Tiek attēlots <b>1</b> %{model}
-        other: 'Tiek attēlots <b>all&nbsp;%{count}</b> %{model} '
-      multi_page: Kopā tiek attēlots %{model} %{from} - %{to} no %{count}
-      multi_page_html: Kopā tiek attēlots %{model} <b>%{from} - %{to}</b> no <b>%{count}</b>
-    previous_aria_label: Iepriekšējā lapa
-    next_aria_label: Nākamā lapaspuse
+      entry:
+        zero: ieraksti
+        one: ierakstu
+        other: ieraksti
+      one_page:
+        display_entries:
+          zero: "%{entry_name} nav atrasts"
+          one: Tiek rādīts <b>1</b> %{entry_name}
+          other: Tiek rādīts <b>viss %{count}</b> %{entry_name}
+      more_pages:
+        display_entries: Rāda %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> no
+          <b>%{total}</b>
   flash:
     actions:
       create:
@@ -382,8 +379,19 @@ lv:
         update: Izmainīt
         we_need_your_current_password_to_confirm_your_changes: mums ir nepieciešama
           Jūsu tagadējā parole, lai veiktu izmaiņas
+        cancel_my_account_confirm_description_html: Tādējādi tiks neatgriezeniski
+          dzēsti visi ar jūsu kontu saistītie dati. Šo darbību nevar atsaukt.<br/><br/>
+          Lai apstiprinātu, ierakstiet savu e-pasta adresi, lai apstiprinātu un dzēstu
+          savu kontu.
+        cancel_my_account_description: Tādējādi tiks neatgriezeniski dzēsti visi ar
+          jūsu kontu saistītie dati. Šo darbību nevar atsaukt.
+        saving: Notiek saglabāšana...
       new:
         sign_up: Reģistrēties
+        login_html: Vai %{link}
+        submitting: Notiek iesniegšana...
+        terms_html: Es piekrītu %{terms} un %{privacy}
+      preferred_language: vēlamā valoda
     unlocks:
       send_instructions: Pēc dažām minūtēm saņemsiet e-pasta ziņojumu ar norādījumiem,
         kā atbloķēt savu kontu.
@@ -407,6 +415,10 @@ lv:
     sessions:
       new:
         sign_in: Pievienoties
+        sign_up_html: Vai %{link}
+      already_signed_out: Veiksmīgi atslēdzies.
+      signed_in: Veiksmīgi pieslēdzies.
+      signed_out: Veiksmīgi atslēdzies.
     shared:
       links:
         back: Atpakaļ
@@ -416,6 +428,7 @@ lv:
         sign_in: Pievienoties
         sign_in_with_provider: Pievienoties ar %{provider}
         sign_up: Reģistrēties
+        redirecting: Notiek novirzīšana...
       minimum_password_length:
         one: "(vismaz %{count} zīme)"
         other: "(vismaz %{count} zīmes)"
@@ -469,165 +482,11 @@ lv:
         sunset_at: Saulriets plkst
         info: Informācija
     returns: Atgriežas
-  i18n_tasks:
-    add_missing:
-      added:
-        one: Pievienota %{count} atslēga
-        other: Pievienotas %{count} atslēgas
-    cmd:
-      args:
-        default_text: 'Noklusējums: %{value}'
-        desc:
-          all_locales: Negaidiet, ka galvenie modeļi sāksies ar lokalizāciju, tā vietā
-            izmantojiet tos visās lokalizācijās.
-          config: Ignorēt konfigurācijas atrašanās vietu
-          confirm: Apstipriniet automātiski
-          data_format: 'Datu formāts: %{valid_text}.'
-          keep_order: Ievērojiet atslēgu secību
-          key_pattern: Filtrēt pēc atslēgas modeļa (piem., "parasti.*")
-          key_pattern_to_rename: Pilna atslēga (raksts), ko pārdēvēt. Obligāti
-          locale_to_translate_from: Tulkošanas vieta
-          locales_filter: 'Apstrādājamā(-ās) lokalizācija(-as). Īpašs: bāze'
-          missing_types: 'Filtrēt pēc veidiem: %{valid}'
-          new_key_name: Jauns nosaukums, interpolē sākotnējo nosaukumu kā %{key}.
-            Obligāti
-          nostdin: Nelasīt no stdin
-          out_format: 'Izvades formāts: %{valid_text}'
-          pattern_router: 'Izmantot šablonu maršrutētāju: taustiņi pārvietoti pēc
-            konfigurācijas data.write'
-          strict: Neizseciniet dinamisko atslēgu lietojumu, piemēram, t("cats.#{cat}.name").
-            Ja tas ir iestatīts, tam ir prioritāte pār konfigurācijas iestatījumu.
-          translation_backend: Tulkošanas aizmugursistēma (google vai deepl)
-          value: 'Vērtība. Interpolāti: %{value}, %{human_key}, %{key}, %{default},
-            %{value_or_human_key}, %{value_or_default_or_human_key}'
-      desc:
-        add_missing: pievienojiet trūkstošās atslēgas lokalizācijas datiem, pēc izvēles
-          saskaņojiet modeli
-        check_consistent_interpolations: pārbaudiet, vai visos tulkojumos tiek izmantoti
-          pareizi interpolācijas mainīgie
-        check_normalized: pārbaudiet, vai visi tulkošanas dati ir normalizēti
-        config: parādīt i18n-tasks konfigurāciju
-        data: parādīt lokalizācijas datus
-        data_merge: apvienot lokalizācijas datus ar kokiem
-        data_remove: noņemt kokā esošās atslēgas no datiem
-        data_write: aizstāt lokalizācijas datus ar koku
-        eq_base: parādīt tulkojumus, kas vienādi ar bāzes vērtību
-        find: parādīt, kur kodā tiek izmantoti taustiņi
-        gem_path: parādīt ceļu uz dārgakmeni
-        health: Vai viss kārtībā?
-        irb: sākt REPL sesiju i18n-tasks kontekstā
-        missing: parādīt trūkstošos tulkojumus, pēc izvēles saskaņot modeli
-        mv: pārdēvējiet/apvienojiet atslēgas lokalizācijas datos, kas atbilst dotajam
-          modelim
-        normalize: 'normalizēt tulkošanas datus: kārtojiet un pārejiet uz pareizajiem
-          failiem'
-        remove_unused: noņemiet neizmantotās atslēgas
-        rm: noņemiet atslēgas lokalizācijas datos, kas atbilst dotajam modelim
-        translate_missing: tulkojiet trūkstošās atslēgas, izmantojot Google tulkotāju
-          vai DeepL Pro, pēc izvēles saskaņojiet paraugu
-        tree_convert: konvertēt koku starp formātiem
-        tree_filter: filtrējiet koku pēc atslēgas modeļa
-        tree_merge: apvienot kokus
-        tree_mv_key: pārdēvēt/apvienot/noņemt atslēgas, kas atbilst dotajam modelim
-        tree_set_value: iestatīt taustiņu vērtības, pēc izvēles saskaņot ar modeli
-        tree_subtract: koks A mīnus atslēgas kokā B
-        tree_translate: Google tulkotājs koku saknes lokalizācijām
-        unused: parādīt neizmantotos tulkojumus
-      encourage:
-      - Labs darbs!
-      - Labi padarīts!
-      - Perfekti!
-      enum_list_opt:
-        invalid: "%{invalid} neatrodas šeit: %{valid}."
-      enum_opt:
-        invalid: "%{invalid} nav viens no: %{valid}."
-      errors:
-        invalid_format: 'nederīgs formāts: %{invalid}. derīgs: %{valid}.'
-        invalid_locale: 'nederīga lokalizācija: %{invalid}'
-        invalid_missing_type:
-          one: 'nederīgs veids: %{invalid}. derīgs: %{valid}.'
-          other: 'nezināmi veidi: %{invalid}. derīgs: %{valid}.'
-        pass_forest: iet garām lokālajam mežam
-    common:
-      continue_q: Turpināt?
-      key: Atslēga
-      locale: Lokalizācija
-      n_more: "%{count} vairāk"
-      value: Vērtība
-    data_stats:
-      text: ir %{key_count} atslēgas visās %{locale_count} lokalizācijās. Vidēji vērtības
-        ir %{value_chars_avg} rakstzīmes garas, taustiņiem ir %{key_segments_avg}
-        segmenti, lokalizācijai ir %{per_locale_avg} atslēgas.
-      text_single_locale: kopā ir %{key_count} atslēgas. Vidēji vērtības ir %{value_chars_avg}
-        rakstzīmes garas, taustiņiem ir %{key_segments_avg} segmenti.
-      title: Mežs (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: Iestatiet DeepL Pro API atslēgu, izmantojot vides mainīgo DEEPL_AUTH_KEY
-          vai translation.deepl_api_key failā config/i18n-tasks.yml. Iegūstiet atslēgu
-          vietnē https://www.deepl.com/pro.
-        no_results: DeepL neatgrieza rezultātus.
-        specific_target_missing: Dotajai mērķvalodai ir jāiesniedz konkrēts variants,
-          piemēram, en-us, nevis en.
-    google_translate:
-      errors:
-        no_api_key: Iestatiet Google API atslēgu, izmantojot vides mainīgo GOOGLE_TRANSLATE_API_KEY
-          vai translation.google_translate_api_key failā config/i18n-tasks.yml. Iegūstiet
-          atslēgu vietnē https://code.google.com/apis/console.
-        no_results: Google tulkotājs nesniedza rezultātus. Pārliecinieties, vai norēķinu
-          informācija ir iestatīta vietnē https://code.google.com/apis/console.
-    health:
-      no_keys_detected: Nav atrasta neviena atslēga. Pārbaudiet data.read in config/i18n-tasks.yml.
-    inconsistent_interpolations:
-      none: Nav atrasta neviena pretrunīga interpolācija.
-    missing:
-      details_title: Vērtība citās lokalizācijās vai avotā
-      none: Trūkst neviena tulkojuma.
-    remove_unused:
-      confirm:
-        one: "%{count} tulkojums tiks noņemts no %{locales}."
-        other: "%{count} tulkojums tiks noņemts no %{locales}."
-      noop: Nav nelietotu atslēgu, ko noņemt
-      removed: Noņemtas %{count} atslēgas
-    translate_missing:
-      translated: Tulkotas %{count} atslēgas
-    unused:
-      none: Katrs tulkojums tiek izmantots.
-    usages:
-      none: Nav atrasts neviens galvenais lietojums.
-    yandex_translate:
-      errors:
-        no_api_key: Iestatiet Yandex API atslēgu, izmantojot YANDEX_API_KEY vides
-          mainīgo vai translation.yandex_api_key failā config/i18n-tasks.yml. Iegūstiet
-          atslēgu vietnē https://tech.yandex.com/translate.
-        no_results: Yandex nesniedza rezultātus.
-    openai_translate:
-      errors:
-        no_api_key: Iestatiet OpenAI API atslēgu, izmantojot vides mainīgo OPENAI_API_KEY
-          vai translation.openai_api_key failā config/i18n-tasks.yml. Iegūstiet atslēgu
-          vietnē https://openai.com/.
-        no_results: OpenAI nesniedza rezultātus.
-  routes:
-    users: lietotājiem
-    passwords: paroles
-    files: failus
-    urls: URL
-    sessions: sesijas
-    registrations: reģistrācijas
-    unlocks: atslēdz
-    feedbacks: atsauksmes
-    pages: lapas
-    new: jauns
-    edit: rediģēt
-    update: Atjaunināt
-    destroy: iznīcināt
-    create: izveidot
-    expired: beidzies derīguma termiņš
-    active: aktīvs
-    audit: audits
-    access: piekļuvi
-    passphrase: ieejas frāze
-    preview: priekšskatījums
-  file_pushes:
-    new:
-      upload_limit: Varat augšupielādēt līdz %{count} failiem vienā nospiešanā.
+    blank_allowed: tukšs atļauts
+  views:
+    pagination:
+      first: "&laquo; Pirmā"
+      last: Pēdējā &raquo;
+      previous: "&lsaquo; Iepriekšējais"
+      next: Nākošais &rsaquo;
+      truncate: "&hellip;"

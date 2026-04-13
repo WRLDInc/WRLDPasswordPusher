@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/fr
+# https://translation.io/pglombardo/pwpush-oss/fr
 #
 ---
 fr:
@@ -88,13 +88,13 @@ fr:
       blank: doit être rempli(e)
       present: doit être vide
       too_long:
-        one: est trop long (pas plus d'un caractère)
+        one: est trop long (pas plus de %{count} caractères)
         other: est trop long (pas plus de %{count} caractères)
       too_short:
-        one: est trop court (au moins un caractère)
+        one: est trop court (au moins %{count} caractères)
         other: est trop court (au moins %{count} caractères)
       wrong_length:
-        one: ne fait pas la bonne longueur (doit comporter un seul caractère)
+        one: ne fait pas la bonne longueur (doit comporter %{count} caractères)
         other: ne fait pas la bonne longueur (doit comporter %{count} caractères)
       not_a_number: n'est pas un nombre
       not_an_integer: doit être un nombre entier
@@ -114,13 +114,13 @@ fr:
       expired: est expiré, veuillez en demander un autre
       not_found: n’a pas été trouvé(e)
       not_locked: n’était pas verrouillé(e)
+      in: doit être égal à %{count}
+      password_too_long: est trop long
       not_saved:
         one: 'une erreur a empêché ce (cet ou cette) %{resource} d’être enregistré(e)
           :'
         other: "%{count} erreurs ont empêché ce (cet ou cette) %{resource} d’être
           enregistré(e) :"
-      in: doit être égal à %{count}
-      password_too_long: est trop long
     unavailable_session: |
       La session %{id} n'est plus disponible en mémoire.
 
@@ -136,7 +136,7 @@ fr:
     template:
       body: 'Veuillez vérifier les champs suivants : '
       header:
-        one: 'Impossible d''enregistrer ce(tte) %{model} : 1 erreur'
+        one: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreur(s)'
         other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
   activerecord:
     errors:
@@ -180,40 +180,40 @@ fr:
     distance_in_words:
       half_a_minute: une demi‑minute
       less_than_x_seconds:
-        one: moins d'une seconde
+        one: moins de %{count} seconde
         other: moins de %{count} secondes
       x_seconds:
-        one: 1 seconde
+        one: "%{count} seconde"
         other: "%{count} secondes"
       less_than_x_minutes:
         one: moins d'une minute
         other: moins de %{count} minutes
       x_minutes:
-        one: 1 minute
+        one: "%{count} minute"
         other: "%{count} minutes"
       about_x_hours:
-        one: environ une heure
+        one: environ %{count} heure
         other: environ %{count} heures
       x_days:
-        one: 1 jour
+        one: "%{count} jour"
         other: "%{count} jours"
       about_x_months:
-        one: environ un mois
+        one: environ %{count} mois
         other: environ %{count} mois
       x_months:
-        one: 1 mois
+        one: "%{count} mois"
         other: "%{count} mois"
       about_x_years:
-        one: environ un an
+        one: environ %{count} an
         other: environ %{count} ans
       over_x_years:
-        one: plus d'un an
+        one: plus de %{count} an
         other: plus de %{count} ans
       almost_x_years:
-        one: presqu'un an
+        one: presque %{count} an
         other: presque %{count} ans
       x_years:
-        one: 1 an
+        one: "%{count} an"
         other: "%{count} ans"
     prompts:
       year: Année
@@ -222,6 +222,9 @@ fr:
       hour: Heure
       minute: Minute
       second: Seconde
+    relative:
+      future: dans %{time}
+      past: "%{time} il y a"
   helpers:
     select:
       prompt: Veuillez sélectionner
@@ -229,26 +232,19 @@ fr:
       create: Créer un(e) %{model}
       update: Modifier ce(tte) %{model}
       submit: Enregistrer ce(tte) %{model}
-  will_paginate:
-    previous_label: "← précédent"
-    next_label: suivant →
-    page_gap: "&hellip;"
-    container_aria_label: Mise en page
-    page_aria_label: Page %{page}
     page_entries_info:
-      single_page:
-        zero: Aucun %{model} trouvé
-        one: "%{count} %{model} affiché(e)"
-        other: "%{count} %{model} affiché(e)s"
-      single_page_html:
-        zero: Aucun %{model} trouvé
-        one: "%{count} %{model} affiché(e)"
-        other: "%{count} %{model} affiché(e)s"
-      multi_page: "%{model} %{from} - %{to} sur %{count} au total"
-      multi_page_html: "%{model} <strong>%{from} - %{to}</strong> sur <strong>%{count}</strong>
-        au total"
-    previous_aria_label: Page précédente
-    next_aria_label: Page suivante
+      entry:
+        zero: entrées
+        one: entrée
+        other: entrées
+      one_page:
+        display_entries:
+          zero: Aucun %{entry_name} trouvé
+          one: "<b>%{count}</b> %{entry_name}"
+          other: "<b>tous les %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "%{entry_name}  <b>%{first} - %{last}</b> sur <b>%{total}</b>
+          au total"
   flash:
     actions:
       create:
@@ -283,7 +279,7 @@ fr:
       unconfirmed: Vous devez confirmer votre adresse email pour continuer.
     mailer:
       confirmation_instructions:
-        subject: Comment confirmer
+        subject: Instructions de confirmation
         action: Confirmer mon email
         greeting: Bienvenue %{recipient} !
         instruction: 'Vous pouvez confirmer votre email grâce au lien ci-dessous :'
@@ -387,8 +383,19 @@ fr:
         update: Modifier
         we_need_your_current_password_to_confirm_your_changes: nous avons besoin de
           votre mot de passe actuel pour valider ces modifications
+        cancel_my_account_confirm_description_html: Cette action effacera définitivement
+          toutes les données associées à votre compte. Cette action ne peut pas être
+          annulée.<br/><br/> Pour vérifier, saisissez votre adresse e-mail pour confirmer
+          et supprimer votre compte.
+        cancel_my_account_description: Cette action effacera définitivement toutes
+          les données associées à votre compte. Cette action ne peut pas être annulée.
+        saving: Économie...
       new:
         sign_up: Inscription
+        login_html: Ou %{link}
+        submitting: Soumission...
+        terms_html: J'accepte les %{terms} et %{privacy}
+      preferred_language: langue préférée
     unlocks:
       send_instructions: Vous allez recevoir sous quelques minutes un email comportant
         des instructions pour déverrouiller votre compte.
@@ -412,6 +419,10 @@ fr:
     sessions:
       new:
         sign_in: Connexion
+        sign_up_html: Ou %{link}
+      already_signed_out: Déconnecté(e).
+      signed_in: Connecté(e).
+      signed_out: Déconnecté(e).
     shared:
       links:
         back: Retour
@@ -423,6 +434,7 @@ fr:
         sign_in: Connexion
         sign_in_with_provider: Connexion avec %{provider}
         sign_up: Inscription
+        redirecting: Redirection...
       minimum_password_length:
         one: "(%{count} caractère au moins)"
         other: "(%{count} caractères au moins)"
@@ -465,168 +477,11 @@ fr:
         sunset_at: Coucher de soleil à
         info: Info
     returns: Retour
-  i18n_tasks:
-    add_missing:
-      added:
-        one: Ajout de la clé %{count}
-        other: Ajout des clés %{count}
-    cmd:
-      args:
-        default_text: 'Par défaut : %{value}'
-        desc:
-          all_locales: Ne vous attendez pas à ce que les modèles de clé commencent
-            par une locale, appliquez-les implicitement à toutes les locales.
-          config: Remplacer l'emplacement de configuration
-          confirm: Confirmer automatiquement
-          data_format: 'Format des données : %{valid_text}.'
-          keep_order: Gardez l'ordre des clés
-          key_pattern: Filtrer par modèle de clé (par exemple 'common.*')
-          key_pattern_to_rename: Clé complète (motif) à renommer. Requis
-          locale_to_translate_from: Paramètres régionaux à partir desquels traduire
-          locales_filter: 'Paramètres régionaux à traiter. Spécial : base'
-          missing_types: 'Filtrer par types : %{valid}'
-          new_key_name: Nouveau nom, interpole le nom d'origine comme %{key}. Requis
-          nostdin: Ne pas lire depuis stdin
-          out_format: 'Format de sortie : %{valid_text}'
-          pattern_router: 'Use pattern router : clés déplacées par config data.write'
-          strict: Évitez de déduire des utilisations de clés dynamiques telles que
-            t("cats.#{cat}.name"). A priorité sur le paramètre de configuration s'il
-            est défini.
-          translation_backend: Backend de traduction (google ou deepl)
-          value: 'Valeur. Interpole : %{value}, %{human_key}, %{key}, %{default},
-            %{value_or_human_key}, %{value_or_default_or_human_key}'
-      desc:
-        add_missing: ajouter les clés manquantes aux données de paramètres régionaux,
-          éventuellement correspondre à un modèle
-        check_consistent_interpolations: vérifier que toutes les traductions utilisent
-          des variables d'interpolation correctes
-        check_normalized: vérifier que toutes les données de traduction sont normalisées
-        config: afficher la configuration des tâches i18n
-        data: afficher les données locales
-        data_merge: fusionner les données locales avec des arbres
-        data_remove: supprimer les clés présentes dans l'arborescence des données
-        data_write: remplacer les données locales par l'arborescence
-        eq_base: afficher les traductions égales à la valeur de base
-        find: montrer où les clés sont utilisées dans le code
-        gem_path: montrer le chemin vers la gemme
-        health: est-ce que tout est OK ?
-        irb: démarrer la session REPL dans le contexte des tâches i18n
-        missing: afficher les traductions manquantes, éventuellement correspondre
-          à un modèle
-        mv: renommer/fusionner les clés dans les données locales qui correspondent
-          au modèle donné
-        normalize: 'normaliser les données de traduction : trier et déplacer vers
-          les bons fichiers'
-        remove_unused: supprimer les clés inutilisées
-        rm: supprimer les clés dans les données locales qui correspondent au modèle
-          donné
-        translate_missing: traduire les clés manquantes avec Google Translate ou DeepL
-          Pro, éventuellement correspondre à un modèle
-        tree_convert: convertir l'arborescence entre les formats
-        tree_filter: filtrer l'arborescence par modèle de clé
-        tree_merge: fusionner les arbres
-        tree_mv_key: renommer/fusionner/supprimer les clés correspondant au modèle
-          donné
-        tree_set_value: définir les valeurs des clés, correspondre éventuellement
-          à un modèle
-        tree_subtract: arbre A moins les clés de l'arbre B
-        tree_translate: Google traduit un arbre en paramètres régionaux racine
-        unused: afficher les traductions inutilisées
-      encourage:
-      - Bon travail!
-      - Bien joué!
-      - Parfait!
-      enum_list_opt:
-        invalid: "%{invalid} n'est pas dans : %{valid}."
-      enum_opt:
-        invalid: "%{invalid} n'est pas l'un des suivants : %{valid}."
-      errors:
-        invalid_format: 'format invalide : %{invalid}. valide : %{valid}.'
-        invalid_locale: 'paramètres régionaux invalides : %{invalid}'
-        invalid_missing_type:
-          one: 'type invalide : %{invalid}. valide : %{valid}.'
-          other: 'types inconnus : %{invalid}. valide : %{valid}.'
-        pass_forest: passer la forêt locale
-    common:
-      continue_q: Continuer?
-      key: Clé
-      locale: Lieu
-      n_more: "%{count} plus"
-      value: Valeur
-    data_stats:
-      text: a des clés %{key_count} dans les paramètres régionaux %{locale_count}.
-        En moyenne, les valeurs comportent des caractères %{value_chars_avg}, les
-        clés ont des segments %{key_segments_avg}, une locale a des clés %{per_locale_avg}.
-      text_single_locale: a des clés %{key_count} au total. En moyenne, les valeurs
-        comportent des caractères %{value_chars_avg}, les clés ont des segments %{key_segments_avg}.
-      title: Forêt (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: Configurez la clé API DeepL Pro via la variable d'environnement
-          DEEPL_AUTH_KEY ou translation.deepl_api_key dans config/i18n-tasks.yml.
-          Obtenez la clé sur https://www.deepl.com/pro.
-        no_results: DeepL n'a renvoyé aucun résultat.
-        specific_target_missing: Vous devez fournir une variante spécifique pour la
-          langue cible donnée, par exemple en-us au lieu de en.
-    google_translate:
-      errors:
-        no_api_key: Définissez la clé API Google via la variable d'environnement GOOGLE_TRANSLATE_API_KEY
-          ou translation.google_translate_api_key dans config/i18n-tasks.yml. Obtenez
-          la clé sur https://code.google.com/apis/console.
-        no_results: Google Traduction n'a renvoyé aucun résultat. Assurez-vous que
-          les informations de facturation sont définies sur https://code.google.com/apis/console.
-    health:
-      no_keys_detected: Aucune clé détectée. Vérifiez data.read dans config/i18n-tasks.yml.
-    inconsistent_interpolations:
-      none: Aucune interpolation incohérente n'a été trouvée.
-    missing:
-      details_title: Valeur dans d'autres paramètres régionaux ou source
-      none: Aucune traduction ne manque.
-    remove_unused:
-      confirm:
-        one: La traduction %{count} sera supprimée de %{locales}.
-        other: La traduction %{count} sera supprimée de %{locales}.
-      noop: Aucune clé inutilisée à supprimer
-      removed: Suppression des clés %{count}
-    translate_missing:
-      translated: Clés %{count} traduites
-    unused:
-      none: Chaque traduction est utilisée.
-    usages:
-      none: Aucune utilisation de clé trouvée.
-    yandex_translate:
-      errors:
-        no_api_key: Définissez la clé API Yandex via la variable d'environnement YANDEX_API_KEY
-          ou translation.yandex_api_key dans config/i18n-tasks.yml. Obtenez la clé
-          sur https://tech.yandex.com/translate.
-        no_results: Yandex n'a renvoyé aucun résultat.
-    openai_translate:
-      errors:
-        no_api_key: Définissez la clé API OpenAI via la variable d'environnement OPENAI_API_KEY
-          ou translation.openai_api_key dans config/i18n-tasks.yml. Obtenez la clé
-          sur https://openai.com/.
-        no_results: OpenAI n'a renvoyé aucun résultat.
-  routes:
-    users: utilisateurs
-    passwords: mots de passe
-    files: fichiers
-    urls: URL
-    sessions: sessions
-    registrations: inscriptions
-    unlocks: déverrouille
-    feedbacks: commentaires
-    pages: pages
-    new: nouveau
-    edit: modifier
-    update: mise à jour
-    destroy: détruire
-    create: créer
-    expired: expiré
-    active: actif
-    audit: Audit
-    access: accéder
-    passphrase: passphrase
-    preview: Aperçu
-  file_pushes:
-    new:
-      upload_limit: Vous pouvez télécharger jusqu'à %{count} fichiers par push.
+    blank_allowed: espace vide autorisé
+  views:
+    pagination:
+      first: "&laquo; Premier"
+      last: Dernier &raquo;
+      previous: "&lsaquo; Précédent"
+      next: Suivant &rsaquo;
+      truncate: "&hellip;"

@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/th
+# https://translation.io/pglombardo/pwpush-oss/th
 #
 ---
 th:
@@ -114,10 +114,10 @@ th:
       expired: การยืนยันหมดอายุแล้ว กรุณาขอใหม่อีกครั้ง
       not_found: ไม่พบ
       not_locked: ไม่ถูกล็อก
+      password_too_long: ยาวเกินไป
       not_saved:
         one: '1 ข้อผิดพลาดห้าม %{resource} นี้ไม่ให้ถูกบันทึก:'
         other: 'ข้อผิดพลาด %{count} ทำให้ไม่สามารถบันทึก %{resource} นี้ได้:'
-      password_too_long: ยาวเกินไป
     unavailable_session: เซสชัน %{id} ไม่สามารถใช้งานได้ในหน่วยความจำอีกต่อไป หากคุณบังเอิญทำงานบนเซิร์ฟเวอร์แบบหลายกระบวนการ
       (เช่น Unicorn หรือ Puma) กระบวนการที่ร้องขอนี้จะไม่เก็บ %{id} ไว้ในหน่วยความจำ
       พิจารณาเปลี่ยนจำนวนกระบวนการ/ผู้ปฏิบัติงานเป็นหนึ่ง (1) หรือใช้เซิร์ฟเวอร์อื่นในการพัฒนา
@@ -210,6 +210,9 @@ th:
       hour: ชั่วโมง
       minute: นาที
       second: วินาที
+    relative:
+      future: ใน %{time}
+      past: "%{time} ที่ผ่านมา"
   helpers:
     select:
       prompt: โปรดเลือก
@@ -217,25 +220,19 @@ th:
       create: สร้าง%{model}
       update: ปรับปรุง%{model}
       submit: บันทึก%{model}
-  will_paginate:
-    previous_label: "← ก่อนหน้า"
-    next_label: ถัดไป →
-    page_gap: "…"
-    container_aria_label: การแบ่งหน้า
-    page_aria_label: หน้า %{page}
     page_entries_info:
-      single_page:
-        zero: ไม่พบ %{model}
-        one: กำลังแสดง 1 %{model}
-        other: การแสดง %{count} %{model} ทั้งหมด
-      single_page_html:
-        zero: ไม่พบ %{model}
-        one: กำลังแสดง <b>1</b> %{model}
-        other: การแสดง <b>%{count} %{model} ทั้งหมด</b>
-      multi_page: แสดง %{model} %{from} - %{to} จาก %{count} ทั้งหมด
-      multi_page_html: แสดง %{model} <b>%{from} - %{to}</b> จาก <b>%{count}</b> ทั้งหมด
-    previous_aria_label: หน้าก่อนหน้า
-    next_aria_label: หน้าต่อไป
+      entry:
+        zero: รายการ
+        one: รายการ
+        other: รายการ
+      one_page:
+        display_entries:
+          zero: ไม่พบ %{entry_name}
+          one: กำลังแสดง <b>1</b> %{entry_name}
+          other: กำลังแสดง <b>%{count} %{entry_name} ทั้งหมด</b>
+      more_pages:
+        display_entries: กำลังแสดงผล %{entry_name} <b>%{first}&nbps;-&nbps;%{last}</b>
+          จากทั้งหมด <b>%{total}</b> หน้า
   flash:
     actions:
       create:
@@ -355,8 +352,17 @@ th:
         unhappy: ไม่พอใจ
         update: ปรับข้อมูล
         we_need_your_current_password_to_confirm_your_changes: เราต้องการรหัสผ่านปัจจุบันเพื่อยืนยันการเปลี่ยนรหัสของคุณ
+        cancel_my_account_confirm_description_html: การดำเนินการนี้จะลบข้อมูลทั้งหมดที่เกี่ยวข้องกับบัญชีของคุณอย่างถาวร
+          การดำเนินการนี้ไม่สามารถย้อนกลับได้<br/><br/> หากต้องการตรวจสอบให้พิมพ์ที่อยู่อีเมลของคุณเพื่อยืนยันและลบบัญชีของคุณ
+        cancel_my_account_description: การดำเนินการนี้จะลบข้อมูลทั้งหมดที่เกี่ยวข้องกับบัญชีของคุณอย่างถาวร
+          การดำเนินการนี้ไม่สามารถย้อนกลับได้
+        saving: ประหยัด...
       new:
         sign_up: ออกจากระบบ
+        login_html: หรือ %{link}
+        submitting: กำลังส่ง...
+        terms_html: ฉันยอมรับ %{terms} และ %{privacy}
+      preferred_language: ภาษาที่ต้องการ
     unlocks:
       send_instructions: คุณจะได้รับอีเมล์แนะนำการปลดล็อกบัญชีในไม่ช้า
       send_paranoid_instructions: หากบัญชีของคุณมีอยู่ในระบบแล้ว คุณจะได้รับอีเมล์แนะนำวิธีการปลดล็อกบัญชีในไม่ช้า
@@ -377,6 +383,10 @@ th:
     sessions:
       new:
         sign_in: เข้าสู่ระบบ
+        sign_up_html: หรือ %{link}
+      already_signed_out: ออกจากระบบเรียบร้อยแล้ว
+      signed_in: เข้าสู่ระบบเรียบร้อยแล้ว
+      signed_out: ออกจากระบบเรียบร้อยแล้ว
     shared:
       links:
         back: กลับ
@@ -386,6 +396,7 @@ th:
         sign_in: เข้าสู่ระบบ
         sign_in_with_provider: เข้าสู่ระบบด้วย%{provider}
         sign_up: ออกจากระบบ
+        redirecting: กำลังเปลี่ยนเส้นทาง...
       minimum_password_length:
         one: "(%{count} ตัวอักษรขั้นต่ำ)"
         other: "(%{count} ตัวอักษรขั้นต่ำ)"
@@ -428,153 +439,11 @@ th:
         sunset_at: พระอาทิตย์ตกที่
         info: ข้อมูล
     returns: ส่งคืน
-  i18n_tasks:
-    add_missing:
-      added:
-        one: เพิ่มคีย์ %{count}
-        other: เพิ่มคีย์ %{count}
-    cmd:
-      args:
-        default_text: 'ค่าเริ่มต้น: %{value}'
-        desc:
-          all_locales: อย่าคาดหวังว่ารูปแบบคีย์จะขึ้นต้นด้วยโลแคล ให้ใช้กับโลแคลทั้งหมดแทน
-          config: แทนที่ตำแหน่งการกำหนดค่า
-          confirm: ยืนยันโดยอัตโนมัติ
-          data_format: 'รูปแบบข้อมูล: %{valid_text}'
-          keep_order: รักษาลำดับของคีย์
-          key_pattern: กรองตามรูปแบบคีย์ (เช่น 'common.*')
-          key_pattern_to_rename: คีย์แบบเต็ม (รูปแบบ) เพื่อเปลี่ยนชื่อ ที่จำเป็น
-          locale_to_translate_from: ภาษาที่จะแปลจาก
-          locales_filter: 'โลแคลที่จะประมวลผล พิเศษ: ฐาน'
-          missing_types: 'กรองตามประเภท: %{valid}'
-          new_key_name: ชื่อใหม่ สอดแทรกชื่อเดิมเป็น %{key} ที่จำเป็น
-          nostdin: อย่าอ่านจาก stdin
-          out_format: 'รูปแบบเอาต์พุต: %{valid_text}'
-          pattern_router: 'ใช้เราเตอร์รูปแบบ: ย้ายคีย์ต่อ config data.write'
-          strict: หลีกเลี่ยงการอนุมานการใช้ไดนามิกคีย์ เช่น t("cats.#{cat}.name")
-            มีความสำคัญเหนือการตั้งค่า config หากตั้งค่าไว้
-          translation_backend: แบ็กเอนด์การแปล (google หรือ deepl)
-          value: 'ค่า. Interpolates: %{value}, %{human_key}, %{key}, %{default}, %{value_or_human_key},
-            %{value_or_default_or_human_key}'
-      desc:
-        add_missing: เพิ่มคีย์ที่ขาดหายไปให้กับข้อมูลตำแหน่งที่ตั้ง เลือกจับคู่รูปแบบ
-        check_consistent_interpolations: ตรวจสอบว่าการแปลทั้งหมดใช้ตัวแปรการแก้ไขที่ถูกต้อง
-        check_normalized: ตรวจสอบว่าข้อมูลการแปลทั้งหมดได้รับการทำให้เป็นมาตรฐาน
-        config: แสดงการกำหนดค่างาน i18n
-        data: แสดงข้อมูลสถานที่
-        data_merge: รวมข้อมูลสถานที่กับต้นไม้
-        data_remove: ลบคีย์ที่อยู่ในแผนผังออกจากข้อมูล
-        data_write: แทนที่ข้อมูลโลแคลด้วยทรี
-        eq_base: แสดงการแปลเท่ากับค่าฐาน
-        find: แสดงตำแหน่งที่ใช้คีย์ในรหัส
-        gem_path: แสดงเส้นทางสู่อัญมณี
-        health: ทุกอย่างเรียบร้อยดีไหม
-        irb: เริ่มเซสชัน REPL ภายในบริบทงาน i18n
-        missing: แสดงคำแปลที่ขาดหายไป เลือกจับคู่รูปแบบ
-        mv: เปลี่ยนชื่อ/รวมคีย์ในข้อมูลโลแคลที่ตรงกับรูปแบบที่กำหนด
-        normalize: 'ปรับข้อมูลการแปลให้เป็นมาตรฐาน: จัดเรียงและย้ายไปยังไฟล์ที่ถูกต้อง'
-        remove_unused: ลบคีย์ที่ไม่ได้ใช้
-        rm: ลบคีย์ในข้อมูลโลแคลที่ตรงกับรูปแบบที่กำหนด
-        translate_missing: แปลคีย์ที่หายไปด้วย Google Translate หรือ DeepL Pro โดยเลือกจับคู่รูปแบบได้
-        tree_convert: แปลงต้นไม้ระหว่างรูปแบบ
-        tree_filter: กรองต้นไม้ตามรูปแบบคีย์
-        tree_merge: รวมต้นไม้
-        tree_mv_key: เปลี่ยนชื่อ/รวม/ลบคีย์ที่ตรงกับรูปแบบที่กำหนด
-        tree_set_value: กำหนดค่าของคีย์ เลือกจับคู่รูปแบบ
-        tree_subtract: ต้นไม้ A ลบคีย์ในต้นไม้ B
-        tree_translate: Google แปลต้นไม้เป็นภาษารูท
-        unused: แสดงคำแปลที่ไม่ได้ใช้
-      encourage:
-      - ดีมาก!
-      - ทำได้ดี!
-      - สมบูรณ์แบบ!
-      enum_list_opt:
-        invalid: "%{invalid} ไม่ได้อยู่ใน: %{valid}"
-      enum_opt:
-        invalid: "%{invalid} ไม่ใช่หนึ่งใน: %{valid}"
-      errors:
-        invalid_format: 'รูปแบบไม่ถูกต้อง: %{invalid} ถูกต้อง: %{valid}.'
-        invalid_locale: 'ภาษาไม่ถูกต้อง: %{invalid}'
-        invalid_missing_type:
-          one: 'ประเภทไม่ถูกต้อง: %{invalid} ถูกต้อง: %{valid}.'
-          other: 'ประเภทที่ไม่รู้จัก: %{invalid} ถูกต้อง: %{valid}.'
-        pass_forest: ผ่านป่าโลแคล
-    common:
-      continue_q: ดำเนินการต่อ?
-      key: สำคัญ
-      locale: สถานที่
-      n_more: "%{count} เพิ่มเติม"
-      value: ค่า
-    data_stats:
-      text: มีคีย์ %{key_count} ข้ามโลแคล %{locale_count} โดยเฉลี่ยแล้ว ค่าจะมีความยาวอักขระ
-        %{value_chars_avg} ตัว คีย์มีส่วน %{key_segments_avg} ส่วนโลแคลมีคีย์ %{per_locale_avg}
-      text_single_locale: มีคีย์ %{key_count} ทั้งหมด โดยเฉลี่ยแล้ว ค่าจะมีความยาวอักขระ
-        %{value_chars_avg} ตัว คีย์มีส่วน %{key_segments_avg}
-      title: ป่า (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: ตั้งค่าคีย์ DeepL Pro API ผ่านตัวแปรสภาพแวดล้อม DEEPL_AUTH_KEY
-          หรือ translate.deepl_api_key ใน config/i18n-tasks.yml รับรหัสที่ https://www.deepl.com/pro
-        no_results: DeepL ไม่แสดงผลลัพธ์
-        specific_target_missing: คุณต้องระบุรูปแบบเฉพาะสำหรับภาษาเป้าหมายที่กำหนด
-          เช่น en-us แทนที่จะเป็น en
-    google_translate:
-      errors:
-        no_api_key: ตั้งค่าคีย์ Google API ผ่านตัวแปรสภาพแวดล้อม GOOGLE_TRANSLATE_API_KEY
-          หรือ translate.google_translate_api_key ใน config/i18n-tasks.yml รับรหัสที่
-          https://code.google.com/apis/console
-        no_results: Google แปลภาษาไม่แสดงผลลัพธ์ ตรวจสอบให้แน่ใจว่าตั้งค่าข้อมูลการเรียกเก็บเงินไว้ที่
-          https://code.google.com/apis/console
-    health:
-      no_keys_detected: ไม่พบคีย์ ตรวจสอบ data.read ใน config/i18n-tasks.yml
-    inconsistent_interpolations:
-      none: ไม่พบการแก้ไขที่ไม่สอดคล้องกัน
-    missing:
-      details_title: ค่าในพื้นที่หรือแหล่งที่มาอื่น
-      none: ไม่มีคำแปลขาดหายไป
-    remove_unused:
-      confirm:
-        one: การแปล %{count} จะถูกลบออกจาก %{locales}
-        other: การแปล %{count} จะถูกลบออกจาก %{locales}
-      noop: ไม่มีคีย์ที่ไม่ได้ใช้ที่จะลบ
-      removed: ลบคีย์ %{count}
-    translate_missing:
-      translated: คีย์ %{count} ที่แปลแล้ว
-    unused:
-      none: มีการใช้งานการแปลทุกครั้ง
-    usages:
-      none: ไม่พบการใช้คีย์
-    yandex_translate:
-      errors:
-        no_api_key: ตั้งค่าคีย์ Yandex API ผ่านตัวแปรสภาพแวดล้อม YANDEX_API_KEY หรือ
-          translate.yandex_api_key ใน config/i18n-tasks.yml รับรหัสที่ https://tech.yandex.com/translate
-        no_results: ยานเดกซ์ไม่แสดงผลลัพธ์
-    openai_translate:
-      errors:
-        no_api_key: ตั้งค่าคีย์ OpenAI API ผ่านตัวแปรสภาพแวดล้อม OPENAI_API_KEY หรือ
-          Translation.openai_api_key ใน config/i18n-tasks.yml รับกุญแจได้ที่ https://openai.com/
-        no_results: OpenAI ไม่ส่งคืนผลลัพธ์
-  routes:
-    users: ผู้ใช้
-    passwords: รหัสผ่าน
-    files: ไฟล์
-    urls: URL
-    sessions: เซสชัน
-    registrations: การลงทะเบียน
-    unlocks: ปลดล็อค
-    feedbacks: การตอบรับ
-    pages: หน้า
-    new: ใหม่
-    edit: แก้ไข
-    update: อัปเดต
-    destroy: ทำลาย
-    create: สร้าง
-    expired: หมดอายุ
-    active: คล่องแคล่ว
-    audit: การตรวจสอบ
-    access: เข้าถึง
-    passphrase: ข้อความรหัสผ่าน
-    preview: ดูตัวอย่าง
-  file_pushes:
-    new:
-      upload_limit: คุณสามารถอัปโหลดไฟล์ได้สูงสุด %{count} ต่อการพุช
+    blank_allowed: อนุญาตให้ว่างเปล่า
+  views:
+    pagination:
+      first: "&laquo; หน้าแรก"
+      last: หน้าสุดท้าย &raquo;
+      previous: "&lsaquo; ก่อนหน้า"
+      next: ถัดไป &rsaquo;
+      truncate: "&hellip;"

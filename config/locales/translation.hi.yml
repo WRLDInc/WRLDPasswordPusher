@@ -2,7 +2,7 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/hi
+# https://translation.io/pglombardo/pwpush-oss/hi
 #
 ---
 hi:
@@ -47,6 +47,7 @@ hi:
     returns: रिटर्न
     deprecated: पदावनत
     deprecation_details: बहिष्करण विवरण
+    blank_allowed: रिक्त अनुमत
   date:
     day_names:
     - रविवार
@@ -156,11 +157,11 @@ hi:
       expired: समाप्त हो गया है, कृपया एक नया अनुरोध करें
       not_found: नहीं मिला
       not_locked: लॉक नहीं था
+      password_too_long: यह बहुत लम्बा है
       not_saved:
         one: '1 त्रुटि ने इस %{resource} को सहेजे जाने से रोक दिया:'
         other: "%{count} त्रुटियों ने इस %{resource} को सहेजे जाने से प्रतिबंधित किया
           है:"
-      password_too_long: यह बहुत लम्बा है
     template:
       body: 'निम्नलिखित क्षेत्रों के साथ समस्या थी:'
       header:
@@ -258,6 +259,9 @@ hi:
       hour: घंटा
       minute: मिनट
       second: सेकेंड
+    relative:
+      future: "%{time} में"
+      past: "%{time} पहले"
   helpers:
     select:
       prompt: कृपया चुनें
@@ -265,26 +269,19 @@ hi:
       create: "%{model} बनाएँ"
       update: "%{model} अद्यतन"
       submit: "%{model} सौंपें"
-  will_paginate:
-    previous_label: "← पिछला"
-    previous_aria_label: पिछला पृष्ठ
-    next_label: अगला →
-    next_aria_label: अगला पृष्ठ
-    page_gap: "…"
-    container_aria_label: पृष्ठ पर अंक लगाना
-    page_aria_label: पेज %{page}
     page_entries_info:
-      single_page:
-        zero: नहीं %{model} मिला
-        one: 1 %{model} प्रदर्शित करना
-        other: सभी प्रदर्शित %{count} %{model}
-      single_page_html:
-        zero: नहीं %{model} मिला
-        one: "<b>1</b> %{model} प्रदर्शित करना"
-        other: "<b>सभी प्रदर्शित %{count}</b> %{model}"
-      multi_page: "%{model} %{from} - %{to} %{count} का कुल प्रदर्शित करना"
-      multi_page_html: "%{model} <b>%{from} - %{to}</b> <b>%{count}</b> का कुल प्रदर्शित
-        करना"
+      entry:
+        zero: प्रविष्टियां
+        one: प्रवेश
+        other: प्रविष्टियां
+      one_page:
+        display_entries:
+          zero: कोई %{entry_name} नहीं मिला
+          one: दर्शित <b>%{count}</b> %{entry_name}
+          other: प्रदर्शित <b>%{count}</b> %{entry_name}
+      more_pages:
+        display_entries: कुल <b>%{total} में से %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>
+          प्रदर्शित
   flash:
     actions:
       create:
@@ -294,147 +291,6 @@ hi:
       destroy:
         notice: "%{resource_name} को सफलतापूर्वक नष्ट कर दिया गया।"
         alert: "%{resource_name} को नष्ट नहीं किया जा सका।"
-  i18n_tasks:
-    add_missing:
-      added:
-        one: "%{count} कुंजी जोड़ी गई"
-        other: "%{count} कुंजियाँ जोड़ी गईं"
-    cmd:
-      args:
-        default_text: 'डिफ़ॉल्ट: %{value}'
-        desc:
-          all_locales: यह अपेक्षा न करें कि प्रमुख पैटर्न किसी स्थान से शुरू होंगे,
-            बल्कि उन्हें सभी स्थानों पर अंतर्निहित रूप से लागू करें।
-          config: कॉन्फ़िगरेशन स्थान को ओवरराइड करें
-          confirm: स्वचालित रूप से पुष्टि करें
-          data_format: 'डेटा प्रारूप: %{valid_text}।'
-          keep_order: चाबियों का क्रम बनाए रखें
-          key_pattern: कुंजी पैटर्न के आधार पर फ़िल्टर करें (जैसे 'सामान्य.*')
-          key_pattern_to_rename: नाम बदलने के लिए पूर्ण कुंजी (पैटर्न)। आवश्यक
-          locale_to_translate_from: अनुवाद करने के लिए स्थान
-          locales_filter: 'संसाधित करने के लिए स्थान। विशेष: आधार'
-          missing_types: 'प्रकार के अनुसार फ़िल्टर करें: %{valid}'
-          new_key_name: नया नाम, मूल नाम को %{key} के रूप में प्रक्षेपित करता है।
-            आवश्यक
-          nostdin: stdin से मत पढ़ो
-          out_format: 'आउटपुट स्वरूप: %{valid_text}'
-          pattern_router: 'पैटर्न राउटर का उपयोग करें: कुंजियाँ प्रति कॉन्फ़िगरेशन
-            डेटा.राइट में स्थानांतरित की गईं'
-          strict: t("cats.#{cat}.name") जैसे गतिशील कुंजी उपयोगों का अनुमान लगाने
-            से बचें। यदि सेट किया गया है तो कॉन्फ़िगरेशन सेटिंग पर प्राथमिकता लेता
-            है।
-          translation_backend: अनुवाद बैकएंड (गूगल या डीपीएल)
-          value: 'कीमत। प्रक्षेप: %{value}, %{human_key}, %{key}, %{default}, %{value_or_human_key},
-            %{value_or_default_or_human_key}'
-      desc:
-        add_missing: स्थानीय डेटा में गुम कुंजियाँ जोड़ें, वैकल्पिक रूप से एक पैटर्न
-          से मिलान करें
-        check_consistent_interpolations: सत्यापित करें कि सभी अनुवाद सही प्रक्षेप
-          चर का उपयोग करते हैं
-        check_normalized: सत्यापित करें कि सभी अनुवाद डेटा सामान्यीकृत है
-        config: i18n-कार्य कॉन्फ़िगरेशन प्रदर्शित करें
-        data: स्थानीय डेटा दिखाएँ
-        data_merge: स्थानीय डेटा को पेड़ों के साथ मर्ज करें
-        data_remove: डेटा से ट्री में मौजूद कुंजियाँ हटाएँ
-        data_write: स्थानीय डेटा को पेड़ से बदलें
-        eq_base: आधार मान के बराबर अनुवाद दिखाएँ
-        find: दिखाएँ कि कोड में कुंजियाँ कहाँ उपयोग की गई हैं
-        gem_path: रत्न को रास्ता दिखाओ
-        health: क्या सब ठीक है?
-        irb: i18n-कार्य संदर्भ में REPL सत्र प्रारंभ करें
-        missing: लुप्त अनुवाद दिखाएं, वैकल्पिक रूप से एक पैटर्न से मिलान करें
-        mv: स्थानीय डेटा में उन कुंजियों का नाम बदलें/विलय करें जो दिए गए पैटर्न से
-          मेल खाती हों
-        normalize: 'अनुवाद डेटा को सामान्य करें: क्रमबद्ध करें और सही फ़ाइलों पर ले
-          जाएँ'
-        remove_unused: अप्रयुक्त कुंजियाँ हटाएँ
-        rm: स्थानीय डेटा में दी गई पैटर्न से मेल खाने वाली कुंजियाँ हटाएँ
-        translate_missing: Google Translate या DeepL Pro के साथ लुप्त कुंजियों का
-          अनुवाद करें, वैकल्पिक रूप से एक पैटर्न से मिलान करें
-        tree_convert: प्रारूपों के बीच वृक्ष को परिवर्तित करें
-        tree_filter: कुंजी पैटर्न के आधार पर पेड़ को फ़िल्टर करें
-        tree_merge: पेड़ों को मिलाओ
-        tree_mv_key: दिए गए पैटर्न से मेल खाने वाली कुंजियों का नाम बदलें/विलय करें/हटाएं
-        tree_set_value: कुंजियों के मान सेट करें, वैकल्पिक रूप से एक पैटर्न से मिलान
-          करें
-        tree_subtract: वृक्ष A से वृक्ष B की कुंजियाँ घटाएँ
-        tree_translate: Google किसी पेड़ का मूल स्थानों में अनुवाद करता है
-        unused: अप्रयुक्त अनुवाद दिखाएं
-      encourage:
-      - अच्छी नौकरी!
-      - बहुत अच्छा!
-      - उत्तम!
-      enum_list_opt:
-        invalid: "%{invalid} इसमें नहीं है: %{valid}।"
-      enum_opt:
-        invalid: "%{invalid} इनमें से एक नहीं है: %{valid}।"
-      errors:
-        invalid_format: 'अमान्य प्रारूप: %{invalid}। वैध: %{valid}।'
-        invalid_locale: 'अमान्य स्थान: %{invalid}'
-        invalid_missing_type:
-          one: 'अमान्य प्रकार: %{invalid}। वैध: %{valid}।'
-          other: 'अज्ञात प्रकार: %{invalid}। वैध: %{valid}।'
-        pass_forest: स्थानीय जंगल से गुजरें
-    common:
-      continue_q: जारी रखना?
-      key: चाबी
-      locale: स्थान
-      n_more: "%{count} और अधिक"
-      value: कीमत
-    data_stats:
-      text: "%{locale_count} स्थानों पर %{key_count} कुंजियाँ हैं। औसतन, मान %{value_chars_avg}
-        वर्ण लंबे होते हैं, कुंजियों में %{key_segments_avg} खंड होते हैं, एक स्थान
-        में %{per_locale_avg} कुंजियाँ होती हैं।"
-      text_single_locale: कुल मिलाकर %{key_count} कुंजियाँ हैं। औसतन, मान %{value_chars_avg}
-        वर्ण लंबे होते हैं, कुंजियों में %{key_segments_avg} खंड होते हैं।
-      title: वन (%{locales})
-    deepl_translate:
-      errors:
-        no_api_key: डीपएल प्रो एपीआई कुंजी को DEEPL_AUTH_KEY पर्यावरण चर या config/i18n-tasks.yml
-          में ट्रांसलेशन.डीपएल_एपीआई_की के माध्यम से सेटअप करें। https://www.depl.com/pro
-          पर कुंजी प्राप्त करें।
-        no_results: डीपएल ने कोई परिणाम नहीं लौटाया।
-        specific_target_missing: आपको दी गई लक्ष्य भाषा के लिए एक विशिष्ट संस्करण
-          प्रदान करना होगा जैसे कि en के बजाय en-us।
-    google_translate:
-      errors:
-        no_api_key: Google API कुंजी को GOOGLE_TRANSLATE_API_KEY पर्यावरण चर या config/i18n-tasks.yml
-          में transl.google_translate_api_key के माध्यम से सेट करें। https://code.google.com/apis/console
-          पर कुंजी प्राप्त करें।
-        no_results: Google Translate ने कोई परिणाम नहीं दिया. सुनिश्चित करें कि बिलिंग
-          जानकारी https://code.google.com/apis/console पर सेट है।
-    health:
-      no_keys_detected: कोई कुंजी नहीं मिली. config/i18n-tasks.yml में data.read की
-        जाँच करें।
-    inconsistent_interpolations:
-      none: कोई असंगत अंतर्वेशन नहीं मिला.
-    missing:
-      details_title: अन्य स्थानों या स्रोत में मूल्य
-      none: कोई भी अनुवाद गायब नहीं है.
-    remove_unused:
-      confirm:
-        one: "%{count} अनुवाद %{locales} से हटा दिया जाएगा।"
-        other: "%{count} अनुवाद %{locales} से हटा दिया जाएगा।"
-      noop: हटाने के लिए कोई अप्रयुक्त कुंजी नहीं
-      removed: "%{count} कुंजियाँ हटा दी गईं"
-    translate_missing:
-      translated: अनूदित %{count} कुंजियाँ
-    unused:
-      none: प्रत्येक अनुवाद प्रयोग में है.
-    usages:
-      none: कोई प्रमुख उपयोग नहीं मिला.
-    yandex_translate:
-      errors:
-        no_api_key: Yandex API कुंजी को YANDEX_API_KEY पर्यावरण चर या config/i18n-tasks.yml
-          में ट्रांसलेशन.yandex_api_key के माध्यम से सेट करें। https://tech.yandex.com/translate
-          पर कुंजी प्राप्त करें।
-        no_results: यांडेक्स ने कोई परिणाम नहीं लौटाया।
-    openai_translate:
-      errors:
-        no_api_key: config/i18n-tasks.yml में OPENAI_API_KEY पर्यावरण चर या ट्रांसलेशन.openai_api_key
-          के माध्यम से OpenAI API कुंजी सेट करें। https://openai.com/ पर कुंजी प्राप्त
-          करें।
-        no_results: OpenAI ने कोई परिणाम नहीं दिया.
   devise:
     confirmations:
       confirmed: आपके ईमेल पते की सफलतापूर्वक पुष्टि हो गई है।
@@ -535,8 +391,18 @@ hi:
         update: अपडेट
         we_need_your_current_password_to_confirm_your_changes: आपके परिवर्तनों की
           पुष्टि करने के लिए हमें आपका वर्तमान पासवर्ड चाहिए
+        cancel_my_account_confirm_description_html: इससे आपके खाते से जुड़ा सारा डेटा
+          हमेशा के लिए मिट जाएगा। इस कार्रवाई को पूर्ववत नहीं किया जा सकता।<br/><br/>
+          सत्यापित करने के लिए, अपना ईमेल पता टाइप करें और अपने खाते की पुष्टि करें
+          तथा उसे हटा दें।
+        cancel_my_account_description: इससे आपके खाते से जुड़ा सारा डेटा हमेशा के
+          लिए मिट जाएगा। इस कार्रवाई को पूर्ववत नहीं किया जा सकता।
+        saving: सहेजा जा रहा है...
       new:
         sign_up: साइन अप करें
+        login_html: या %{link}
+        submitting: सबमिट किया जा रहा है...
+        terms_html: मैं %{terms} और %{privacy} स्वीकार करता हूँ
       signed_up: स्वागत है! आपने सफलतापूर्वक साइन अप कर लिया है।
       signed_up_but_inactive: आपने सफलतापूर्वक साइन अप कर लिया है। हालाँकि, हम आपको
         साइन इन नहीं कर सकते क्योंकि आपका खाता अभी तक सक्रिय नहीं है।
@@ -566,9 +432,14 @@ hi:
       verification: सत्यापन
       verification_text: उपरोक्त परिवर्तनों को सत्यापित करने के लिए अपना वर्तमान पासवर्ड
         दर्ज करें।
+      preferred_language: पसंदीदा भाषा
     sessions:
       new:
         sign_in: लॉग इन करें
+        sign_up_html: या %{link}
+      already_signed_out: सफलतापूर्वक साइन आउट किए गए।
+      signed_in: सफलतापूर्वक साइन इन किए गए।
+      signed_out: सफलतापूर्वक साइन आउट किए गए।
     shared:
       links:
         back: वापस
@@ -578,6 +449,7 @@ hi:
         sign_in: लॉग इन करें
         sign_in_with_provider: "%{provider} के साथ साइन इन करें"
         sign_up: साइन अप करें
+        redirecting: पुनर्निर्देशित किया जा रहा है...
       minimum_password_length:
         one: "(न्यूनतम %{count} अक्षर)"
         other: "(न्यूनतम %{count} अक्षर)"
@@ -601,27 +473,10 @@ hi:
       login: लॉग इन करें
       remember_me: पहचाना की नहीं
       sign_up: साइन अप करें
-  routes:
-    users: उपयोगकर्ताओं
-    passwords: पासवर्डों
-    files: फ़ाइलें
-    urls: यूआरएल
-    sessions: सत्र
-    registrations: पंजीकरण
-    unlocks: अनलॉक
-    feedbacks: फीडबैक
-    pages: पृष्ठों
-    new: नया
-    edit: संपादन करना
-    update: अद्यतन
-    destroy: नष्ट करना
-    create: बनाएं
-    expired: खत्म हो चुका
-    active: सक्रिय
-    audit: अंकेक्षण
-    access: पहुँच
-    passphrase: पदबंध
-    preview: पूर्व दर्शन
-  file_pushes:
-    new:
-      upload_limit: आप प्रति पुश अधिकतम %{count} फ़ाइलें अपलोड कर सकते हैं।
+  views:
+    pagination:
+      first: "&laquo; पहला"
+      last: आखरी &raquo;
+      previous: "&lsaquo; पिछला"
+      next: अगला &rsaquo;
+      truncate: "&hellip;"
